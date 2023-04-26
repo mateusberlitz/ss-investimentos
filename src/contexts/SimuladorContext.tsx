@@ -1,11 +1,11 @@
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { invertScale } from "framer-motion/types/value/use-inverted-scale";
+//import { invertScale } from "framer-motion/types/value/use-inverted-scale";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react"
-import { useErrors } from "../../hooks/useErrors";
-import { api } from "../../services/api";
-import { useFacebookPixel } from "../Facebook";
-import * as gtag from '../../services/gtag';
+import { useErrors } from "../hooks/useErrors";
+import { api } from "../services/api";
+//import { useFacebookPixel } from "../Facebook";
+//import * as gtag from '../../services/gtag';
 
 interface SimuladorContextProps{
     children?: ReactNode;
@@ -59,7 +59,7 @@ const SimuladorContext = createContext<SimuladorContextData>({} as SimuladorCont
 export const SimuladorProvider = ({children}: SimuladorContextProps) => {
     const { showErrors } = useErrors();
     const toast = useToast();
-    const {reactPixel} = useFacebookPixel();
+    //const {reactPixel} = useFacebookPixel();
 
     const [isOpen, setIsOpen] = useState(false);
     const [step, setStep] = useState<number>();
@@ -194,13 +194,11 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
             //console.log(result.newLead);
 
             if(result.newLead){
-                if(reactPixel){
-                    const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL", value: productData?.credit});
-                    //console.log(tracked);
-                }
+                // if(reactPixel){
+                //     const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL", value: productData?.credit});
+                // }
     
-                console.log(gtag.track('conversion', { sendTo: 'AW-797158179/GciSCJ6BwbkBEKPWjvwC', value: productData?.credit, currency: 'BRL'}));
-                // gtag.track('conversion', { sendTo: 'AW-797158179/C-6BCMfogocYEKPWjvwC', value: productData?.credit, currency: 'BRL'});
+                // gtag.track('conversion', { sendTo: 'AW-797158179/GciSCJ6BwbkBEKPWjvwC', value: productData?.credit, currency: 'BRL'}));
             }
         }catch(error: any){
             showErrors(error, toast);
