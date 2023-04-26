@@ -1,0 +1,373 @@
+import Image from 'next/image'
+import { Inter } from 'next/font/google'
+import { Avatar, Box, Flex, Heading, HStack, Img, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
+import Slider from "react-slick";
+import { Header } from '../components/Header'
+import { MainButton } from '@/components/Buttons/MainButton'
+
+import HS from '../../public/hs_white.svg';
+import { StepsSection } from '@/components/StepsSection'
+
+import Shield from '../../public/shield.svg';
+import Conversation from '../../public/conversation.svg';
+import Smile from '../../public/smile.svg';
+import Page from '../../public/page.svg';
+import LogoTipo from '../../public/logotipo.svg';
+import HSGold from '../../public/hs_gold.svg';
+import SS_HS from '../../public/ss_hs.svg';
+import Check from '../../public/check.svg';
+import Logo from '../../public/logo.svg';
+import { Input } from '@/components/Forms/Inputs/Input'
+import { TextTag } from '@/components/TextTag'
+import { Footer } from '@/components/Footer'
+import Quote from '../../public/quote.svg';
+import { useState } from 'react';
+import { Services } from '@/components/Services';
+
+
+export default function Home() {
+
+    const [activeSlide, setActiveSlide] = useState(0);
+
+    const isWideVersion = useBreakpointValue({base: false, lg: true,});
+
+    const settings = {
+        dots: true,
+        centerMode: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: isWideVersion ? 3 : 1,
+        slidesToScroll: 3,
+        //autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
+        beforeChange: (current: number, next: number) => setActiveSlide(next),
+    };
+
+    console.log(activeSlide);
+
+    return (
+    <>
+        <Flex flexDir="column" w="100%" bg="url(./images/real.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+            <Box bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" _before={{}}>
+                <Flex flexDir="column">
+                    <Header/>
+                </Flex>
+                
+                <Stack spacing="24" px="6" w="100%" maxW="1200px" m="0 auto" py="20" alignItems={"center"}>
+                    <Stack textAlign={"center"} alignItems={"center"} spacing="24">
+                        <Heading color="white" fontSize={["42px","48px","52px"]} fontWeight="regular">Conquiste os seus objetivos com uma<br/>estratégia de investimento inteligente!</Heading>
+                        <MainButton>Agende sua consultoria</MainButton>
+                    </Stack>
+
+                    <Stack fontSize={["md","md","md","md"]} spacing={["8","8","8","8"]} pos="relative" zIndex={2} color="white" w="100%"  px={["12","12","20"]} py="10" justifyContent="space-between" direction={["column", "column", "row"]}>
+                        <Box pos="absolute" zIndex={1} opacity="0.4" left="0" right="0" top="0" bottom="0" backdropFilter={"blur(15px)"} bg="linear-gradient(92.54deg, rgba(255, 255, 255, 0.3) 30.02%, rgba(248, 177, 121, 0.276) 66.74%);"/>
+                        
+                        <Stack zIndex={2}>
+                            <Text fontStyle="italic" fontWeight={"light"}>CORRETOR AUTORIZADO</Text>
+                            <HS/>
+                        </Stack>
+
+                        <Stack zIndex={2} alignItems={["left","left","center","center",]}>
+                            <Text fontWeight={"light"}>Clientes contemplados</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","3xl","3xl","4xl"]}>2.000</Text>
+                        </Stack>
+
+                        <Stack zIndex={2} alignItems={["left","left","center","center",]}>
+                            <Text fontWeight={"light"}>Créditos liberados</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","3xl","3xl","md"]}>+ R$ 30.080.000</Text>
+                        </Stack>
+
+                        <Stack zIndex={2} alignItems={["left","left","center","center",]}>
+                            <Text fontWeight={"light"}>Experiência no ramo</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","3xl","3xl","4xl"]}>+ 10 anos</Text>
+                        </Stack>
+                    </Stack>
+                </Stack>
+            </Box>
+        </Flex>   
+        
+        <StepsSection/>
+
+        <Services/>
+
+        {/* <Stack m="0 auto" w="100%" pos="relative">
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" flexDirection="column" textAlign={"center"} alignItems="center">
+                <Stack spacing="8" maxW="730px">
+                    <Heading color="blue.primary" fontSize={"52px"}>Nossas Principais Soluções</Heading>
+                    <Text fontSize={"xl"}>Confira abaixo nossas soluções que são capazes de atender aos mais diversos objetivos financeiros que você possa ter!</Text>
+                </Stack>
+            </Stack>
+
+            <HStack h="480px" color="white">
+                <Flex bg="url(./images/sl_real.jpg)" backgroundSize="cover" backgroundPosition="0 0px" h="100%" cursor={"pointer"}>
+                    <Stack role="group" w="300px" bg="rgba(45,50,80,0.7)"  p="8" pos="relative" _hover={{w:"500px"}} transition={"all ease 0.5s"}>
+                        <Text fontSize={"2xl"} maxW="230px" >Alavancagem de Capital</Text>
+                        <Text transform={"rotate(-90deg)"} transformOrigin="left center" w="fit-content" pos="absolute" left="38px" bottom="0" right="0" top="360px" height="28px" _before={{content: '""', pos:"absolute", display: "block", width: "100%", height: "1px", bg: "gradient", bottom: "0", left:"0", right:"0"}} textTransform="uppercase" letterSpacing={"0.1em"} fontSize="sm">
+                            Consultoria Financeira
+                        </Text>
+                        <Text fontSize={"md"} pl="14" opacity="0" marginTop="120px !important" _groupHover={{opacity: 1, marginTop: "70px !important"}} transition={"all .5s ease 0.5s"}>
+                            Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. Eu accumsan maecenas tincidunt in consequat egestas et diam adipiscing. Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. 
+                        </Text>
+                        <MainButton ml="14 !important" mt="30px !important" opacity="0" _groupHover={{opacity: 1}} transition={"all .5s ease 0.5s"}>Falar com especialista</MainButton>
+                    </Stack>
+                </Flex>
+            </HStack>
+        </Stack> */}
+
+        <Flex m="0 auto" w="100%" pos="relative" bg="linear-gradient(285.92deg, #2D3250 17.26%, #181818 92.19%);">
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" textAlign={"center"} >
+                <Stack spacing="16" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
+                    <Stack textAlign={"left"} w={["100%", "100%", "50%"]}>
+                        <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
+                            <Flex pos="relative" minH="63px" minW="63px" zIndex={2} alignItems="center" justifyContent={"center"}>
+                                <Box pos="absolute" borderRadius="full" left="0" right="0" bottom="0" top="0" bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" zIndex={-1} opacity="0.2"/>
+                                <Shield/>
+                            </Flex>
+
+                            <Text color="white">Processos descomplicados e 100% seguro</Text>
+                        </HStack>
+
+                        <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
+                            <Flex pos="relative" minH="63px" minW="63px" zIndex={2} alignItems="center" justifyContent={"center"}>
+                                <Box pos="absolute" borderRadius="full" left="0" right="0" bottom="0" top="0" bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" zIndex={-1} opacity="0.2"/>
+                                <Conversation/>
+                            </Flex>
+
+                            <Text color="white">Orientação e esclarecimento de dúvidas sobre o funcionamento do serviços de investimento.</Text>
+                        </HStack>
+
+                        <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
+                            <Flex pos="relative" minH="63px" minW="63px" zIndex={2} alignItems="center" justifyContent={"center"}>
+                                <Box pos="absolute" borderRadius="full" left="0" right="0" bottom="0" top="0" bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" zIndex={-1} opacity="0.2"/>
+                                <Smile/>
+                            </Flex>
+
+                            <Text color="white">Indicação de soluções financeiras que se adequem às necessidades de cada cliente.</Text>
+                        </HStack>
+
+                        <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
+                            <Flex pos="relative" minH="63px" minW="63px" zIndex={2} alignItems="center" justifyContent={"center"}>
+                                <Box pos="absolute" borderRadius="full" left="0" right="0" bottom="0" top="0" bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" zIndex={-1} opacity="0.2"/>
+                                <Page/>
+                            </Flex>
+
+                            <Text color="white">Acompanhamento do cliente durante todo o processo, oferecendo todo o suporte necessário.</Text>
+                        </HStack>
+                    </Stack>
+
+                    <Stack textAlign={"left"} spacing="8" w={["100%", "100%", "50%"]} alignItems="center" justifyContent={"center"}>
+                        <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Foco em experiência e resultado</Text>
+                        <Text fontSize={"lg"} fontWeight="light" color="gray.200">Com serviços de qualidade que geram os melhores resultados de acordo com o seu propósito!</Text>
+                    </Stack>
+                </Stack>
+            </Stack>
+        </Flex>
+
+        <Flex m="0 auto" w="100%" pos="relative" bg="url(./images/parceiros.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+            <Flex bg="linear-gradient(0.15deg, #212749 -1.94%, rgba(33, 39, 73, 0.19) 132.54%)" w="100%">
+                <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="18%" px="6" flexDirection="column" alignItems="center">
+                    <Stack spacing="16" maxW="800px" color="white" textAlign={"center"}  alignItems="center">
+                        <Text fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Dê o primeiro passo para conquistar os seus sonhos</Text>
+                        <Text fontSize={"xl"}>Uma consultoria especializada pode ajudá-lo a traçar o melhor plano para você atingir seus objetivos de maneira mais eficiente e segura.</Text>
+                        <MainButton>Agende sua consultoria</MainButton>
+                    </Stack>
+                </Stack>
+            </Flex>
+        </Flex>
+
+        <Flex m="0 auto" w="100%" pos="relative">
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column">
+                <Stack spacing="16">
+                    <Stack maxW="900px" spacing="8">
+                        <Text color="blue.primary" fontSize={"52px"} fontWeight="medium">Corretor autorizado HS Consórcios</Text>
+                        <Text fontSize={"xl"}>Nossa empresa possui um histórico comprovado de excelência em serviços, aliado a medidas rigorosas de segurança, visando sempre proporcionar aos nossos clientes uma experiência confiável e segura.</Text>
+                    </Stack>
+                
+                    <Stack spacing="16"  direction={["column", "column", "row"]}>
+                        <Img w={["100%", "100%", "40%"]} src="./images/corretor.png" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                        <Stack spacing="20">
+                            <SS_HS width="100%"/>
+                            <Stack spacing="12">
+                                <HStack spacing="6">
+                                    <Check/>
+                                    <Text fontWeight={"normal"}>Transparência nas relações com clientes e parceiros.</Text>
+                                </HStack>
+
+                                <HStack spacing="6">
+                                    <Check/>
+                                    <Text fontWeight={"normal"}>Respeito aos direitos dos consumidores.</Text>
+                                </HStack>
+
+                                <HStack spacing="6">
+                                    <Check/>
+                                    <Text fontWeight={"normal"}>Comunicação clara e eficiente com os clientes.</Text>
+                                </HStack>
+
+                                <HStack spacing="6">
+                                    <Check/>
+                                    <Text fontWeight={"normal"}>Garantia de privacidade e segurança das informações dos clientes.</Text>
+                                </HStack>
+
+                                <HStack spacing="6">
+                                    <Check/>
+                                    <Text fontWeight={"normal"}>Equipe profissional, bem treinada e comprometida com a excelência.</Text>
+                                </HStack>
+                            </Stack>
+                        </Stack>
+                    </Stack>
+                </Stack>
+            </Stack>
+        </Flex>
+
+        <Flex m="0 auto" w="100%" pos="relative" bg="url(./images/hs.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+            <Flex bg="linear-gradient(356.76deg, rgba(33, 39, 73, 0.37) 6.14%, #212749 122.55%)" w="100%">
+                <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="center">
+                    <Stack spacing="16" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
+                        <Stack w={["100%", "100%", "46%"]} color="white" spacing="24">
+                            <Stack spacing="10">
+                                <Text fontSize={["56px"]} fontWeight="medium" lineHeight={"58px"}>Sobre HS Consórcios</Text>
+                                <Text fontSize={"xl"} fontWeight="light">Uma empresa do Grupo Herval de Dois Irmãos - RS, iniciou suas atividades em 1993 com as vendas de cartas de crédito no sistema do consórcio, e em 2008 já era um sucesso em adesões.</Text>
+                                <Text fontSize={"xl"} fontWeight="light">Ao passar dos anos, a empresa se expandiu pelo Brasil e atualmente está entre as três maiores administradoras do país!</Text>
+                            </Stack>
+                        
+                            <Stack spacing="10" direction={["column", "column", "column", "row",]}>
+                                <Stack>
+                                    <Text fontSize={"4xl"} color="gray.300">Cotas ativas</Text>
+                                    <Text fontSize={"56px"} fontWeight="medium" lineHeight={"60px"}>+200.000</Text>
+                                </Stack>
+
+                                <Stack>
+                                    <Text fontSize={"4xl"} color="gray.300">Bens Entregues</Text>
+                                    <Text fontSize={"56px"} fontWeight="medium" lineHeight={"60px"}>+80.000</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+                        <Img w={["100%", "100%", "46%"]} src="./images/mapa.png" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                    </Stack>
+                </Stack>
+            </Flex>
+        </Flex>
+
+        <Flex id="clientes" m="0 auto" w="100%" pos="relative" bg="linear-gradient(285.92deg, #2D3250 17.26%, #181818 92.19%);">
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" textAlign={"center"} >
+                <Stack spacing="24" pos="relative">
+                    <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Pessoas que depositam sua confiança em nossa expertise e soluções</Text>
+
+                    {/* <Stack alignItems={"center"} color="white" pos="relative">
+                        <Box pos="absolute" bg="#6D7DD9" filter="blur(135px)" h="260px" w="260px" zIndex={1}/>
+
+                        <Stack bg="blue.primary" maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} zIndex={2}>
+                            <Quote/>
+                            <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                        </Stack>
+
+                        <Stack alignItems={"center"} mt="-35px !important" spacing="4" zIndex={2}>
+                            <Avatar size="lg"/>
+                            <Stack spacing="0">
+                                <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
+                                <Text color="gray.300">CEO Lorem</Text>
+                            </Stack>
+                        </Stack>
+                    </Stack> */}
+
+                    <Stack pos="absolute" w="100%" zIndex={1} alignItems="center" justifyContent={"center"} h="100%">
+                        <Box bg="#6D7DD9" filter="blur(135px)" h="260px" w="260px"/>
+                    </Stack>
+
+                    <Slider {...settings}>
+                        <Stack alignItems={"center"} color="white" pos="relative" width="100%">
+                            {/* {
+                               activeSlide === 0 && <Box pos="absolute" bg="#6D7DD9" filter="blur(135px)" h="260px" w="260px" zIndex={-1}/>
+                            } */}
+
+                            <Stack zIndex={2} bg={activeSlide === 0 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg"/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
+                                    <Text color="gray.300">CEO Lorem</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 1 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg"/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
+                                    <Text color="gray.300">CEO Lorem</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg"/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
+                                    <Text color="gray.300">CEO Lorem</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg"/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
+                                    <Text color="gray.300">CEO Lorem</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+                    </Slider>
+
+                </Stack>
+            </Stack>
+        </Flex>
+
+        <Flex id="contato" m="0 auto" w="100%" pos="relative" bg="url(./images/consultora.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+            <Flex bg="linear-gradient(356.76deg, rgba(33, 39, 73, 0.37) 6.14%, #212749 122.55%)" w="100%">
+                <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="left">
+                    <Stack spacing="10" w="100%" maxW="600px">
+                        <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Contato</Text>
+
+                        <Input variant="white" name="subject" type="text" placeholder="Qual é o assunto da mensagem?" label='Assunto*'/>
+
+                        <Input variant="white" name="name" type="text" placeholder="Qual é o seu nome?" label='Nome completo*'/>
+
+                        <Input variant="white" name="email" type="text" placeholder="exemplo@email.com" label='E-mail*'/>
+
+                        <Input variant="white" name="phone" type="text" placeholder="(DDD) x xxxx-xxxx" label='Telefone*'/>
+
+                        <Input variant="white" as="textarea" name="message" type="text" placeholder="Digite aqui a sua mensagem..." label='Mensagem*'/>
+
+                        <MainButton type="submit">Enviar</MainButton>
+                    </Stack>
+                </Stack>
+            </Flex>
+        </Flex>
+
+        <Footer/>
+    </>
+  )
+}

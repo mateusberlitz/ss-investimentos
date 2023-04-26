@@ -1,0 +1,24 @@
+.header{
+    position: fixed;
+}
+
+@keyframes underline{
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+.headerLink > div{
+    transition: all 0.4s ease-out;
+    width: 100%;
+
+    transform: scaleX(0);
+    transform-origin: center center;
+}
+
+.headerLink:hover > div{
+    transform: scaleX(1);
+}

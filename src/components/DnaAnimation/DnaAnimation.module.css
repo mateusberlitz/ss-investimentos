@@ -1,0 +1,52 @@
+.dnaAnimation{
+    perspective: 1000px;
+}
+
+@keyframes node{
+    0%{
+        transform: rotateY(0deg)
+    }
+    100%{
+        transform: rotateY(360deg)
+    }
+}
+
+.dnaAnimation > div:first-child{
+    -webkit-animation: node 8s linear .09s infinite alternate;
+    animation: node 8s linear .09s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(2){
+    -webkit-animation: node 8s linear .18s infinite alternate;
+    animation: node 8s linear .18s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(3){
+    -webkit-animation: node 8s linear .27s infinite alternate;
+    animation: node 8s linear .27s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(4){
+    -webkit-animation: node 8s linear .36s infinite alternate;
+    animation: node 8s linear .36s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(5){
+    -webkit-animation: node 8s linear .45s infinite alternate;
+    animation: node 8s linear .45s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(6){
+    -webkit-animation: node 8s linear .54s infinite alternate;
+    animation: node 8s linear .54s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(7){
+    -webkit-animation: node 8s linear .63s infinite alternate;
+    animation: node 8s linear .63s infinite alternate;
+}
+
+.dnaAnimation > div:nth-child(8){
+    -webkit-animation: node 8s linear .72s infinite alternate;
+    animation: node 8s linear .72s infinite alternate;
+}

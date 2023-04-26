@@ -1,0 +1,13 @@
+@keyframes carousel{
+    0%{
+        transform: translateX(0)
+    }
+    100%{
+        transform: translateX(-200px)
+    }
+}
+
+.quotation{
+    -webkit-animation: carousel 6s linear .09s infinite alternate;
+    animation: carousel 6s linear .09s infinite alternate;
+}
