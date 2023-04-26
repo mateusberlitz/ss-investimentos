@@ -8,7 +8,7 @@ import { CreatableReactSelect } from "../Forms/Selects/CreatableReactSelect";
 import { ReactSelect } from "../Forms/Selects/ReactSelect";
 import { Select } from "../Forms/Selects/Select";
 import { TextTag } from "../TextTag";
-import { SimulationLead, SimulationProduct, useSimulador } from "../_Contexts/SimuladorContext";
+import { SimulationLead, SimulationProduct, useSimulador } from "../../contexts/SimuladorContext";
 
 import { ArrowLeft, ArrowRight } from 'react-feather'
 
