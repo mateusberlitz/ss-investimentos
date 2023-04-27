@@ -29,28 +29,61 @@ export function Header({whiteVersion}: HeaderProps){
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
-        const attach = gsap.fromTo(navRef.current, { 
-            backgroundColor: "transparent" ,
-            position: "relative",
-            duration: 0.5,
-            top: "0"
-        },{ 
-            position: "fixed",
-            top: "10px",
-            duration: 0.5,
-            background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
-            backdropFilter: "blur(30px)",
-        });
+        // const attach = gsap.fromTo(navRef.current, { 
+        //     backgroundColor: "transparent" ,
+        //     position: "relative",
+        //     duration: 1,
+        //     top: "0"
+        // },{ 
+        //     position: "fixed",
+        //     top: "10px",
+        //     duration: 1,
+        //     background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
+        //     backdropFilter: "blur(30px)",
+        // });
 
         const ctx = gsap.context(() => {
 
-            ScrollTrigger.create({
-                trigger: "body",
-                start: "120px 100px",
-                end: "top 0",
-                scrub: true,
-                animation: attach
+            const headerTimeline = gsap.timeline({
+                //paused: true,
+                immediateRender: true,
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "120px 100px",
+                    end: "top 0",
+                    scrub: true
+                }
             });
+
+            headerTimeline
+            .fromTo(navRef.current, { 
+                    backgroundColor: "transparent" ,
+                    position: "relative",
+                    duration: 1,
+                    top: "0"
+                },{ 
+                    position: "fixed",
+                    top: "0px",
+                    duration: 1,
+                    background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
+                    backdropFilter: "blur(30px)",
+            }).to("#logo", { 
+                width: "300px" ,
+                duration: 1,
+            }).to("#quotation", { 
+                //autoAlpha: 0,
+                fontSize: "10px !important" ,
+                height: "30px" ,
+                duration: 1,
+            });
+
+            // ScrollTrigger.create({
+            //     trigger: "body",
+            //     start: "120px 100px",
+            //     end: "top 0",
+            //     scrub: true,
+            //     animation: attach
+            // });
         });
           
         return () => ctx.revert();
@@ -63,7 +96,7 @@ export function Header({whiteVersion}: HeaderProps){
             {/* pos="fixed" top="12px" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(40px)"} */}
 
                 <HStack justify="space-between" px="6">
-                    <Flex w={["250px", "320px", "380px"]}>
+                    <Flex w={["250px", "320px", "380px"]} id="logo" p={"2"}>
                         <Link href="/">
                             {
                                 whiteVersion ? (

@@ -6,9 +6,12 @@ interface FormSliderProps extends SliderProps{
     name: string;
     type: string;
     value?: number;
+    min?: number;
+    max?: number;
+    step?: number;
     variant?: string;
     icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-    mask?: "phone" | "cpf" | "cnpj" | "money" | "";
+    mask?: "phone" | "cpf" | "cnpj" | "money" | "deadline" | "";
     error?: FieldError;
     label?: string;
 }

@@ -13,18 +13,21 @@ export interface SliderProps extends ChakraProps{
     name: string;
     type: string;
     value?: number;
+    min?: number;
+    max?: number;
+    step?: number;
     label?: string;
     variant?: string;
     icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
     register?: UseFormRegister<any>;
     control?: any;
-    mask?: "phone" | "cpf" | "cnpj" | "money" | "cep" | "cpf-cnpj" | "";
+    mask?: "phone" | "cpf" | "cnpj" | "money" | "cep" | "cpf-cnpj" | "deadline" | "";
     error?: FieldError;
     onChange?: (value: any) => void;
     inputRef?: Ref<any>
 }
 
-export function Slider({ name, type, icon, variant = "", value = 200000, label = "", mask = "", register = undefined, onChange, inputRef, control, error, maxW, ...rest }: SliderProps){
+export function Slider({ name, type, icon, variant = "", value = 200000, min = 30000, step = 5000, max = 1000000, label = "", mask = "", register = undefined, onChange, inputRef, control, error, maxW, ...rest }: SliderProps){
     const [sliderValue, setSliderValue] = useState<number>();
     const [showTooltip, setShowTooltip] = useState(true);
 
@@ -74,7 +77,7 @@ export function Slider({ name, type, icon, variant = "", value = 200000, label =
 
             </Stack>
 
-            <ChakraSlider pos="relative" focusThumbOnChange={false} size="lg" aria-label='slider-ex-6' colorScheme='blue' value={sliderValue} defaultValue={sliderValue} min={30000} max={1000000} step={5000} 
+            <ChakraSlider pos="relative" focusThumbOnChange={false} size="lg" aria-label='slider-ex-6' colorScheme='blue' value={sliderValue} defaultValue={sliderValue} min={min} max={max} step={step} 
             onChange={(value) => {
                 setSliderValue(value);
                 if(onChange){
@@ -96,7 +99,7 @@ export function Slider({ name, type, icon, variant = "", value = 200000, label =
                     color='white'
                     placement='top'
                     isOpen={showTooltip}
-                    label={`${Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(sliderValue ? sliderValue : 0)}`}
+                    label={`${mask === "money" ? Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(sliderValue ? sliderValue : 0) : mask === "deadline" ? `${sliderValue} meses` : sliderValue}`}
                 >
                     <SliderThumb />
                 </Tooltip>

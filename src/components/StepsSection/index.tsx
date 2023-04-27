@@ -101,7 +101,7 @@ export function StepsSection(){
             ScrollTrigger.create({
                 trigger: sectionRef.current,
                 scrub: true,
-                start: "top 0px",
+                start: "top 120px",
                 //pin: true,
                 animation: progress
             });
@@ -146,7 +146,7 @@ export function StepsSection(){
                         <HStack w={["100%", "100%", "70%", "100%"]} p={["7"]} spacing={["8", "8", "14"]} maxW="700px">
                             <Stack h="100%" pos="relative">
                                 <Box h="calc(100% - 140px)" w="4px" bg="gray.500"/>
-                                <Box ref={progressRef} h="0%" w="4px" bg="orange.400" pos="absolute" top="0"/>
+                                <Box ref={progressRef} h="0%" w="4px" bg="#7C5333" pos="absolute" top="0"/>
                                 {/* <Progress orientation="vertical" size='md' value={55} w="4px" h="100%"/> */}
                             </Stack>
 
@@ -157,7 +157,7 @@ export function StepsSection(){
                                     <Text fontSize={"lg"}>Você pode pagar a prazo por um crédito para ter sua casa ou estabelecimento totalmente abastecida com energia limpa.</Text>
                                 </Stack> */}
                             
-                                <Stack ml={["-19% !important", "-10% !important", "-15% !important", "-15% !important"]} spacing="12">
+                                <Stack ml={["-19% !important", "-10% !important", "-17.5% !important", "-17% !important", "-15% !important"]} spacing="12">
                                     <HStack ref={firstStep} spacing="30px" >
                                         <Flex alignSelf="baseline" h="60px" w="60px" bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
                                             <Text color="white" fontSize={"2xl"}>1</Text>

@@ -8,7 +8,7 @@ import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
 import Whatsapp from '../../public/whatsapp.svg';
-import { Check, Download, Home, Printer, Search, X } from "react-feather";
+import { Check, ChevronRight, Download, Home, Printer, Search, X } from "react-feather";
 import { SolidButton } from "../components/Buttons/SolidButton";
 import Sum from "../components/Sum";
 import Link from "next/link";
@@ -228,15 +228,14 @@ export default function Contempladas({quotas}: ContempladasProps){
     });
 
     const handleFilter = (filterData: ContemplatedsFilter) => {
-        //console.log(filterData);
         let filteredQuotas = quotas;
 
         if(filterData.credit && filterData.credit !== undefined){
             filteredQuotas = filteredQuotas.filter(quota => {
                 const parsedCredit = parseFloat(quota.valor_credito.replace(".", "").replace(",", "."));
-                console.log(parsedCredit, filterData.credit * 1.05);
+                //console.log(parsedCredit, filterData.credit * 1.05);
                 //console.log(quota.valor_credito, filterData.credit);
-                return  parsedCredit < filterData.credit * 1.10 && parsedCredit > filterData.credit * 0.90
+                return  parsedCredit < filterData.credit * 1.30 && parsedCredit > filterData.credit * 0.70
             })
         }
 
@@ -244,13 +243,18 @@ export default function Contempladas({quotas}: ContempladasProps){
             filteredQuotas = filteredQuotas.filter(quota => {
                 const parsedValue = parseFloat(quota.entrada.replace(".", "").replace(",", "."));
 
-                return  parsedValue < filterData.value * 1.10 && parsedValue > filterData.value * 0.90
+                return  parsedValue < filterData.value * 1.30 && parsedValue > filterData.value * 0.70
             })
         }
 
         if(filterData.deadline){
             filteredQuotas = filteredQuotas.filter(quota => {
-                return parseFloat(quota.parcelas) === filterData.deadline
+                //return parseFloat(quota.parcelas) === filterData.deadline
+                if(filterData.deadline){
+                    //console.log(parseFloat(quota.parcelas), filterData.deadline * 0.80, filterData.deadline * 1.20);
+                    //return false;
+                    return parseFloat(quota.parcelas) > filterData.deadline * 0.80 && parseFloat(quota.parcelas) < filterData.deadline * 1.20
+                }
             })
         }
 
@@ -293,8 +297,8 @@ export default function Contempladas({quotas}: ContempladasProps){
                 <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" py="36" pt="16" spacing="20" justifyContent="space-between">
                     <Stack spacing="5">
                         <HStack fontSize={"md"}>
-                            <Link href="/"><Text _hover={{textDecor:"underline"}} color="gray.600">Home</Text></Link>
-                            <Text>{">"}</Text>
+                            <Link href="/"><Text _hover={{textDecor:"underline"}} color="rgba(67, 67, 67, 0.5)">Home</Text></Link>
+                            <Text><ChevronRight color="rgba(67, 67, 67, 0.5)"/></Text>
                             <Text>Cartas Contempladas</Text>
                         </HStack>
                         <Heading fontSize={["4xl","5xl","6xl","6xl"]}>Cartas Contempladas</Heading>
@@ -325,9 +329,9 @@ export default function Contempladas({quotas}: ContempladasProps){
                                         <option value="Veículo">Veículo</option>
                                     </ControlledSelect>
 
-                                    <ControlledSlider control={filterForm.control} value={100000} error={filterForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
-                                    <ControlledSlider control={filterForm.control} value={50000} error={filterForm.formState.errors.value} label="Valor da entrada" name="value" type="text" mask="money"/>
-                                    <ControlledSlider control={filterForm.control} value={120} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask=""/>
+                                    <ControlledSlider control={filterForm.control} min={20000} step={2000} value={100000} error={filterForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
+                                    <ControlledSlider control={filterForm.control} min={10000} step={2000} value={50000} error={filterForm.formState.errors.value} label="Valor da entrada" name="value" type="text" mask="money"/>
+                                    <ControlledSlider control={filterForm.control} value={120} min={60} max={200} step={10} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask="deadline"/>
 
                                     {/* <ControlledInput control={filterForm.control} error={filterForm.formState.errors.credit} name="credit" label="Crédito" type="text"/>
                                     <ControlledInput control={filterForm.control} error={filterForm.formState.errors.value} name="value" label="Entrada" type="text"/>
@@ -427,7 +431,7 @@ export default function Contempladas({quotas}: ContempladasProps){
                                         //onClick={(e) => handleSelectLine(e, !selectedQuotasId.includes(parseInt(quota.id)), quota.id)}
                                         return (
                                             <Tr key={quota.id} minH="40px" h={isWideVersion ? "42px" : "30px"} py="4" cursor="pointer">
-                                                <Td p="2px" bg="rgba(67, 67, 67, 0.05)" pl={["3","5","5"]} borderLeftRadius={"6"}>
+                                                <Td p="2px" bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} pl={["3","5","5"]} borderLeftRadius={"6"}>
                                                     <HStack>
                                                         <Checkbox colorScheme="red" isChecked={selectedQuotasId.includes(parseInt(quota.id))} value={quota.id} onChange={handleSelect}/>
                                                         
@@ -436,7 +440,7 @@ export default function Contempladas({quotas}: ContempladasProps){
                                                             </Text>
                                                     </HStack>
                                                 </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" textAlign="center" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                <Td bg="rgba(67, 67, 67, 0.05)" textAlign="left" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
                                                     {quota.categoria}
                                                     {/* {
                                                         quota.categoria === "Imóvel" ? <Icon as={Home} stroke="#333" w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "14px"}></Icon> : <Icon as={Car} w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "12px"}  fill="#333"></Icon>
@@ -464,7 +468,7 @@ export default function Contempladas({quotas}: ContempladasProps){
                                                 <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
                                                     {quota.administradora}
                                                 </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" borderRightRadius={"6"} p="2px" color={quota.reserva === "Disponível" ? "green.400" : "red.400"} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                <Td bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.reserva === "Disponível" ? "green.400" : "red.400"} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
                                                     {
                                                         isWideVersion ? quota.reserva :
                                                         (

@@ -3,7 +3,7 @@ import { ServiceItem } from "./ServiceItem";
 
 export function Services(){
     return(
-        <Stack id="solucoes" m="0 auto" w="100%" pos="relative" mb="20">
+        <Stack m="0 auto" w="100%" pos="relative" mb="20">
             <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" textAlign={"center"} alignItems="center">
                 <Stack spacing="8" maxW="730px">
                     <Heading color="blue.primary" fontSize={"52px"}>Nossas Principais Soluções</Heading>

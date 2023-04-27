@@ -1,4 +1,4 @@
-import { ChakraProps, Flex, Heading, Img, Stack, Text } from "@chakra-ui/react";
+import { AspectRatio, ChakraProps, Flex, Heading, Img, Stack, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { MainButton } from "../Buttons/MainButton";
 import { OutlineButton } from "../Buttons/OutlineButton";
@@ -21,9 +21,13 @@ export function Card({title, category, description, text, imgUrl, href, hasButto
     return (
         <Flex as="a" href={href} flexDir="column" overflow="hidden" justifyContent="space-between" {...rest}>
 
-            <Flex w="100%" alignItems="end">
+            <AspectRatio maxW='100%' ratio={4 / 3}>
+                <Img src={imgUrl} alt={title} w="100%" borderRadius="6" objectFit='cover'/>
+            </AspectRatio>
+
+            {/* <Flex w="100%" alignItems="end">
                 <Img src={imgUrl} alt={title} w="100%" borderRadius="6"/>
-            </Flex>
+            </Flex> */}
 
               <Stack spacing="4" pt="6">
                 <Text fontWeight="light" fontSize="sm" color="gray.700" textTransform={"uppercase"}>{category}</Text>

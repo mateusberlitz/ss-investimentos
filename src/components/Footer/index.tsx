@@ -28,7 +28,7 @@ export function Footer(){
                     <Stack spacing="4">
                         <Text fontSize={"lg"} fontWeight="normal">Esteja conectado conosco</Text>
                         <HStack spacing="6">
-                            <Link href=""><Whatsapp/></Link>
+                            <Link href=""><Whatsapp width="24px"/></Link>
                             <Link href=""><Facebook/></Link>
                             <Link href=""><Instagram/></Link>
                             <Link href=""><Email/></Link>
@@ -41,12 +41,12 @@ export function Footer(){
                         <Text fontWeight={"normal"} fontSize={"lg"}>Acesso Rápido</Text>
 
                         <Stack spacing="4" fontSize="sm">
-                            <FooterLink href="https://usa.lanceconsorcio.com.br/florida" >Imóveis na Flórida</FooterLink>
-                            <FooterLink href="/vender">Vender consórcio</FooterLink>
-                            <FooterLink href="https://www.hsconsorcios.com.br/cliente/declaracao-imposto-renda">Declaração de IR</FooterLink>
-                            <FooterLink href="https://www.hsconsorcios.com.br/cliente/boleto">2ª Via do Boleto</FooterLink>
-                            {/* <FooterLink href="https://old.lanceconsorcio.com.br/cliente">Área do cliente</FooterLink> */}
-                            <FooterLink href="/contempladas">Contempladas</FooterLink>
+                            <FooterLink href="/">Home</FooterLink>
+                            <FooterLink href="/#sobre">Sobre Nós</FooterLink>
+                            <FooterLink href="/#clientes">Clientes</FooterLink>
+                            <FooterLink href="/contempladas">Cartas Contempladas</FooterLink>
+                            <FooterLink href="/blog">Blog</FooterLink>
+                            <FooterLink href="/#contato">Contato</FooterLink>
                         </Stack>
                     </Stack>
 
@@ -54,12 +54,14 @@ export function Footer(){
                         <Text fontWeight={"normal"} fontSize={"lg"}>Soluções</Text>
 
                         <Stack spacing="4" fontSize="sm">
-                            <FooterLink href="https://usa.lanceconsorcio.com.br/florida" >Imóveis na Flórida</FooterLink>
-                            <FooterLink href="/vender">Vender consórcio</FooterLink>
-                            <FooterLink href="https://www.hsconsorcios.com.br/cliente/declaracao-imposto-renda">Declaração de IR</FooterLink>
-                            <FooterLink href="https://www.hsconsorcios.com.br/cliente/boleto">2ª Via do Boleto</FooterLink>
-                            {/* <FooterLink href="https://old.lanceconsorcio.com.br/cliente">Área do cliente</FooterLink> */}
-                            <FooterLink href="/contempladas">Contempladas</FooterLink>
+                            <FooterLink href="/">Alavancagem de Capital</FooterLink>
+                            <FooterLink href="/">Aumento de Patrimônio</FooterLink>
+                            <FooterLink href="/">Renda Passiva de Aluguéis</FooterLink>
+                            <FooterLink href="/">Capital de Giro</FooterLink>
+                            <FooterLink href="/">Planos de Consórcio</FooterLink>
+                            <FooterLink href="/">Assessoria de Investimentos</FooterLink>
+                            <FooterLink href="/">Consultoria Jurídica</FooterLink>
+                            <FooterLink href="/">Soluções Contábeis</FooterLink>
                         </Stack>
                     </Stack>
                 </Stack>

@@ -15,5 +15,9 @@ export const socialShareLink: Record<string, SocialShareLink> = {
     whatsapp: {
         shareUrl: 'https://api.whatsapp.com/send?text=',
         display: 'Whatsapp'
+    },
+    instagram: {
+        shareUrl: 'https://api.whatsapp.com/send?text=',
+        display: 'Instagram'
     }
 }

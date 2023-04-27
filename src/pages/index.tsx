@@ -21,8 +21,9 @@ import { Input } from '@/components/Forms/Inputs/Input'
 import { TextTag } from '@/components/TextTag'
 import { Footer } from '@/components/Footer'
 import Quote from '../../public/quote.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Services } from '@/components/Services';
+import gsap from 'gsap';
 
 
 export default function Home() {
@@ -44,6 +45,21 @@ export default function Home() {
         beforeChange: (current: number, next: number) => setActiveSlide(next),
     };
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo("#introText", { 
+                    autoAlpha: 0,
+                    y: 50,
+                    duration: 5
+                },{ 
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1.2
+                }
+            );
+        });
+    }, [])
+
     console.log(activeSlide);
 
     return (
@@ -55,12 +71,12 @@ export default function Home() {
                 </Flex>
                 
                 <Stack spacing="24" px="6" w="100%" maxW="1200px" m="0 auto" py="20" alignItems={"center"}>
-                    <Stack textAlign={"center"} alignItems={"center"} spacing="24">
+                    <Stack id="introText" textAlign={"center"} alignItems={"center"} spacing="24">
                         <Heading color="white" fontSize={["42px","48px","52px"]} fontWeight="regular">Conquiste os seus objetivos com uma<br/>estratégia de investimento inteligente!</Heading>
                         <MainButton>Agende sua consultoria</MainButton>
                     </Stack>
 
-                    <Stack fontSize={["md","md","md","md"]} spacing={["8","8","8","8"]} pos="relative" zIndex={2} color="white" w="100%"  px={["12","12","20"]} py="10" justifyContent="space-between" direction={["column", "column", "row"]}>
+                    <Stack fontSize={["md","md","md","md"]} spacing={["8","8","8","8"]} pos="relative" zIndex={2} color="white" w="100%"  px={["12","12","20"]} py="10" justifyContent="space-between" alignItems={"center"} direction={["column", "column", "row"]}>
                         <Box pos="absolute" zIndex={1} opacity="0.4" left="0" right="0" top="0" bottom="0" backdropFilter={"blur(15px)"} bg="linear-gradient(92.54deg, rgba(255, 255, 255, 0.3) 30.02%, rgba(248, 177, 121, 0.276) 66.74%);"/>
                         
                         <Stack zIndex={2}>
@@ -70,17 +86,17 @@ export default function Home() {
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]}>
                             <Text fontWeight={"light"}>Clientes contemplados</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","3xl","3xl","4xl"]}>2.000</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","3xl","4xl"]}>2.000</Text>
                         </Stack>
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]}>
                             <Text fontWeight={"light"}>Créditos liberados</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","3xl","3xl","md"]}>+ R$ 30.080.000</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 30.080.000</Text>
                         </Stack>
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]}>
                             <Text fontWeight={"light"}>Experiência no ramo</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","3xl","3xl","4xl"]}>+ 10 anos</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ 10 anos</Text>
                         </Stack>
                     </Stack>
                 </Stack>
@@ -88,6 +104,8 @@ export default function Home() {
         </Flex>   
         
         <StepsSection/>
+
+        <Box id="solucoes"/>
 
         <Services/>
 
@@ -233,12 +251,12 @@ export default function Home() {
                         
                             <Stack spacing="10" direction={["column", "column", "column", "row",]}>
                                 <Stack>
-                                    <Text fontSize={"4xl"} color="gray.300">Cotas ativas</Text>
+                                    <Text fontSize={"3xl"} color="gray.300">Cotas ativas</Text>
                                     <Text fontSize={"56px"} fontWeight="medium" lineHeight={"60px"}>+200.000</Text>
                                 </Stack>
 
                                 <Stack>
-                                    <Text fontSize={"4xl"} color="gray.300">Bens Entregues</Text>
+                                    <Text fontSize={"3xl"} color="gray.300">Bens Entregues</Text>
                                     <Text fontSize={"56px"} fontWeight="medium" lineHeight={"60px"}>+80.000</Text>
                                 </Stack>
                             </Stack>
@@ -359,7 +377,7 @@ export default function Home() {
 
                         <Input variant="white" name="phone" type="text" placeholder="(DDD) x xxxx-xxxx" label='Telefone*'/>
 
-                        <Input variant="white" as="textarea" name="message" type="text" placeholder="Digite aqui a sua mensagem..." label='Mensagem*'/>
+                        <Input variant="white" as="textarea" name="message" type="text" placeholder="Digite aqui a sua mensagem..." label='Mensagem*' height="80px"/>
 
                         <MainButton type="submit">Enviar</MainButton>
                     </Stack>

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { MainButton } from "@/components/Buttons/MainButton";
 import MainPosts from "@/components/MainPosts";
 import { useEffect, useState } from "react";
+import { ChevronRight } from "react-feather";
 
 interface Post{
     slug: string;
@@ -61,8 +62,8 @@ export default function Blog({posts}: BlogProps){
                 <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" py="36" pt="16" spacing="20" justifyContent="space-between">
                     <Stack spacing="5">
                         <HStack fontSize={"md"}>
-                            <Link href="/"><Text _hover={{textDecor:"underline"}} color="gray.600">Home</Text></Link>
-                            <Text>{">"}</Text>
+                            <Link href="/"><Text _hover={{textDecor:"underline"}} color="rgba(67, 67, 67, 0.5)">Home</Text></Link>
+                            <Text><ChevronRight color="rgba(67, 67, 67, 0.5)"/></Text>
                             <Text>Blog</Text>
                         </HStack>
                         <Heading fontSize="6xl">Blog SS Investimentos</Heading>
