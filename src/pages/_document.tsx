@@ -17,7 +17,7 @@ class MyDocument extends Document {
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
                     <link href="https://fonts.googleapis.com/css2?family=Volkhov:wght@300;400;600&family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet" />
                 
-                    <link rel="shortcut icon" href="icone_startril.svg" type="image/svg+xml" />
+                    <link rel="shortcut icon" href="logotipo.svg" type="image/svg+xml" />
 
                     <meta name="robots" content="index, follow"></meta>
 
@@ -29,11 +29,11 @@ class MyDocument extends Document {
 
                     <meta name="category" content="Finance" />
                     <link rel="index" title="SS Investimentos" href="https://startril.com.br/"/>
-                    {/* <link rel="logo" type="image/svg" href="/icone_startril.svg"/> */}
+                    <link rel="logo" type="image/svg" href="/logotipo.svg"/>
                     <link rel="sitemap" type="application/xml" href="https://startril.com.br/sitemap.xml"></link>
 
-                    <meta name="url" content="https://lanceconsorcio.com.br/"></meta>
-                    <meta property="og:url" content="https://old.lanceconsorcio.com.br/blog"></meta>
+                    <meta name="url" content="https://ssinvestimentos.com.br/"></meta>
+                    <meta property="og:url" content="https://ssinvestimentos.com.br/blog"></meta>
 
                     <meta property="og:site_name" content="SS Investimentos"></meta>
                     <meta property="og:locale" content="pt_BR"></meta>

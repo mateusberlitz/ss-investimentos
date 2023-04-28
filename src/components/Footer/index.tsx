@@ -36,7 +36,7 @@ export function Footer(){
                     </Stack>
                 </Stack>
 
-                <Stack direction={["row", "row", "row"]} justifyContent="space-between">
+                <Stack direction={["row", "row", "row"]} justifyContent="space-between" spacing="3">
                     <Stack spacing="6">
                         <Text fontWeight={"normal"} fontSize={"lg"}>Acesso Rápido</Text>
 

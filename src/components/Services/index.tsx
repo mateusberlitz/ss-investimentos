@@ -11,9 +11,9 @@ export function Services(){
                 </Stack>
             </Stack>
 
-            <HStack h="480px" color="white" spacing="0" w="100%" overflowX={"auto"} overflowY="hidden">
-                <HStack spacing="0" h="480px">
-                    <ServiceItem title="Alavancagem de Capital" subtitle="Consultoria Financeira" cover="./images/sl_real.jpg">
+            <HStack h="480px" color="white" spacing="0" w="100%" overflowX={"auto"} overflowY="hidden" justifyContent={"left"}>
+                <HStack spacing="0" h="480px" justifyContent={"left"}>
+                    <ServiceItem title="Alavancagem de Capital" subtitle="Consultoria Financeira" cover="./images/sl_real.jpg" active={true}>
                         Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. Eu accumsan maecenas tincidunt in consequat egestas et diam adipiscing. Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. 
                     </ServiceItem>
                     <ServiceItem title="Alavancagem de Capital" subtitle="Consultoria Financeira" cover="./images/sl_casal.jpg">

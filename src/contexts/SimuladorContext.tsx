@@ -71,7 +71,7 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
 
     const [campaignName, setCampaignName] = useState<string>(
         //() => {
-        // const storedCampaignName = localStorage.getItem('@lance/campaign_name');
+        // const storedCampaignName = localStorage.getItem('@ss/campaign_name');
 
         // if(storedCampaignName && storedCampaignName != undefined){
         //     return JSON.parse(storedCampaignName);
@@ -83,7 +83,7 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
 
     const [campaignOrigin, setCampaignOrigin] = useState<string>(
         //() => {
-        // const storedCampaignOrigin = localStorage.getItem('@lance/campaign_origin');
+        // const storedCampaignOrigin = localStorage.getItem('@ss/campaign_origin');
 
         // if(storedCampaignOrigin && storedCampaignOrigin != undefined){
         //     return JSON.parse(storedCampaignOrigin);
@@ -95,14 +95,14 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
 
 
     useEffect(() => {
-        const storagedStep = localStorage.getItem('@lance/step');
-        const storagedProductData = localStorage.getItem('@lance/productData');
-        const storagedLeadData = localStorage.getItem('@lance/leadData');
-        const storagedResult = localStorage.getItem('@lance/simulationResult');
-        const storagedSalesmanEmail = localStorage.getItem('@lance/salesman');
+        const storagedStep = localStorage.getItem('@ss/step');
+        const storagedProductData = localStorage.getItem('@ss/productData');
+        const storagedLeadData = localStorage.getItem('@ss/leadData');
+        const storagedResult = localStorage.getItem('@ss/simulationResult');
+        const storagedSalesmanEmail = localStorage.getItem('@ss/salesman');
 
-        const storedCampaignName = localStorage.getItem('@lance/campaign_name');
-        const storedCampaignOrigin = localStorage.getItem('@lance/campaign_origin');
+        const storedCampaignName = localStorage.getItem('@ss/campaign_name');
+        const storedCampaignOrigin = localStorage.getItem('@ss/campaign_origin');
 
         setStep(storagedStep ? parseInt(storagedStep) : 0);
 
@@ -160,24 +160,24 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
 
     const handleChangeSalesman = (salesManEmail:string) => {
         setSalesmanEmail(salesManEmail);
-        localStorage.setItem('@lance/salesman', JSON.stringify(salesManEmail));
+        localStorage.setItem('@ss/salesman', JSON.stringify(salesManEmail));
     }
 
     const handleSaveSimulationProduct = (stepData:SimulationProduct) => {
         handleChangeStep(1);
         setProductData(stepData);
-        localStorage.setItem('@lance/productData', JSON.stringify(stepData));
+        localStorage.setItem('@ss/productData', JSON.stringify(stepData));
     }
 
     const handleClearSimulation = (stepData:SimulationProduct) => {
         handleChangeStep(1);
         setProductData(stepData);
-        localStorage.setItem('@lance/productData', JSON.stringify(stepData));
+        localStorage.setItem('@ss/productData', JSON.stringify(stepData));
     }
 
     const handleSaveSimulationLead = async (stepData:SimulationLead) => {
         setLeadData(stepData);
-        localStorage.setItem('@lance/leadData', JSON.stringify(stepData));
+        localStorage.setItem('@ss/leadData', JSON.stringify(stepData));
         
         try{
             const result = await api.post('/simulate', {
@@ -188,7 +188,7 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
             }).then(response => response.data);
 
             setSimulationResult(result);
-            localStorage.setItem('@lance/simulationResult', JSON.stringify(result));
+            localStorage.setItem('@ss/simulationResult', JSON.stringify(result));
             handleChangeStep(2);
 
             //console.log(result.newLead);

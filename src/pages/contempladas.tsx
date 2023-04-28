@@ -284,7 +284,7 @@ export default function Contempladas({quotas}: ContempladasProps){
     return (
         <Box position="relative">
             <Head>
-                <title>Contempladas - Lance Consórcio</title>
+                <title>Contempladas - SS Investimentos</title>
 
                 <meta name="description" content="Ofertas de crédito contemplado pronto para a utilização que é mais barato que financiamento e não contabiliza no banco."></meta>
             </Head>

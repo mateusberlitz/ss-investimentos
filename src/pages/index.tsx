@@ -24,6 +24,7 @@ import Quote from '../../public/quote.svg';
 import { useEffect, useState } from 'react';
 import { Services } from '@/components/Services';
 import gsap from 'gsap';
+import Head from 'next/head';
 
 
 export default function Home() {
@@ -49,12 +50,12 @@ export default function Home() {
         const ctx = gsap.context(() => {
             gsap.fromTo("#introText", { 
                     autoAlpha: 0,
-                    y: 50,
+                    y: 100,
                     duration: 5
                 },{ 
                     autoAlpha: 1,
                     y: 0,
-                    duration: 1.2
+                    duration: 1.0
                 }
             );
         });
@@ -64,6 +65,12 @@ export default function Home() {
 
     return (
     <>
+        <Head>
+            <title>SS Investimentos - Soluções financeiras para sua alavancagem patrimonial</title>
+
+            <meta name="description" content="Fornecemos o meio financeiro para você adquirir imóveis, veículos, investimentos e alavancar seu patrimônio."></meta>
+        </Head>
+
         <Flex flexDir="column" w="100%" bg="url(./images/real.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
             <Box bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" _before={{}}>
                 <Flex flexDir="column">
@@ -77,7 +84,7 @@ export default function Home() {
                     </Stack>
 
                     <Stack fontSize={["md","md","md","md"]} spacing={["8","8","8","8"]} pos="relative" zIndex={2} color="white" w="100%"  px={["12","12","20"]} py="10" justifyContent="space-between" alignItems={"center"} direction={["column", "column", "row"]}>
-                        <Box pos="absolute" zIndex={1} opacity="0.4" left="0" right="0" top="0" bottom="0" backdropFilter={"blur(15px)"} bg="linear-gradient(92.54deg, rgba(255, 255, 255, 0.3) 30.02%, rgba(248, 177, 121, 0.276) 66.74%);"/>
+                        <Box pos="absolute" zIndex={1} opacity="0.4" left="0" right="0" top="0" bottom="0" backdropFilter={"blur(15px)"} bg="linear-gradient(90.79deg, rgba(255, 255, 255, 0) 4.09%, rgba(255, 255, 255, 0.13) 46.27%, rgba(248, 177, 121, 0.1) 56.98%, rgba(248, 177, 121, 0) 98.12%);"/>
                         
                         <Stack zIndex={2}>
                             <Text fontStyle="italic" fontWeight={"light"}>CORRETOR AUTORIZADO</Text>
@@ -377,7 +384,7 @@ export default function Home() {
 
                         <Input variant="white" name="phone" type="text" placeholder="(DDD) x xxxx-xxxx" label='Telefone*'/>
 
-                        <Input variant="white" as="textarea" name="message" type="text" placeholder="Digite aqui a sua mensagem..." label='Mensagem*' height="80px"/>
+                        <Input variant="white" as="textarea" name="message" type="text" placeholder="Digite aqui a sua mensagem..." label='Mensagem*' height="120px" resize={'unset'}/>
 
                         <MainButton type="submit">Enviar</MainButton>
                     </Stack>

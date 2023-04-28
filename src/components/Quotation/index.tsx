@@ -2,6 +2,8 @@ import { Divider, HStack } from "@chakra-ui/react";
 import { QuotationItem } from "./QuotationItem";
 
 import styles from './Quotation.module.css'
+import { GetServerSideProps } from "next";
+import axios from "axios";
 
 export function Quotation(){
     return(
@@ -23,4 +25,23 @@ export function Quotation(){
             </HStack>
         </HStack>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({req, params }) => {
+    try{
+        const response = await axios.get('https://brapi.dev/api/available/');
+
+        console.log(response);
+        
+    }catch(error: unknown){
+        console.log(error);
+
+        return {
+            props: {}
+        }
+    }
+
+    return {
+        props: {}
+    }
 }

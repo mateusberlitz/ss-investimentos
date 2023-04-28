@@ -51,9 +51,9 @@ export default function Blog({posts}: BlogProps){
     return(
         <Box position="relative">
             <Head>
-                <title>Blog - Lance Consórcio</title>
+                <title>Blog - SS Investimentos</title>
 
-                <meta name="description" content="Cresça com conhecimento financeiro."></meta>
+                <meta name="description" content="Cresça no seu conhecimento financeiro junto conosco."></meta>
             </Head>
 
             <Header whiteVersion={true} />

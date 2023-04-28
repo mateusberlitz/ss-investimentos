@@ -55,7 +55,7 @@ export default function Post({post} : PostProps){
     : (
         <>
             <Head>
-                <title>{post.title} - Lance Consórcio</title>
+                <title>{post.title} - SS Investimentos</title>
             </Head>
 
             <Header whiteVersion={true} />
