@@ -62,6 +62,9 @@ export default function Home() {
     }, [])
 
     console.log(activeSlide);
+    const callConsultant = () => {
+        window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
+    }
 
     return (
     <>
@@ -80,7 +83,7 @@ export default function Home() {
                 <Stack spacing="24" px="6" w="100%" maxW="1200px" m="0 auto" py="20" alignItems={"center"}>
                     <Stack id="introText" textAlign={"center"} alignItems={"center"} spacing="24">
                         <Heading color="white" fontSize={["42px","48px","52px"]} fontWeight="regular">Conquiste os seus objetivos com uma<br/>estratégia de investimento inteligente!</Heading>
-                        <MainButton>Agende sua consultoria</MainButton>
+                        <MainButton onClick={() => callConsultant()}>Agende sua consultoria</MainButton>
                     </Stack>
 
                     <Stack fontSize={["md","md","md","md"]} spacing={["8","8","8","8"]} pos="relative" zIndex={2} color="white" w="100%"  px={["12","12","20"]} py="10" justifyContent="space-between" alignItems={"center"} direction={["column", "column", "row"]}>
@@ -195,7 +198,7 @@ export default function Home() {
                     <Stack spacing="16" maxW="800px" color="white" textAlign={"center"}  alignItems="center">
                         <Text fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Dê o primeiro passo para conquistar os seus sonhos</Text>
                         <Text fontSize={"xl"}>Uma consultoria especializada pode ajudá-lo a traçar o melhor plano para você atingir seus objetivos de maneira mais eficiente e segura.</Text>
-                        <MainButton>Agende sua consultoria</MainButton>
+                        <MainButton onClick={() => callConsultant()}>Agende sua consultoria</MainButton>
                     </Stack>
                 </Stack>
             </Flex>

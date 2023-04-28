@@ -28,7 +28,7 @@ export function Footer(){
                     <Stack spacing="4">
                         <Text fontSize={"lg"} fontWeight="normal">Esteja conectado conosco</Text>
                         <HStack spacing="6">
-                            <Link href=""><Whatsapp width="24px"/></Link>
+                            <Link href="https://api.whatsapp.com/send?phone=5551985994869&text="><Whatsapp width="24px"/></Link>
                             <Link href=""><Facebook/></Link>
                             <Link href=""><Instagram/></Link>
                             <Link href=""><Email/></Link>
