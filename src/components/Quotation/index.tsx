@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export function Quotation(){
     
     const fetchQuotation = () => {
-        const response = axios.get('http://brapi.dev/api/available/');
+        const response = axios.get('https://brapi.dev/api/available/');
 
         console.log(response);
     }
