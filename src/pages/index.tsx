@@ -39,7 +39,7 @@ export default function Home() {
         infinite: true,
         speed: 500,
         slidesToShow: isWideVersion ? 3 : 1,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         //autoplay: true,
         autoplaySpeed: 2000,
         pauseOnHover: true,
@@ -61,7 +61,7 @@ export default function Home() {
         });
     }, [])
 
-    console.log(activeSlide);
+    //console.log(activeSlide);
     const callConsultant = () => {
         window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
     }

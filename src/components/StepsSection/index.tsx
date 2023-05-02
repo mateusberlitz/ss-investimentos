@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 import { Box, Flex, Heading, HStack, Img, Progress, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Calendar, DollarSign, Feather, Shield } from "react-feather";
@@ -21,7 +21,7 @@ export function StepsSection(){
         md: true,
     });
 
-    useLayoutEffect(() => {
+    useEffect(() => {
 
         const progress = gsap.to(progressRef.current, { 
             height: "calc(100% - 140px)",

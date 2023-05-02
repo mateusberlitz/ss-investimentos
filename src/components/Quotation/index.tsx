@@ -4,8 +4,20 @@ import { QuotationItem } from "./QuotationItem";
 import styles from './Quotation.module.css'
 import { GetServerSideProps } from "next";
 import axios from "axios";
+import { useEffect } from "react";
 
 export function Quotation(){
+    
+    const fetchQuotation = () => {
+        const response = axios.get('http://brapi.dev/api/available/');
+
+        console.log(response);
+    }
+    
+    useEffect(() => {
+        fetchQuotation();
+    }, [])
+
     return(
         <HStack w="100%" overflow={"hidden"}>
             <HStack className={styles.quotation} w="fit-content" h="35px" bg="blue.primary" color="gray.200" id="quotation" fontSize={"sm"}>
@@ -32,7 +44,6 @@ export const getServerSideProps: GetServerSideProps = async ({req, params }) => 
         const response = await axios.get('https://brapi.dev/api/available/');
 
         console.log(response);
-        
     }catch(error: unknown){
         console.log(error);
 
