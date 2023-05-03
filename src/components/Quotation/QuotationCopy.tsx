@@ -40,11 +40,40 @@ interface Quotations{
     incc: Quote;
 }
 
-export function Quotation({...quotes}: Quotations){
-    const [selic, setSelic] = useState<Quote>({
-        value: 0,
-        variation: 0
-    });
+export default function Quotation({...quotes}: Quotations){
+    return(
+        <HStack w="100%" overflow={"hidden"}>
+            <HStack className={styles.quotation} w="fit-content" h="35px" bg="blue.primary" color="gray.200" id="quotation" fontSize={"sm"}>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
+                <QuotationItem ticker="IBOV" value={"104.454 pts"} percent={1.54}/>
+            </HStack>
+        </HStack>
+    )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({req, params }) => {
+    const today = new Date();
+
+    const finalDate = new Date(today.getFullYear(), today.getMonth(), 0);
+    const startDate = new Date(today.getFullYear(), today.getMonth() -13, 0);
+
+    let selic = 0;
+
+    // const [selic, setSelic] = useState<Quote>({
+    //     value: 0,
+    //     variation: 0
+    // });
     const [ipca, setIpca] = useState<Quote>({
         value: 0,
         variation: 0
@@ -77,14 +106,9 @@ export function Quotation({...quotes}: Quotations){
         variation: 0
     });
 
-    const today = new Date();
-    //const startDate = new Date();
-
-    const finalDate = new Date(today.getFullYear(), today.getMonth(), 0);
-    const startDate = new Date(today.getFullYear(), today.getMonth() -13, 0);
-    
-    const fetchSelic = () => {
-        brapi.get('v2/prime-rate?country=brazil').then(response => setSelic({value: response.data["prime-rate"][0].value}));
+    const fetchSelic = async () => {
+        //brapi.get('v2/prime-rate?country=brazil').then(response => setSelic({value: response.data["prime-rate"][0].value}));
+        return await brapi.get('v2/prime-rate?country=brazil').then(response => response.data["prime-rate"][0].value);
     }
 
     const fetchIbov = () => {
@@ -117,12 +141,6 @@ export function Quotation({...quotes}: Quotations){
         });
     }
 
-    const fetchEuro = () => {
-        brapi.get('v2/currency?currency=EUR-BRL').then(response => {
-            setEuro({value: response.data["currency"][0].bidPrice})
-        });
-    }
-
     const fetchCdi = () => {
         axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=html&dataInicial=${startDate.toLocaleDateString().split(',')[0]}&dataFinal=${finalDate.toLocaleDateString().split(',')[0]}`).then(response => {
             const newCdi = response.data.reduce((amount: number, value: BacenData) => {
@@ -152,38 +170,39 @@ export function Quotation({...quotes}: Quotations){
             setIgpm({value: newIgpm});
         });
     }
-    
-    useEffect(() => {
+
+    // useEffect(() => {
+        
+    // }, [])
+
+    try{
         fetchSelic();
-        fetchIbov();
-        fetchIpca();
-        fetchBitcoin();
-        fetchDolar();
-        fetchCdi();
-        fetchIgpm();
-        fetchIncc();
-        fetchEuro();
-    }, []);
+        // fetchIbov();
+        // fetchIpca();
+        // fetchBitcoin();
+        // fetchDolar();
+        // fetchCdi();
+        // fetchIgpm();
+        // fetchIncc();
 
-    console.log(ibov, selic, cdi);
+        console.log(fetchSelic());
 
-    return(
-        <HStack w="100%" overflow={"hidden"}>
-            <HStack className={styles.quotation} w="fit-content" h="35px" bg="blue.primary" color="gray.200" id="quotation" fontSize={"sm"}>
-                <QuotationItem ticker="IBOV" value={ibov.value.toFixed(0)} percent={undefined}/>
-                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="SELIC" value={selic.value.toLocaleString()} percent={undefined}/>
-                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="CDI" value={cdi.value.toLocaleString()} />
-                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="Dolar" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(dolar.value)}/>
-                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="Euro" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(euro.value)}/>
-                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="INCC" value={incc.value.toLocaleString()} />
-                <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="IGPM" value={igpm.value.toLocaleString()}/>
-            </HStack>
-        </HStack>
-    )
+        return{
+            props: {
+                //ibov,
+                selic: fetchSelic(),
+                // bitcoin,
+                // dolar,
+                // cdi,
+                // igpm,
+                // incc
+            }
+        }
+    }catch(error: unknown){
+        console.log(error);
+
+        return {
+            props: {}
+        }
+    }
 }
