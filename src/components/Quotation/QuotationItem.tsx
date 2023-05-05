@@ -12,7 +12,7 @@ export function QuotationItem({ticker, value, percent}: QuotationItemProps){
             <Text>{ticker}</Text>
             <Text fontWeight={"medium"}>{value}</Text>
             {
-                percent && <Text color={percent ? percent < 0 ? "red.400" : "green.400" : "white"} fontWeight="normal">{percent}%</Text>
+                percent && <Text color={percent ? percent < 0 ? "red.400" : "green.400" : "white"} fontWeight="normal">{percent > 0 && "+"}{Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(percent)}%</Text>
             }
         </HStack>
     )

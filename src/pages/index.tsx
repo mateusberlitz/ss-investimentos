@@ -25,6 +25,7 @@ import { useEffect, useState } from 'react';
 import { Services } from '@/components/Services';
 import gsap from 'gsap';
 import Head from 'next/head';
+import { Loading } from '@/components/Loading';
 
 
 export default function Home() {
@@ -53,6 +54,7 @@ export default function Home() {
                     y: 100,
                     duration: 5
                 },{ 
+                    delay: 4.2,
                     autoAlpha: 1,
                     y: 0,
                     duration: 1.0
@@ -73,6 +75,8 @@ export default function Home() {
 
             <meta name="description" content="Fornecemos o meio financeiro para você adquirir imóveis, veículos, investimentos e alavancar seu patrimônio."></meta>
         </Head>
+
+        <Loading/>
 
         <Flex flexDir="column" w="100%" bg="url(./images/real.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
             <Box bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" _before={{}}>
