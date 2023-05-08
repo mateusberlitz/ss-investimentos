@@ -1,4 +1,4 @@
-import { Box, Divider, HStack } from "@chakra-ui/react";
+import { Box, Divider, HStack, useBreakpointValue } from "@chakra-ui/react";
 import { QuotationItem } from "./QuotationItem";
 
 import styles from './Quotation.module.css'
@@ -42,6 +42,11 @@ interface Quotations{
 }
 
 export function Quotation(){
+    const isLargeVersion = useBreakpointValue({
+        base: false,
+        "2xl": true,
+    });
+
     const [selic, setSelic] = useState<Quote>({
         value: 0,
         variation: 0
@@ -187,7 +192,7 @@ export function Quotation(){
             });
 
             quotationTimeline.to("#quotation", { 
-                    x: "-50%",
+                    x: isLargeVersion ? "-50%" : "-50%",
                     duration: 25.0,
                     ease: "none"
                 }
@@ -200,45 +205,43 @@ export function Quotation(){
         });
     }, []);
 
-
-
     return(
-        <HStack w="100%" overflow={"hidden"}>
+        <HStack w="100%" overflow={"hidden"} bg="blue.primary" maxW="1200px">
             <HStack w="fit-content" h="35px" bg="blue.primary" color="gray.200" id="quotation" fontSize={"sm"}>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="IBOV" value={Intl.NumberFormat('pt-BR', {}).format(ibov.value)} percent={ibov.variation}/>
+                <QuotationItem ticker="IBOV" value={Intl.NumberFormat('pt-BR', {maximumFractionDigits: 0}).format(ibov.value)} percent={ibov.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="IPCA" value={ipca.value.toLocaleString()} percent={ipca.variation}/>
+                <QuotationItem ticker="IPCA" value={`${Intl.NumberFormat('pt-BR', {}).format(ipca.value)}% últ. 12m`} percent={ipca.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="SELIC" value={selic.value.toLocaleString()} percent={undefined}/>
+                <QuotationItem ticker="SELIC" value={`${Intl.NumberFormat('pt-BR', {}).format(selic.value)}% ao ano`} percent={undefined}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="CDI" value={cdi.value.toLocaleString()} />
+                <QuotationItem ticker="CDI" value={`${Intl.NumberFormat('pt-BR', {}).format(cdi.value)} ao ano%`} />
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                 <QuotationItem ticker="Dolar" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(dolar.value)} percent={dolar.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                 <QuotationItem ticker="Euro" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(euro.value)} percent={euro.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="INCC" value={incc.value.toLocaleString()} />
+                <QuotationItem ticker="INCC" value={Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(incc.value)} />
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="IGPM" value={igpm.value.toLocaleString()}/>
+                <QuotationItem ticker="IGPM" value={Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(igpm.value)}/>
 
                 <HStack w="fit-content" h="35px" bg="blue.primary" color="gray.200" fontSize={"sm"}>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="IBOV" value={Intl.NumberFormat('pt-BR', {}).format(ibov.value)} percent={ibov.variation}/>
+                    <QuotationItem ticker="IBOV" value={Intl.NumberFormat('pt-BR', {maximumFractionDigits: 0}).format(ibov.value)} percent={ibov.variation}/>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="IPCA" value={ipca.value.toLocaleString()} percent={ipca.variation}/>
+                    <QuotationItem ticker="IPCA" value={`${Intl.NumberFormat('pt-BR', {}).format(ipca.value)}% últ. 12m`} percent={ipca.variation}/>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="SELIC" value={selic.value.toLocaleString()} percent={undefined}/>
+                    <QuotationItem ticker="SELIC" value={`${Intl.NumberFormat('pt-BR', {}).format(selic.value)}% ao ano`} percent={undefined}/>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="CDI" value={cdi.value.toLocaleString()} />
+                    <QuotationItem ticker="CDI" value={`${Intl.NumberFormat('pt-BR', {}).format(cdi.value)} ao ano%`} />
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                     <QuotationItem ticker="Dolar" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(dolar.value)} percent={dolar.variation}/>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                     <QuotationItem ticker="Euro" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(euro.value)} percent={euro.variation}/>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="INCC" value={incc.value.toLocaleString()} />
+                    <QuotationItem ticker="INCC" value={Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(incc.value)} />
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="IGPM" value={igpm.value.toLocaleString()}/>
+                    <QuotationItem ticker="IGPM" value={Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(igpm.value)}/>
                 </HStack>
             </HStack>
         </HStack>

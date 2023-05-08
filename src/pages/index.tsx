@@ -166,7 +166,7 @@ export default function Home() {
                                 <Conversation/>
                             </Flex>
 
-                            <Text color="white">Orientação e esclarecimento de dúvidas sobre o funcionamento do serviços de investimento.</Text>
+                            <Text color="white">Orientação e esclarecimento de dúvidas sobre os serviços e assessoria.</Text>
                         </HStack>
 
                         <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
@@ -175,7 +175,7 @@ export default function Home() {
                                 <Smile/>
                             </Flex>
 
-                            <Text color="white">Indicação de soluções financeiras que se adequem às necessidades de cada cliente.</Text>
+                            <Text color="white">Indicação de soluções personalizadas para as necessidades de cada cliente e empresa.</Text>
                         </HStack>
 
                         <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
@@ -184,7 +184,7 @@ export default function Home() {
                                 <Page/>
                             </Flex>
 
-                            <Text color="white">Acompanhamento do cliente durante todo o processo, oferecendo todo o suporte necessário.</Text>
+                            <Text color="white">Acompanhamento completo durante todo o processo, a fim de oferecer todo o suporte necessário.</Text>
                         </HStack>
                     </Stack>
 
@@ -213,7 +213,7 @@ export default function Home() {
                 <Stack spacing="16">
                     <Stack maxW="900px" spacing="8">
                         <Text color="blue.primary" fontSize={"52px"} fontWeight="medium">Corretor autorizado HS Consórcios</Text>
-                        <Text fontSize={"xl"}>Nossa empresa possui um histórico comprovado de excelência em serviços, aliado a medidas rigorosas de segurança, visando sempre proporcionar aos nossos clientes uma experiência confiável e segura.</Text>
+                        <Text fontSize={"xl"}>Nossa empresa possui um histórico comprovado de excelência em serviços, aliado a medidas rigorosas de segurança, visamos sempre proporcionar aos nossos clientes uma experiência confiável e positiva.</Text>
                     </Stack>
                 
                     <Stack spacing="16"  direction={["column", "column", "row"]}>
@@ -259,8 +259,8 @@ export default function Home() {
                         <Stack w={["100%", "100%", "46%"]} color="white" spacing="24">
                             <Stack spacing="10">
                                 <Text fontSize={["56px"]} fontWeight="medium" lineHeight={"58px"}>Sobre HS Consórcios</Text>
-                                <Text fontSize={"xl"} fontWeight="light">Uma empresa do Grupo Herval de Dois Irmãos - RS, iniciou suas atividades em 1993 com as vendas de cartas de crédito no sistema do consórcio, e em 2008 já era um sucesso em adesões.</Text>
-                                <Text fontSize={"xl"} fontWeight="light">Ao passar dos anos, a empresa se expandiu pelo Brasil e atualmente está entre as três maiores administradoras do país!</Text>
+                                <Text fontSize={"xl"} fontWeight="light">Uma empresa do Grupo Herval de Dois Irmãos - RS, com mais de 30 anos de história, atua no mercado nacional e internacional, trabalha nos segmentos de imóveis, veículos e investimentos.</Text>
+                                <Text fontSize={"xl"} fontWeight="light">Ao passar dos anos, a empresa se expandiu pelo Brasil, atualmente está entre as três maiores administradoras do país e é a maior administradora independente do ramo imobiliário!</Text>
                             </Stack>
                         
                             <Stack spacing="10" direction={["column", "column", "column", "row",]}>

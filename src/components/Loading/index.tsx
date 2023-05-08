@@ -40,9 +40,9 @@ export function Loading(){
     }, [])
 
     return(
-        <Flex id="loading" pos="fixed" bg="white" left="0" top="0" bottom="0" right="0" zIndex={9999999999} justifyContent="center" alignItems={"center"}>
+        <Flex id="loading" pos="fixed" bg="blue.primary" left="0" top="0" bottom="0" right="0" zIndex={9999999999} justifyContent="center" alignItems={"center"}>
             <Flex pos="relative" width={"fit-content"} height="fit-content" id="loadingLogo">
-                <Box id="loading_square" width={"102.5px"} height={"200px"} bg="white" rotate="" pos="absolute" transform="rotate(50deg)" left="6px" top="-5"/>
+                <Box id="loading_square" width={"102.5px"} height={"200px"} bg="blue.primary" rotate="" pos="absolute" transform="rotate(50deg)" left="6px" top="-5"/>
                 <LogoLoading width="150px"/>
                 <Box pos="absolute" overflow={"visible"}>
                     <LoadingBars width="150px" pos="absolute"/>

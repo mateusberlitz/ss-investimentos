@@ -69,7 +69,7 @@ export default function MainPosts({posts}: MainPostsProps){
                         posts.map((post:Post, index: number) => {
                             //console.log(index, activePostIndex);
                             return(
-                                <HStack onClick={() => changeActivePost(index)} p="2" cursor={"pointer"}>
+                                <HStack key={post.title} onClick={() => changeActivePost(index)} p="2" cursor={"pointer"}>
                                     <Text>0{index + 1}</Text>
                                     <Box transition="all ease 0.4s" w={activePostIndex === index ? "120px" : "80px"} h="1px" bg="linear-gradient(90.27deg, #FFFFFF 24.43%, rgba(255, 255, 255, 0) 119.68%);"/>
                                 </HStack>

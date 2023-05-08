@@ -92,51 +92,53 @@ export function Header({whiteVersion}: HeaderProps){
     return(
         <Stack as="nav" alignItems="center" pos="relative" top="0" w="100%" left="0" h="140px" transition="0.4s" justifyContent={"center"}>
              {/* bg="rgb(8,5,16,0.7)" backdropFilter="blur(40px)" */}
-            <Stack ref={navRef} zIndex={99999} w="100%" m="0 auto" maxW="1200px" py="0">
+            <Stack ref={navRef} zIndex={99999} w="100%" m="0 auto" py="0" justifyContent={"center"} alignItems="center"> 
             {/* pos="fixed" top="12px" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(40px)"} */}
 
-                <HStack justify="space-between" px="6">
-                    <Flex w={["250px", "320px", "380px"]} id="logo" p={"2"}>
-                        <Link href="/">
-                            {
-                                whiteVersion ? (
-                                    <LogoBlack/>
-                                ) : (
-                                    <Logo/>
-                                )
-                            }
-                        </Link>
-                    </Flex>
+                {/* <Stack w="100%"> */}
+                    <HStack justify="space-between" px="6" maxW="1200px" w="100%">
+                        <Flex w={["250px", "320px", "380px"]} id="logo" p={"2"}>
+                            <Link href="/">
+                                {
+                                    whiteVersion ? (
+                                        <LogoBlack/>
+                                    ) : (
+                                        <Logo/>
+                                    )
+                                }
+                            </Link>
+                        </Flex>
 
-                    {
-                        isWideVersion ? (
-                            <HeaderLinkList whiteVersion={whiteVersion}/>
-                        ) : (
-                            <>
-                                <Button bg="transparent" onClick={onOpen} px="2">
-                                    <Text mr="3" color={!whiteVersion ? "#fff" : "gray.text"}>Menu</Text>
-                                    <Icon as={Menu} w="26px" h="26px" stroke={!whiteVersion ? "#fff" : "gray.text"} fill="none"/>
-                                </Button>
-                                <Drawer
-                                    isOpen={isOpen}
-                                    placement='right'
-                                    onClose={onClose}
-                                    //finalFocusRef={btnRef}
-                                >
-                                    <DrawerOverlay />
-                                    <DrawerContent px="7" pr="16" bg="rgba(45, 50, 80, 0.5)" backdropFilter="blur(20px)" color="white">
-                                        <DrawerCloseButton fontSize="16px" top="3" right="4"/>
-                                        <HeaderLinkList whiteVersion={whiteVersion}/>
-                                    </DrawerContent>
-                                </Drawer>
-                            </>
-                        )
-                    }
-                </HStack>
+                        {
+                            isWideVersion ? (
+                                <HeaderLinkList whiteVersion={whiteVersion}/>
+                            ) : (
+                                <>
+                                    <Button bg="transparent" onClick={onOpen} px="2">
+                                        <Text mr="3" color={!whiteVersion ? "#fff" : "gray.text"}>Menu</Text>
+                                        <Icon as={Menu} w="26px" h="26px" stroke={!whiteVersion ? "#fff" : "gray.text"} fill="none"/>
+                                    </Button>
+                                    <Drawer
+                                        isOpen={isOpen}
+                                        placement='right'
+                                        onClose={onClose}
+                                        //finalFocusRef={btnRef}
+                                    >
+                                        <DrawerOverlay />
+                                        <DrawerContent px="7" pr="16" bg="rgba(45, 50, 80, 0.5)" backdropFilter="blur(20px)" color="white">
+                                            <DrawerCloseButton fontSize="16px" top="3" right="4"/>
+                                            <HeaderLinkList whiteVersion={whiteVersion}/>
+                                        </DrawerContent>
+                                    </Drawer>
+                                </>
+                            )
+                        }
+                    </HStack>
 
-                <Stack>
+                <Stack justifyContent={"center"} alignItems="center" w="100%" bg="blue.primary">
                     <Quotation/>
                 </Stack>
+                {/* </Stack> */}
             </Stack>
         </Stack>
     )
