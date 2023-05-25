@@ -6,7 +6,7 @@ import { mask as applyMask, maskMoney as applyMoney, maskNumber as applyNumber, 
 interface FormInputProps extends InputProps{
     name: string;
     type: string;
-    value?: string;// | number;
+    value?: string | number;
     label?: string;
     variant?: string;
     inputLink?: ReactNode;
@@ -20,7 +20,7 @@ interface FormInputProps extends InputProps{
 }
 
 export function Input({ name, type, icon, variant = "", isRequired, inputLink, value = "", label = "", mask = "", register = undefined, onChange, inputRef, control, error, maxW, colorScheme, ...rest }: FormInputProps){
-    const [controlledValue, setControlledValue] = useState<string>("");
+    const [controlledValue, setControlledValue] = useState<string | number>("");
 
     const handleReturnMaskedInputValue = (value: string = "") => {
         if(mask){
@@ -49,7 +49,7 @@ export function Input({ name, type, icon, variant = "", isRequired, inputLink, v
     }
 
     useEffect(() => {
-        setControlledValue(handleReturnMaskedInputValue(value));
+        setControlledValue(value);
 
         if(onChange){
             onChange(value);
