@@ -33,6 +33,7 @@ export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
 
     const isWideVersion = useBreakpointValue({base: false, lg: true,});
+    const isMobile = useBreakpointValue({base: true, sm: false,});
 
     const settings = {
         dots: true,
@@ -98,17 +99,29 @@ export default function Home() {
                             <HS/>
                         </Stack>
 
-                        <Stack zIndex={2} alignItems={["left","left","center","center",]}>
+                        {
+                            isMobile && <Box h="1px" w="100px" bg="rgba(255,255,255,0.4)"/>
+                        }
+
+                        <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
                             <Text fontWeight={"light"}>Clientes contemplados</Text>
                             <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","3xl","4xl"]}>2.000</Text>
                         </Stack>
 
-                        <Stack zIndex={2} alignItems={["left","left","center","center",]}>
+                        {
+                            isMobile && <Box h="1px" w="100px" bg="rgba(255,255,255,0.4)"/>
+                        }
+
+                        <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
                             <Text fontWeight={"light"}>Créditos liberados</Text>
                             <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 30.080.000</Text>
                         </Stack>
 
-                        <Stack zIndex={2} alignItems={["left","left","center","center",]}>
+                        {
+                            isMobile && <Box h="1px" w="100px" bg="rgba(255,255,255,0.4)"/>
+                        }
+
+                        <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
                             <Text fontWeight={"light"}>Experiência no ramo</Text>
                             <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ 10 anos</Text>
                         </Stack>

@@ -21,6 +21,8 @@ export function StepsSection(){
         md: true,
     });
 
+    const isMobile = useBreakpointValue({base: true, sm: false,});
+
     useLayoutEffect(() => {
 
         // const showUpSecondItem = gsap.fromTo(secondStep.current, { 
@@ -63,7 +65,7 @@ export function StepsSection(){
                 scrollTrigger: {
                     trigger: "#sobre",
                     pin: true,
-                    start: `bottom-=${isWideVersion ? '200' : '380'} bottom`,
+                    start: `bottom-=${isWideVersion ? '200' :  (isMobile ? '780' : '380')} bottom`,
                     //end: "+=1000",
                     scrub: true
                 }
