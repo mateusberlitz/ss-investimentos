@@ -222,27 +222,27 @@ export default function Home() {
                             <SS_HS width="100%"/>
                             <Stack spacing="12">
                                 <HStack spacing="6">
-                                    <Check/>
+                                    <Check width="35px"/>
                                     <Text fontWeight={"normal"}>Transparência nas relações com clientes e parceiros.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check/>
+                                    <Check width="35px"/>
                                     <Text fontWeight={"normal"}>Respeito aos direitos dos consumidores.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check/>
+                                    <Check width="35px"/>
                                     <Text fontWeight={"normal"}>Comunicação clara e eficiente com os clientes.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check/>
+                                    <Check width="35px"/>
                                     <Text fontWeight={"normal"}>Garantia de privacidade e segurança das informações dos clientes.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check/>
+                                    <Check width="30px"/>
                                     <Text fontWeight={"normal"}>Equipe profissional, bem treinada e comprometida com a excelência.</Text>
                                 </HStack>
                             </Stack>
@@ -282,9 +282,9 @@ export default function Home() {
         </Flex>
 
         <Flex id="clientes" m="0 auto" w="100%" pos="relative" bg="linear-gradient(285.92deg, #2D3250 17.26%, #181818 92.19%);">
-            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" textAlign={"center"} >
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24"  flexDirection="column" textAlign={"center"} >
                 <Stack spacing="24" pos="relative">
-                    <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Pessoas que depositam sua confiança em nossa expertise e soluções</Text>
+                    <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"} px="6">Pessoas que depositam sua confiança em nossa expertise e soluções</Text>
 
                     {/* <Stack alignItems={"center"} color="white" pos="relative">
                         <Box pos="absolute" bg="#6D7DD9" filter="blur(135px)" h="260px" w="260px" zIndex={1}/>
@@ -319,7 +319,7 @@ export default function Home() {
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg"/>
+                                <Avatar size="lg" w="fit-content"/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
                                     <Text color="gray.300">CEO Lorem</Text>

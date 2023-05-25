@@ -23,6 +23,8 @@ import * as yup from 'yup';
 import { ControlledInput } from "../components/Forms/Inputs/ControlledInput";
 import { ControlledSelect } from "../components/Forms/Selects/ControlledSelect";
 import { ControlledSlider } from "@/components/Forms/Slider/ControllerSlider";
+import { serverApi } from "@/services/api";
+import { useQuotas, Quota as MainQuota } from "@/contexts/useQuotas";
 
 export interface Quota{
     id: string;
@@ -189,7 +191,7 @@ export default function Contempladas({quotas}: ContempladasProps){
     }
 
     const handleContact = (quota: Quota) => {
-        window.open(`https://api.whatsapp.com/send?phone=555195847644&text=${window.encodeURIComponent(`Olá, tenho interesse na carta de crédito N°${quota.id} para ${quota.categoria} de R$ ${quota.valor_credito}`)}`);
+        window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=${window.encodeURIComponent(`Olá, tenho interesse na carta de crédito N°${quota.id} para ${quota.categoria} de R$ ${quota.valor_credito}`)}`);
     }
 
     const handleSend = () => {
@@ -430,7 +432,7 @@ export default function Contempladas({quotas}: ContempladasProps){
                                     showingQuotas && showingQuotas.map((quota:Quota) =>{
                                         //onClick={(e) => handleSelectLine(e, !selectedQuotasId.includes(parseInt(quota.id)), quota.id)}
                                         return (
-                                            <Tr key={quota.id} minH="40px" h={isWideVersion ? "42px" : "30px"} py="4" cursor="pointer">
+                                            <Tr key={`list-${quota.id}`} minH="40px" h={isWideVersion ? "42px" : "30px"} py="4" cursor="pointer">
                                                 <Td p="2px" bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} pl={["3","5","5"]} borderLeftRadius={"6"}>
                                                     <HStack>
                                                         <Checkbox colorScheme="red" isChecked={selectedQuotasId.includes(parseInt(quota.id))} value={quota.id} onChange={handleSelect}/>
@@ -542,6 +544,28 @@ export default function Contempladas({quotas}: ContempladasProps){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+    // const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
+    // console.log(quotasMainApi);
+
+    // let mainFormattedQuotasApi:Quota[] = []
+
+    // if(quotasMainApi){
+    //     mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
+    //         const formattedQuota:Quota = {
+    //             id: quota.id.toString(),
+    //             administradora: quota.admin,
+    //             categoria: quota.segment,
+    //             entrada: quota.value.toFixed(2),
+    //             fundo: '',
+    //             parcelas: quota.value.toString(),
+    //             reserva: quota.reserved ? "Reservada" : "Disponível",
+    //             taxa: '',
+    //             valor_credito: quota.credit.toFixed(2).replace(",", "."),
+    //             valor_parcela: quota.parcel.toFixed(2).replace(",", ".")
+    //         }
+    //     })
+    // }
+
     const response = await axios.get('https://contempladas.lanceconsorcio.com.br');
 
     const quotas = response.data;

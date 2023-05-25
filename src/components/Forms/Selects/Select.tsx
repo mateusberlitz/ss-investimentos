@@ -9,7 +9,7 @@ interface FormSelectProps extends SelectProps{
     variant?: string;
     leftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 
-    value?: string;
+    value?: string | number;
     error?: FieldError;
     register?: UseFormRegister<any>;
     onChange?: (value: any) => void;
@@ -18,8 +18,8 @@ interface FormSelectProps extends SelectProps{
     selected?: number;
 }
 
-export function Select({ name, children, variant, selectRef, value = "", label, selected, error, register, onChange, ...rest } : FormSelectProps){
-    const [controlledValue, setControlledValue] = useState("");
+export function Select({ name, children, variant, selectRef, value = "", label, isRequired, selected, error, register, onChange, ...rest } : FormSelectProps){
+    const [controlledValue, setControlledValue] = useState<string | number>("");
 
     function getRegister(){
         if(register){
@@ -52,7 +52,7 @@ export function Select({ name, children, variant, selectRef, value = "", label, 
         <FormControl pos="relative" isInvalid={!!error}>
             {
                 label && (
-                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label}</FormLabel>
+                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label} {isRequired && '*'}</FormLabel>
                 )
             }
             

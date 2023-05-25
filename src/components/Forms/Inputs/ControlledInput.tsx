@@ -8,7 +8,7 @@ interface FormInputProps extends InputProps{
     value?: string;
     variant?: string;
     icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-    mask?: "phone" | "cpf" | "cnpj" | "money" | "";
+    mask?: "phone" | "cpf" | "cnpj" | "money" | "number" | "";
     error?: FieldError;
     label?: string;
 }

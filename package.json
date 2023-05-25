@@ -26,6 +26,7 @@
     "graphql": "^16.6.0",
     "gsap": "^3.11.5",
     "next": "13.2.4",
+    "nookies": "^2.5.2",
     "prismic-dom": "^2.2.7",
     "react": "18.2.0",
     "react-csv": "^2.2.2",

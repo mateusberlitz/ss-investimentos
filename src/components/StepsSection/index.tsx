@@ -21,11 +21,7 @@ export function StepsSection(){
         md: true,
     });
 
-    useEffect(() => {
-
-        const progress = gsap.to(progressRef.current, { 
-            height: "calc(100% - 140px)",
-        });
+    useLayoutEffect(() => {
 
         // const showUpSecondItem = gsap.fromTo(secondStep.current, { 
         //     y: 90,
@@ -57,6 +53,9 @@ export function StepsSection(){
 
 
         const ctx = gsap.context(() => {
+            const progress = gsap.to(progressRef.current, { 
+                height: "calc(100% - 140px)",
+            });
 
             const sectionTimeline = gsap.timeline({
                 //paused: true,
@@ -157,7 +156,7 @@ export function StepsSection(){
                                     <Text fontSize={"lg"}>Você pode pagar a prazo por um crédito para ter sua casa ou estabelecimento totalmente abastecida com energia limpa.</Text>
                                 </Stack> */}
                             
-                                <Stack ml={["-19% !important", "-10% !important", "-17.5% !important", "-17% !important", "-15% !important"]} spacing="12">
+                                <Stack ml={["-25% !important", "-19% !important", "-10% !important", "-17.5% !important", "-17% !important", "-15% !important"]} spacing="12">
                                     <HStack ref={firstStep} spacing="30px" >
                                         <Flex alignSelf="baseline" h="60px" w="60px" bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
                                             <Text color="white" fontSize={"2xl"}>1</Text>

@@ -169,7 +169,7 @@ Parcela: ${Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).for
                                                 {
                                                     selectedQuotas.map((quota) => {
                                                         return(
-                                                            <Tr key={quota.id} fontSize={"14px"}>
+                                                            <Tr key={`selected-table-${quota.id}`} fontSize={"14px"}>
                                                                 <Td px="0">
                                                                     <Stack spacing="0">
                                                                         <Text fontSize="11px" color="gray.700">{quota.id}</Text>
@@ -201,7 +201,7 @@ Parcela: ${Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).for
                                         {
                                             selectedQuotas.map((quota) => {
                                                 //return(
-                                                    <HStack key={quota.id} fontSize={"14px"} w="100%" justifyContent="space-between">
+                                                    <HStack key={`selected-${quota.id}`} fontSize={"14px"} w="100%" justifyContent="space-between">
                                                         <Stack spacing="0">
                                                             <Text fontSize="11px" color="gray.700">{quota.id}</Text>
                                                             <Text color="gray.900">{quota.categoria}</Text>

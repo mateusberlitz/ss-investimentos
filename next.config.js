@@ -9,7 +9,11 @@ const nextConfig = {
       });
   
       return config;
-    }
+    },
+    env: {
+        API_URL: 'https://api.ssinvestimentos.com.br',
+        LOCAL_API_URL: 'http://ss-investimentos-backend.test/api/',
+    },
   }
   
 module.exports = nextConfig

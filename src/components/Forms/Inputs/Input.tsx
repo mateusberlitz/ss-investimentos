@@ -1,7 +1,7 @@
 import { InputGroup, InputLeftElement, FormControl, InputProps, Icon, Input as ChakraInput, FormErrorMessage, Text, Link, FormLabel } from "@chakra-ui/react";
 import { ReactNode, Ref, useEffect, useState } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
-import { mask as applyMask } from "../../../utils/ReMask";
+import { mask as applyMask, maskMoney as applyMoney, maskNumber as applyNumber, } from "../../../utils/ReMask";
 
 interface FormInputProps extends InputProps{
     name: string;
@@ -13,20 +13,23 @@ interface FormInputProps extends InputProps{
     icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
     register?: UseFormRegister<any>;
     control?: any;
-    mask?: "phone" | "cpf" | "cnpj" | "money" | "cep" | "cpf-cnpj" | "";
+    mask?: "phone" | "cpf" | "cnpj" | "money" | "number" | "cep" | "cpf-cnpj" | "";
     error?: FieldError;
     onChange?: (value: any) => void;
     inputRef?: Ref<any>
 }
 
-export function Input({ name, type, icon, variant = "", inputLink, value = "", label = "", mask = "", register = undefined, onChange, inputRef, control, error, maxW, colorScheme, ...rest }: FormInputProps){
+export function Input({ name, type, icon, variant = "", isRequired, inputLink, value = "", label = "", mask = "", register = undefined, onChange, inputRef, control, error, maxW, colorScheme, ...rest }: FormInputProps){
     const [controlledValue, setControlledValue] = useState<string | number>("");
 
     const handleReturnMaskedInputValue = (value: string = "") => {
         if(mask){
             if(mask === 'money'){
                 //console.log(value);
-                //value = applyMoney(value);
+                value = applyMoney(value);
+            }else if(mask === 'number'){
+                //console.log(value);
+                value = applyNumber(value);
             }else{
                 const maskPattern = (mask === "phone" ? "(99) 99999-9999"
                             : (mask === "cpf" ? "999.999.999-99"
@@ -46,7 +49,7 @@ export function Input({ name, type, icon, variant = "", inputLink, value = "", l
     }
 
     useEffect(() => {
-        setControlledValue(value);
+        setControlledValue(handleReturnMaskedInputValue(value));
 
         if(onChange){
             onChange(value);
@@ -89,7 +92,7 @@ export function Input({ name, type, icon, variant = "", inputLink, value = "", l
         <FormControl pos="relative" isInvalid={!!error} maxW={maxW}>
             {
                 label && (
-                    <FormLabel zIndex="1" cursor="text" color="gray.600" transition="ease 0.2s" pos="absolute" fontWeight="normal" fontSize={controlledValue === "" ? "sm" : "10px"} top={controlledValue === "" ? "14px" : "6px"} _focus={{top: "6px", fontSize: "10", color: "white"}} left="55px">{label}</FormLabel>
+                    <FormLabel zIndex="1" cursor="text" color="gray.600" transition="ease 0.2s" pos="absolute" fontWeight="normal" fontSize={controlledValue === "" ? "sm" : "10px"} top={controlledValue === "" ? "14px" : "6px"} _focus={{top: "6px", fontSize: "10", color: "white"}} left="55px">{label}{isRequired && '*'}</FormLabel>
                 )
             }
 
@@ -111,7 +114,7 @@ export function Input({ name, type, icon, variant = "", inputLink, value = "", l
         <FormControl pos="relative" isInvalid={!!error} maxW={maxW}>
             {
                 label && (
-                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label}</FormLabel>
+                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label}{isRequired && '*'}</FormLabel>
                 )
             }
 

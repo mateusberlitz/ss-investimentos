@@ -12,7 +12,7 @@ input:-webkit-autofill:active
 
 input:-webkit-autofill
 {
- -webkit-text-fill-color: #E4E5E8 !important;
+ -webkit-text-fill-color: #d39564 !important;
 }
 
 
@@ -185,7 +185,7 @@ background: #DA9B68;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 0px;
     z-index: 2;
     margin-bottom: 100px !important;
   }
