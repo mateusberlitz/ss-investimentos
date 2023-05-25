@@ -235,27 +235,37 @@ export default function Home() {
                             <SS_HS width="100%"/>
                             <Stack spacing="12">
                                 <HStack spacing="6">
-                                    <Check width="35px"/>
+                                    <Flex w="35px">
+                                        <Check width="35px"/>
+                                    </Flex>
                                     <Text fontWeight={"normal"}>Transparência nas relações com clientes e parceiros.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check width="35px"/>
+                                    <Flex w="35px">
+                                        <Check width="35px"/>
+                                    </Flex>
                                     <Text fontWeight={"normal"}>Respeito aos direitos dos consumidores.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check width="35px"/>
+                                    <Flex w="35px">
+                                        <Check width="35px"/>
+                                    </Flex>
                                     <Text fontWeight={"normal"}>Comunicação clara e eficiente com os clientes.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check width="35px"/>
+                                    <Flex w="35px">
+                                        <Check width="35px"/>
+                                    </Flex>
                                     <Text fontWeight={"normal"}>Garantia de privacidade e segurança das informações dos clientes.</Text>
                                 </HStack>
 
                                 <HStack spacing="6">
-                                    <Check width="30px"/>
+                                    <Flex w="35px">
+                                        <Check width="35px"/>
+                                    </Flex>
                                     <Text fontWeight={"normal"}>Equipe profissional, bem treinada e comprometida com a excelência.</Text>
                                 </HStack>
                             </Stack>
