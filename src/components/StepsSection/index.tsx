@@ -130,7 +130,9 @@ export function StepsSection(){
         });
           
         return () => ctx.revert();
-    }, []);
+    }, [isWideVersion]);
+
+    console.log(isWideVersion ? '200' :  (isMobile ? '780' : '380'));
     
     return (
         <Flex id="sobre" m="0 auto" w="100%" pos="relative" ref={sectionRef}>

@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { MainButton } from "../Buttons/MainButton";
@@ -21,6 +21,7 @@ export default function MainPosts({posts}: MainPostsProps){
     const router = useRouter();
     const [activePost, setActivePost] = useState(posts[0]);
     const [activePostIndex, setActivePostIndex] = useState(0);
+    const isMobile = useBreakpointValue({base: true, sm: false,});
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -47,12 +48,12 @@ export default function MainPosts({posts}: MainPostsProps){
 
     return(
         <Stack bg={`url(${activePost.cover})`} backgroundSize="cover" backgroundPosition="0 0px" color="white" transition="all ease 0.4s">
-            <Stack bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" p="8" pos="relative">
+            <Stack bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" p={["6", "6", "8"]} pos="relative">
                 <Flex w="100%" textAlign={"center"} justifyContent="center">
                     <Text fontSize={"lg"} textTransform="uppercase" fontWeight={"medium"}>Principais artigos</Text>
                 </Flex>
 
-                <Stack p="12" spacing="8" maxW="500px">
+                <Stack p={["2", "8", "12"]} pr={["8","8","0","0","0",]} spacing="8" maxW="500px">
                     <Text transition="all ease 0.4s" fontWeight="light" fontSize="md" color="gray.200" textTransform={"uppercase"}>{activePost.category}</Text>
 
                     <Text transition="all ease 0.4s" fontSize="4xl" fontWeight={"medium"} lineHeight="1.2em">{activePost.title}</Text>
@@ -71,7 +72,7 @@ export default function MainPosts({posts}: MainPostsProps){
                             return(
                                 <HStack key={post.title} onClick={() => changeActivePost(index)} p="2" cursor={"pointer"}>
                                     <Text>0{index + 1}</Text>
-                                    <Box transition="all ease 0.4s" w={activePostIndex === index ? "120px" : "80px"} h="1px" bg="linear-gradient(90.27deg, #FFFFFF 24.43%, rgba(255, 255, 255, 0) 119.68%);"/>
+                                    <Box transition="all ease 0.4s" w={activePostIndex === index ? (isMobile ? "40px" : "120px") : (isMobile ? "20px" : "80px")} h="1px" bg="linear-gradient(90.27deg, #FFFFFF 24.43%, rgba(255, 255, 255, 0) 119.68%);"/>
                                 </HStack>
                             )
                         })

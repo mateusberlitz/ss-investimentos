@@ -13,7 +13,7 @@ export function HeaderLinkList({whiteVersion}: HeaderLinkListProps){
 
     return(
         <>
-            <Stack direction={isWideVersion ? "row" : "column"} spacing="7" color={whiteVersion ? "blue.primary" : "white"} justifyContent={isWideVersion ? "center" : "left"} alignItems={isWideVersion ? "center" : "left"}>
+            <Stack direction={isWideVersion ? "row" : "column"} spacing="7" color={whiteVersion && isWideVersion ? "blue.primary" : "white"} justifyContent={isWideVersion ? "center" : "left"} alignItems={isWideVersion ? "center" : "left"}>
                 <HeaderLink href="/">Home</HeaderLink>
                 <HeaderLink href="/#sobre">Sobre</HeaderLink>
                 <HeaderLink href="/#solucoes">Soluções</HeaderLink>

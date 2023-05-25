@@ -296,7 +296,7 @@ export default function Contempladas({quotas}: ContempladasProps){
             <Sum isOpen={isSumOpen} handleCloseSumModal={handleCloseSumModal} selectedQuotas={selectedQuotas}/>
 
             <Flex flexDir="column" w="100%" px="6">
-                <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" py="36" pt="16" spacing="20" justifyContent="space-between">
+                <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" pb="2" pt="16" spacing="20" justifyContent="space-between">
                     <Stack spacing="5">
                         <HStack fontSize={"md"}>
                             <Link href="/"><Text _hover={{textDecor:"underline"}} color="rgba(67, 67, 67, 0.5)">Home</Text></Link>
@@ -354,179 +354,147 @@ export default function Contempladas({quotas}: ContempladasProps){
                     </Stack>
 
                     <Stack spacing="8" borderRadius="4px" overflow="hidden" px="2">
-                        <HStack justifyContent="space-between" p="4">
+                        <Stack justifyContent="space-between" p="4" direction={["column", "column", "row","row"]} spacing={["6","6","2","2","2"]}>
+                            <Stack direction={["column", "column", "row","row"]}>
+                                <HStack>
+                                    <OutlineButton onClick={() => handleSend()} px="4" size="sm" >
+                                        Compartilhar
+                                    </OutlineButton>
+
+                                    <ReactToPrint
+                                        trigger={() => {
+                                            // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+                                            // to the root node of the returned component as it will be overwritten.
+                                            return  <OutlineButton px="4" size="sm" leftIcon={<Icon as={Printer}/>}>
+                                                        Imprimir
+                                                    </OutlineButton>
+                                        }}
+                                        content={() => toPrintRef.current}
+                                    />
+                                </HStack>
+
+                                <HStack>
+                                    <ReactToPrint
+                                        trigger={() => {
+                                            // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+                                            // to the root node of the returned component as it will be overwritten.
+                                            return  <OutlineButton px="4" size="sm" leftIcon={<Icon as={Download}/>}>
+                                                        Gerar PDF
+                                                    </OutlineButton>
+                                        }}
+                                        content={() => toPrintRef.current}
+                                    />
+
+                                    <CSVLink data={quotas}>
+                                        <OutlineButton px="4" size="sm">
+                                            Salvar
+                                        </OutlineButton>
+                                    </CSVLink>
+                                </HStack>
+                            </Stack>
+
                             <HStack spacing="4">
                                 <Checkbox colorScheme="blue" borderColor="rgba(67, 67, 67, 0.7);" onChange={handleSelectAll}><Text fontSize={fontSize}>Selecionar todas</Text></Checkbox>
                                 <Checkbox colorScheme="blue" borderColor="rgba(67, 67, 67, 0.7);" onChange={handleSelectRealty}><Text fontSize={fontSize}>Imóveis</Text></Checkbox>
                                 <Checkbox colorScheme="blue" borderColor="rgba(67, 67, 67, 0.7);" onChange={handleSelectVehicle}><Text fontSize={fontSize}>Veículos</Text></Checkbox>
                             </HStack>
-
-                            <HStack>
-                                {/* <Checkbox colorScheme="red" borderColor="gray.600" onChange={handleSelectVehicle}><Text fontSize={fontSize}>Ocultar Reservas</Text></Checkbox> */}
-
-                                <OutlineButton onClick={() => handleSend()} px="4" size="sm" >
-                                    Compartilhar
-                                </OutlineButton>
-
-                                {/* <OutlineButton onClick={() => handleSend()} px="4" size="sm" leftIcon={<Icon as={Printer}/>}>
-                                    Imprimir
-                                </OutlineButton>
-
-                                <OutlineButton onClick={() => handleSend()} px="4" size="sm" leftIcon={<Icon as={Download}/>}>
-                                    Gerar PDF
-                                </OutlineButton> */}
-
-                                <ReactToPrint
-                                    trigger={() => {
-                                        // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-                                        // to the root node of the returned component as it will be overwritten.
-                                        return  <OutlineButton px="4" size="sm" leftIcon={<Icon as={Printer}/>}>
-                                                    Imprimir
-                                                </OutlineButton>
-                                    }}
-                                    content={() => toPrintRef.current}
-                                />
-                                <ReactToPrint
-                                    trigger={() => {
-                                        // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-                                        // to the root node of the returned component as it will be overwritten.
-                                        return  <OutlineButton px="4" size="sm" leftIcon={<Icon as={Download}/>}>
-                                                    Gerar PDF
-                                                </OutlineButton>
-                                    }}
-                                    content={() => toPrintRef.current}
-                                />
-
-                                <CSVLink data={quotas}>
-                                    <OutlineButton px="4" size="sm">
-                                        Salvar
-                                    </OutlineButton>
-                                </CSVLink>
-                            </HStack>
-                        </HStack>
-
-                        <Table variant='simple' ref={toPrintRef} style={{borderCollapse:"separate", borderSpacing:"0 1em"}} fontFamily={"Kanit"}>
-                            <Thead>
-                                <Tr h="48px">
-                                    {/* {
-                                        isWideVersion && <Th p="1" fontSize={fontSize}>Cota</Th>
-                                    } */}
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>{isWideVersion && "Código"}</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Tipo</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Valor</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Entrada</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Prazo</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Parcela</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Adm</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>{isWideVersion && "Contato"}</Th>
-                                    <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>{isWideVersion && "Status"}</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody fontSize={fontSize}>
-                                {
-                                    (showingQuotas && showingQuotas.length === 0 ) && (
-                                        <Text>Nenhuma cota encontrada.</Text>
-                                    )
-                                }
-                                {
-                                    showingQuotas && showingQuotas.map((quota:Quota) =>{
-                                        //onClick={(e) => handleSelectLine(e, !selectedQuotasId.includes(parseInt(quota.id)), quota.id)}
-                                        return (
-                                            <Tr key={`list-${quota.id}`} minH="40px" h={isWideVersion ? "42px" : "30px"} py="4" cursor="pointer">
-                                                <Td p="2px" bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} pl={["3","5","5"]} borderLeftRadius={"6"}>
-                                                    <HStack>
-                                                        <Checkbox colorScheme="red" isChecked={selectedQuotasId.includes(parseInt(quota.id))} value={quota.id} onChange={handleSelect}/>
-                                                        
-                                                            <Text onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                                {quota.id}
-                                                            </Text>
-                                                    </HStack>
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" textAlign="left" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    {quota.categoria}
-                                                    {/* {
-                                                        quota.categoria === "Imóvel" ? <Icon as={Home} stroke="#333" w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "14px"}></Icon> : <Icon as={Car} w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "12px"}  fill="#333"></Icon>
-                                                    } */}
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    <HStack spacing="1" fontWeight="bold">
-                                                        <Text>R$ {quota.valor_credito}</Text>
-                                                    </HStack>
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    <HStack spacing="1">
-                                                        <Text>R$ {quota.entrada}</Text>
-                                                    </HStack>
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    {quota.parcelas}x
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    <HStack spacing="1">
-                                                        <small>R$</small>
-                                                        <Text>{quota.valor_parcela}</Text>
-                                                    </HStack>
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    {quota.administradora}
-                                                </Td>
-                                                <Td bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.reserva === "Disponível" ? "green.400" : "red.400"} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
-                                                    {
-                                                        isWideVersion ? quota.reserva :
-                                                        (
-                                                            quota.reserva === "Disponível" ? <Check width="12px" color="#48bb78"/> : <X width="12px" color="#DB2C2C"/>
-                                                        )
-                                                    }
-                                                </Td>
-                                                <Td p="2px" pl="7px">
-                                                    {
-                                                        isWideVersion ? 
-                                                        <MainButton onClick={() => handleContact(quota)} p={isWideVersion ? "" : "2"} h="45px" isDisabled={quota.reserva === "Disponível" ? false : true} fontWeight={"normal !important"}>
-                                                            Investir
-                                                        </MainButton>
-                                                        : 
-                                                        <IconButton onClick={() => handleContact(quota)} size="sm" minW="26px" h="26px" p="0" color="#48bb78" colorScheme='green' bg="transparent" border="1px solid" borderColor="gray.600" _hover={{borderColor: 'green.400'}} aria-label='Chamar no whatsapp' icon={<Whatsapp width="10px" stroke="#48bb78"/>} isDisabled={quota.reserva === "Disponível" ? false : true}/>
-                                                    }
-                                                </Td>
-                                            </Tr>
-                                        )
-                                    })
-                                }
-                                
-                            </Tbody>
-                        </Table>
-
-                        {/* <Box>
-                            <HStack mt="5">
-                                <ReactToPrint
-                                    trigger={() => {
-                                        // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-                                        // to the root node of the returned component as it will be overwritten.
-                                        return  <OutlineButton px="4" size="sm" borderColor="gray.500" _hover={{borderColor: '#000'}}>
-                                                    Imprimir
-                                                </OutlineButton>
-                                    }}
-                                    content={() => toPrintRef.current}
-                                />
-                                <ReactToPrint
-                                    trigger={() => {
-                                        // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-                                        // to the root node of the returned component as it will be overwritten.
-                                        return  <OutlineButton px="4" size="sm" borderColor="gray.500" _hover={{borderColor: '#000'}}>
-                                                    Gerar PDF
-                                                </OutlineButton>
-                                    }}
-                                    content={() => toPrintRef.current}
-                                />
-
-                                <CSVLink data={quotas}>
-                                    <OutlineButton px="4" size="sm" borderColor="gray.500" _hover={{borderColor: '#000'}}>
-                                        Salvar
-                                    </OutlineButton>
-                                </CSVLink>
-                            </HStack>
-                        </Box> */}
+                        </Stack>
                     </Stack>
+                </Stack>
+            </Flex>
+
+            <Flex flexDir="column" w="100%" px="0">
+                <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" py="36" pt="2" spacing="20" justifyContent="space-between">
+                    <Table variant='simple' ref={toPrintRef} style={{borderCollapse:"separate", borderSpacing:"0 1em"}} fontFamily={"Kanit"}>
+                        <Thead>
+                            <Tr h="48px">
+                                {/* {
+                                    isWideVersion && <Th p="1" fontSize={fontSize}>Cota</Th>
+                                } */}
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>{isWideVersion && "Código"}</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Tipo</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Valor</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Entrada</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Prazo</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Parcela</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>Adm</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>{isWideVersion && "Contato"}</Th>
+                                <Th p="2px" fontSize={fontSize} color="blue.primary" textTransform={"capitalize"} fontWeight="normal" fontFamily={"Kanit"}>{isWideVersion && "Status"}</Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody fontSize={fontSize}>
+                            {
+                                (showingQuotas && showingQuotas.length === 0 ) && (
+                                    <Text>Nenhuma cota encontrada.</Text>
+                                )
+                            }
+                            {
+                                showingQuotas && showingQuotas.map((quota:Quota) =>{
+                                    //onClick={(e) => handleSelectLine(e, !selectedQuotasId.includes(parseInt(quota.id)), quota.id)}
+                                    return (
+                                        <Tr key={`list-${quota.id}`} minH="40px" h={isWideVersion ? "42px" : "30px"} py="4" cursor="pointer">
+                                            <Td p="2px" bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} pl={["3","5","5"]} borderLeftRadius={"6"}>
+                                                <HStack>
+                                                    <Checkbox colorScheme="red" isChecked={selectedQuotasId.includes(parseInt(quota.id))} value={quota.id} onChange={handleSelect}/>
+                                                    
+                                                        <Text onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                            {quota.id}
+                                                        </Text>
+                                                </HStack>
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" textAlign="left" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                {quota.categoria}
+                                                {/* {
+                                                    quota.categoria === "Imóvel" ? <Icon as={Home} stroke="#333" w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "14px"}></Icon> : <Icon as={Car} w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "12px"}  fill="#333"></Icon>
+                                                } */}
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                <HStack spacing="1" fontWeight="bold">
+                                                    <Text>R$ {quota.valor_credito}</Text>
+                                                </HStack>
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                <HStack spacing="1">
+                                                    <Text>R$ {quota.entrada}</Text>
+                                                </HStack>
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                {quota.parcelas}x
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                <HStack spacing="1">
+                                                    <small>R$</small>
+                                                    <Text>{quota.valor_parcela}</Text>
+                                                </HStack>
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserva === "Disponível" ? 1 : 0.6} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                {quota.administradora}
+                                            </Td>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" opacity={quota.reserva === "Disponível" ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.reserva === "Disponível" ? "green.400" : "red.400"} onClick={() => handleSelectLine(!selectedQuotasId.includes(parseInt(quota.id)), quota.id)}>
+                                                {
+                                                    isWideVersion ? quota.reserva :
+                                                    (
+                                                        quota.reserva === "Disponível" ? <Check width="12px" color="#48bb78"/> : <X width="12px" color="#DB2C2C"/>
+                                                    )
+                                                }
+                                            </Td>
+                                            <Td p="2px" pl="7px">
+                                                {
+                                                    isWideVersion ? 
+                                                    <MainButton onClick={() => handleContact(quota)} p={isWideVersion ? "" : "2"} h="45px" isDisabled={quota.reserva === "Disponível" ? false : true} fontWeight={"normal !important"}>
+                                                        Investir
+                                                    </MainButton>
+                                                    : 
+                                                    <IconButton onClick={() => handleContact(quota)} size="sm" minW="26px" h="26px" p="0" color="#48bb78" colorScheme='green' bg="transparent" border="1px solid" borderColor="gray.600" _hover={{borderColor: 'green.400'}} aria-label='Chamar no whatsapp' icon={<Whatsapp width="10px" stroke="#48bb78"/>} isDisabled={quota.reserva === "Disponível" ? false : true}/>
+                                                }
+                                            </Td>
+                                        </Tr>
+                                    )
+                                })
+                            }
+                            
+                        </Tbody>
+                    </Table>
                 </Stack>
             </Flex>
 

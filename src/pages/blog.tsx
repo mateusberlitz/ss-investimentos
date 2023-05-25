@@ -66,7 +66,7 @@ export default function Blog({posts}: BlogProps){
                             <Text><ChevronRight color="rgba(67, 67, 67, 0.5)"/></Text>
                             <Text>Blog</Text>
                         </HStack>
-                        <Heading fontSize="6xl">Blog SS Investimentos</Heading>
+                        <Heading fontSize={["4xl", "5xl", "6xl"]}>Blog SS Investimentos</Heading>
                         <Text>Compartilhamos com você conteúdo e informações para auxiliar o seu conhecimento.</Text>
                     </Stack>
 
@@ -76,7 +76,7 @@ export default function Blog({posts}: BlogProps){
                         <Text fontSize={"lg"} textTransform="uppercase" fontWeight={"medium"}>Você também pode se interessar</Text>
                     </Stack>
 
-                    <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+                    <Grid templateColumns="repeat(3, 1fr)" gap={12}>
 
                         {
                             posts.map(post => (
