@@ -1,8 +1,8 @@
 import { Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useToast, Text } from "@chakra-ui/react";
-import { SolidButton } from "../../../components/Buttons/SolidButton";
+import { SolidButton } from "../../components/Buttons/SolidButton";
 
-import { showErrors } from "../../../hooks/useErrors";
-import { serverApi } from "../../../services/api";
+import { showErrors } from "../../hooks/useErrors";
+import { serverApi } from "../../services/api";
 import { useRouter } from "next/router";
 import { X } from "react-feather";
 

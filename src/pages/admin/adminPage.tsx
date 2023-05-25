@@ -17,9 +17,9 @@ import { showErrors } from "../../contexts/useErrors";
 import { ControlledSelect } from "@/components/Forms/Selects/ControlledSelect";
 import { MainButton } from "@/components/Buttons/MainButton";
 import { Quota, useQuotas } from "@/contexts/useQuotas";
-import { NewQuotaModal } from "./Quotas/NewQuotaModal";
-import { EditQuota, EditQuotaModal } from "./Quotas/EditQuotaModal";
-import { ConfirmQuotaRemoveModal, RemoveQuotaData } from "./Quotas/ConfirmQuotaRemoveModal";
+import { NewQuotaModal } from "../../pageParts/Quotas/NewQuotaModal";
+import { EditQuota, EditQuotaModal } from "../../pageParts/Quotas/EditQuotaModal";
+import { ConfirmQuotaRemoveModal, RemoveQuotaData } from "../../pageParts/Quotas/ConfirmQuotaRemoveModal";
 
 interface ProfileFormData{
     name: string;

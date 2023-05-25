@@ -1,5 +1,5 @@
 import { showErrors } from "@/hooks/useErrors";
-import { CreateNewQuota } from "@/pages/admin/Quotas/NewQuotaModal";
+import { CreateNewQuota } from "@/pageParts/Quotas/NewQuotaModal";
 import { serverApi } from "@/services/api";
 import moneyToBackend from "@/utils/moneyToBackend";
 import { Toast, useToast } from "@chakra-ui/react";
