@@ -332,7 +332,7 @@ export default function Home() {
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="fit-content !important"/>
+                                <Avatar size="lg" w="60px !important" h="60px !important"/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
                                     <Text color="gray.300">CEO Lorem</Text>
@@ -347,7 +347,7 @@ export default function Home() {
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="fit-content !important"/>
+                                <Avatar size="lg" w="60px !important" h="60px !important"/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
                                     <Text color="gray.300">CEO Lorem</Text>
@@ -362,7 +362,7 @@ export default function Home() {
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="fit-content !important"/>
+                                <Avatar size="lg" w="60px !important" h="60px !important"/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
                                     <Text color="gray.300">CEO Lorem</Text>
@@ -377,7 +377,7 @@ export default function Home() {
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="fit-content !important"/>
+                                <Avatar size="lg" w="60px !important"/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
                                     <Text color="gray.300">CEO Lorem</Text>
