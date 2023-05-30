@@ -52,96 +52,96 @@ export function StepsSection(){
         //     autoAlpha: 1,
         // });
         
-
-
-        const ctx = gsap.context(() => {
-            const progress = gsap.to(progressRef.current, { 
-                height: "calc(100% - 140px)",
+        if(!isMobile){
+            const ctx = gsap.context(() => {
+                const progress = gsap.to(progressRef.current, { 
+                    height: "calc(100% - 140px)",
+                });
+    
+                const sectionTimeline = gsap.timeline({
+                    //paused: true,
+                    immediateRender: true,
+                    scrollTrigger: {
+                        trigger: "#sobre",
+                        pin: true,
+                        start: `bottom-=${isWideVersion ? '200' :  (isMobile ? '780' : '380')} bottom`,
+                        //end: "+=1000",
+                        scrub: true
+                    }
+                });
+    
+                sectionTimeline
+                .fromTo(secondStep.current, { 
+                    y: 90,
+                    autoAlpha: 0,
+                },{ 
+                    duration: 1,
+                    y: 0,
+                    autoAlpha: 1,
+                })
+                .fromTo(thirdStep.current, { 
+                    y: 90,
+                    autoAlpha: 0,
+                },{ 
+                    duration: 1,
+                    y: 0,
+                    autoAlpha: 1,
+                }).fromTo(fourthStep.current, { 
+                    y: 90,
+                    autoAlpha: 0,
+                },{ 
+                    duration: 1,
+                    y: 0,
+                    autoAlpha: 1,
+                })
+                // .to(progressRef.current, {
+                //     height: "100%",
+                // })
+                
+                ScrollTrigger.create({
+                    trigger: sectionRef.current,
+                    scrub: true,
+                    start: "top 120px",
+                    //pin: true,
+                    animation: progress
+                });
+    
+                // ScrollTrigger.create({
+                //     trigger: firstStep.current,
+                //     start: "center center",
+                //     scrub: true,
+                //     animation: showUpSecondItem
+                // });
+    
+                // ScrollTrigger.create({
+                //     trigger: secondStep.current,
+                //     start: "center center",
+                //     scrub: true,
+                //     animation: showUpThirdItem
+                // });
+    
+                // ScrollTrigger.create({
+                //     trigger: thirdStep.current,
+                //     start: "center center",
+                //     scrub: true,
+                //     animation: showUpFourthItem
+                // });
             });
+              
+            return () => ctx.revert();
+        }
 
-            const sectionTimeline = gsap.timeline({
-                //paused: true,
-                immediateRender: true,
-                scrollTrigger: {
-                    trigger: "#sobre",
-                    pin: true,
-                    start: `bottom-=${isWideVersion ? '200' :  (isMobile ? '780' : '380')} bottom`,
-                    //end: "+=1000",
-                    scrub: true
-                }
-            });
-
-            sectionTimeline
-            .fromTo(secondStep.current, { 
-                y: 90,
-                autoAlpha: 0,
-            },{ 
-                duration: 1,
-                y: 0,
-                autoAlpha: 1,
-            })
-            .fromTo(thirdStep.current, { 
-                y: 90,
-                autoAlpha: 0,
-            },{ 
-                duration: 1,
-                y: 0,
-                autoAlpha: 1,
-            }).fromTo(fourthStep.current, { 
-                y: 90,
-                autoAlpha: 0,
-            },{ 
-                duration: 1,
-                y: 0,
-                autoAlpha: 1,
-            })
-            // .to(progressRef.current, {
-            //     height: "100%",
-            // })
-
-            ScrollTrigger.create({
-                trigger: sectionRef.current,
-                scrub: true,
-                start: "top 120px",
-                //pin: true,
-                animation: progress
-            });
-
-            // ScrollTrigger.create({
-            //     trigger: firstStep.current,
-            //     start: "center center",
-            //     scrub: true,
-            //     animation: showUpSecondItem
-            // });
-
-            // ScrollTrigger.create({
-            //     trigger: secondStep.current,
-            //     start: "center center",
-            //     scrub: true,
-            //     animation: showUpThirdItem
-            // });
-
-            // ScrollTrigger.create({
-            //     trigger: thirdStep.current,
-            //     start: "center center",
-            //     scrub: true,
-            //     animation: showUpFourthItem
-            // });
-        });
-          
-        return () => ctx.revert();
+        
     }, [isWideVersion]);
-
-    console.log(isWideVersion ? '200' :  (isMobile ? '780' : '380'));
     
     return (
         <Flex id="sobre" m="0 auto" w="100%" pos="relative" ref={sectionRef}>
             <Flex direction="column" w="100%" >
-                <Flex w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column">
+                <Flex w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px={["1","6","6","6"]} flexDirection="column">
 
                     <Stack spacing="10" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
 
-                        <Stack spacing="10" w={["100%", "100%", "50%"]} display={["none", "none", "none", "flex", "flex"]}>
+                        <Stack spacing="10" w={["100%", "100%", "50%"]} display={["flex", "flex", "flex", "flex", "flex"]}>
                             <Heading color="blue.primary">Somos a SS Investimentos</Heading>
                             <Img src="./../images/robson.jpg"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
                         </Stack>
@@ -160,49 +160,52 @@ export function StepsSection(){
                                     <Text fontSize={"lg"}>Você pode pagar a prazo por um crédito para ter sua casa ou estabelecimento totalmente abastecida com energia limpa.</Text>
                                 </Stack> */}
                             
-                                <Stack ml={["-25% !important", "-19% !important", "-10% !important", "-17.5% !important", "-17% !important", "-15% !important"]} spacing="12">
+                                <Stack ml={["-23% !important", "-11% !important", "-22% !important", "-17.5% !important", "-17% !important", "-15% !important"]} spacing="12">
                                     <HStack ref={firstStep} spacing="30px" >
-                                        <Flex alignSelf="baseline" h="60px" w="60px" bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
+                                        <Flex alignSelf="baseline" h={["50px","60px","60px","60px","60px"]} w={["50px","60px","60px","60px","60px"]} bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
                                             <Text color="white" fontSize={"2xl"}>1</Text>
                                         </Flex>
                                         <Stack w="calc(100% - 90px)">
-                                            <Text fontSize={"4xl"} fontWeight="normal" color="blue.primary">Início de tudo</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">03/03/2000</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. Eu accumsan maecenas tincidunt in consequat egestas et diam adipiscing. </Text>
+                                            <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Início de tudo</Text>
+                                            <HStack>
+                                                <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2009-2011</Text>
+                                            </HStack>
+                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">A nossa história nos investimentos iniciou através de um convite para integrar uma parceria com Adriano Weiss, no coração da HS Consórcios, efetivamos muitos negócios e ajudamos a impulsionar o consórcio como um meio eficaz de investimento. </Text>
                                         </Stack>
                                     </HStack>
 
                                     <HStack ref={secondStep} spacing="30px" >
-                                        <Flex alignSelf="baseline" h="60px" w="60px" bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
+                                        <Flex alignSelf="baseline" h={["50px","60px","60px","60px","60px"]} w={["50px","60px","60px","60px","60px"]} bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
                                             <Text color="white" fontSize={"2xl"}>2</Text>
                                         </Flex>
                                         <Stack w="calc(100% - 90px)">
-                                            <Text fontSize={"4xl"} fontWeight="normal" color="blue.primary">Início de tudo</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">03/03/2000</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. Eu accumsan maecenas tincidunt in consequat egestas et diam adipiscing. </Text>
+                                            <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Expansão</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2009-2011</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Sempre buscamos fortalecer o relacionamento com os nosso clientes e parceiros, então foi imprescindível estreitar laços junto a HS Consórcios, assim facilitando na efetuação, agilidade e otimização dos processos de liberação de crédito. Tudo em prol de beneficiar nossos clientes.</Text>
                                         </Stack>
                                     </HStack>
 
 
                                     <HStack ref={thirdStep} spacing="30px" >
-                                        <Flex alignSelf="baseline" h="60px" w="60px" bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
+                                        <Flex alignSelf="baseline" h={["50px","60px","60px","60px","60px"]} w={["50px","60px","60px","60px","60px"]} bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
                                             <Text color="white" fontSize={"2xl"}>3</Text>
                                         </Flex>
                                         <Stack w="calc(100% - 90px)">
-                                            <Text fontSize={"4xl"} fontWeight="normal" color="blue.primary">Início de tudo</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">03/03/2000</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. Eu accumsan maecenas tincidunt in consequat egestas et diam adipiscing. </Text>
+                                            <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Reconhecimento</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2017</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Como consequência do nosso esforço e dedicação, somos referência desde 2013, estando presente dentre as maiores empresas do ramo a nível Brasil desde então. Em 2017 recebemos o prêmio de destaque nacional com maior volume de crédito negociado e direcionado para investimentos e aquisições.</Text>
+                                        
                                         </Stack>
                                     </HStack>
 
                                     <HStack ref={fourthStep} spacing="30px" >
-                                        <Flex alignSelf="baseline" h="60px" w="60px" bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
+                                        <Flex alignSelf="baseline" h={["50px","60px","60px","60px","60px"]} w={["50px","60px","60px","60px","60px"]} bg="gradient" borderRadius="full" backdropFilter={"blur(45px)"} justifyContent={"center"} alignItems="center">
                                             <Text color="white" fontSize={"2xl"}>4</Text>
                                         </Flex>
                                         <Stack w="calc(100% - 90px)">
-                                            <Text fontSize={"4xl"} fontWeight="normal" color="blue.primary">Início de tudo</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">03/03/2000</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Lorem ipsum dolor sit amet consectetur. Nec praesent urna adipiscing quis id sed nunc morbi. Eu accumsan maecenas tincidunt in consequat egestas et diam adipiscing. </Text>
+                                            <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Novos Desafios</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2019-2023</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Em 2019, com uma nova parceria com a Lance Consórcio, ajudamos a otimizar números e expandimos mediante a uma pandemia global. Em 2023, a SS Soluções & investimentos foi oficialmente fundada, com todo o conhecimento adquirido por nossa equipe durante anos, estamos preparados para te auxiliar da melhor forma nos seus investimentos.</Text>
                                         </Stack>
                                     </HStack>
 {/* 

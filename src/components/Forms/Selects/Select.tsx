@@ -46,7 +46,7 @@ export function Select({ name, children, variant, selectRef, value = "", label, 
         if(onChange){
             onChange(value);
         }
-    }, [value]);
+    }, [value, selected]);
 
     return(
         <FormControl pos="relative" isInvalid={!!error}>

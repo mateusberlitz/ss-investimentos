@@ -179,7 +179,7 @@ background: #DA9B68;
 }
 
 
-.slick-slider {
+#clientes .slick-slider {
     position: relative;
     height: 100%;
     display: flex;
@@ -189,32 +189,32 @@ background: #DA9B68;
     z-index: 2;
     margin-bottom: 100px !important;
   }
-  .slick-list {
+  #clientes .slick-list {
     position: relative;
     display: block !important;
     overflow-x: hidden;
     padding: 50px !important;
     width: 100%;
   }
-  .slick-track {
+  #clientes  .slick-track {
     position: relative;
     top: 0;
     left: 0;
     display: flex;
   }
-  .slick-slide div {
+  #clientes  .slick-slide div {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .slick-slide .image {
+  #clientes .slick-slide .image {
     object-fit: cover;
     border-radius: 2px;
     min-width: 150px !important;
     width: 80%;
   }
-  .slick-slide div div span {
+  #clientes .slick-slide div div span {
     margin-top: 10px;
     width: inherit;
     text-align: center;
@@ -225,59 +225,59 @@ background: #DA9B68;
     color: #111;
   }
   
-  .slick-slide:not(.slick-active) {
+  #clientes .slick-slide:not(.slick-active) {
     position: relative;
     z-index: 997;
     transform: scale(0.9);
   }
-  .slick-slide.slick-active:not(.slick-current) {
+  #clientes .slick-slide.slick-active:not(.slick-current) {
     position: relative;
     z-index: 998;
     transform: scale(1.0);
     transition: 0.25s;
   }
-  .slick-slide.slick-active.slick-current {
+  #clientes .slick-slide.slick-active.slick-current {
     position: relative;
     z-index: 999;
     transform: scale(1.2);
     transition: 0.25s;
   }
-  .slick-slide.slick-active:not(.slick-current) .image,
-  .slick-slide.slick-active.slick-current .image,
-  .slick-slide:not(.slick-active) .image {
+  #clientes .slick-slide.slick-active:not(.slick-current) .image,
+  #clientes .slick-slide.slick-active.slick-current .image,
+  #clientes .slick-slide:not(.slick-active) .image {
     width: 100% !important;
   }
-  .slick-prev,
-  .slick-next {
+  #clientes .slick-prev,
+  #clientes .slick-next {
     display: none !important;
   }
-  .custom-prevArrow,
-  .custom-nextArrow {
+  #clientes .custom-prevArrow,
+  #clientes .custom-nextArrow {
     position: relative;
     z-index: 99999;
     top: -10px;
   }
-  .custom-prevArrow {
+  #clientes .custom-prevArrow {
     left: -10px;
   }
-  .custom-nextArrow {
+  #clientes .custom-nextArrow {
     right: -10px;
   }
-  .custom-prevArrow:hover,
-  .custom-nextArrow:hover {
+  #clientes .custom-prevArrow:hover,
+  #clientes .custom-nextArrow:hover {
     fill: red;
     cursor: pointer;
   }
-  .slick-dots{
+  #clientes .slick-dots{
     bottom: -90px
   }
-  .slick-dots li{
+  #clientes .slick-dots li{
     width: 70px;
   }
-  .slick-dots li button{
+  #clientes .slick-dots li button{
     width: 70px;
   }
-  .slick-dots li button:before{
+  #clientes .slick-dots li button:before{
     content: "";
     height: 3px;
     width: 70px;

@@ -26,6 +26,8 @@ import { Services } from '@/components/Services';
 import gsap from 'gsap';
 import Head from 'next/head';
 import { Loading } from '@/components/Loading';
+import { ServicesTwo } from '@/components/Services/ServicesTwo';
+import { ServicesMobile } from '@/components/Services/ServicesMobile';
 
 
 export default function Home() {
@@ -104,8 +106,8 @@ export default function Home() {
                         }
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
-                            <Text fontWeight={"light"}>Clientes contemplados</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","3xl","4xl"]}>2.000</Text>
+                            <Text fontWeight={"light"}>Clientes ativos</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","3xl","4xl"]}>2.700</Text>
                         </Stack>
 
                         {
@@ -113,8 +115,8 @@ export default function Home() {
                         }
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
-                            <Text fontWeight={"light"}>Créditos liberados</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 30.080.000</Text>
+                            <Text fontWeight={"light"}>Créditos</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 1.000.000.000</Text>
                         </Stack>
 
                         {
@@ -123,7 +125,7 @@ export default function Home() {
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
                             <Text fontWeight={"light"}>Experiência no ramo</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ 10 anos</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ 13 anos</Text>
                         </Stack>
                     </Stack>
                 </Stack>
@@ -134,7 +136,15 @@ export default function Home() {
 
         <Box id="solucoes"/>
 
-        <Services/>
+        {
+            !isMobile ?  (
+                <ServicesTwo/>
+            ) : (
+                <ServicesMobile/>
+            )
+        }
+
+        {/* <Services/> */}
 
         {/* <Stack m="0 auto" w="100%" pos="relative">
             <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" flexDirection="column" textAlign={"center"} alignItems="center">

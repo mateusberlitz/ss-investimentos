@@ -88,6 +88,7 @@ export function Quotation(){
 
     const finalDate = new Date(today.getFullYear(), today.getMonth(), 0);
     const startDate = new Date(today.getFullYear(), today.getMonth() -13, 0);
+    const oneYearLater = new Date(today.getFullYear(), today.getMonth() -13, 1);
     const previousMonthStart = new Date(today.getFullYear(), today.getMonth() -1, 1);
     const previousMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
     
@@ -152,7 +153,8 @@ export function Quotation(){
     }
 
     const fetchIncc = () => {
-        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.192/dados?formato=html&dataInicial=${startDate.toLocaleDateString().split(',')[0]}&dataFinal=${finalDate.toLocaleDateString().split(',')[0]}`).then(response => {
+        console.log(oneYearLater, today);
+        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.192/dados?formato=html&dataInicial=${oneYearLater.toLocaleDateString().split(',')[0]}&dataFinal=${today.toLocaleDateString().split(',')[0]}`).then(response => {
             const newIncc = response.data.reduce((amount: number, value: BacenData) => {
                 return amount + parseFloat(value.valor);
             }, 0);

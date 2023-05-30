@@ -1,4 +1,4 @@
-import { Box, Checkbox, filter, Flex, Heading, HStack, Icon, IconButton, Stack, Table, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue, useToast } from "@chakra-ui/react";
+import { Box, Button, Checkbox, filter, Flex, Heading, HStack, Icon, IconButton, Stack, Table, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { GetStaticProps } from "next";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
@@ -281,6 +281,11 @@ export default function Contempladas({quotas}: ContempladasProps){
         setShowingQuotas(filteredQuotas);
     }
 
+    const handleClearFilter = () => {
+        filterForm.reset();
+        setShowingQuotas(quotas);
+    }
+
     const [showingFilter, setShowingFilter] = useState(false);
 
     return (
@@ -326,14 +331,14 @@ export default function Contempladas({quotas}: ContempladasProps){
                                         <option value="Reservado">Reservadas</option>
                                     </ControlledSelect>
 
-                                    <ControlledSelect label="Segmento" mt="5" control={filterForm.control} error={filterForm.formState.errors.segment} h="45px" name="segment" w="100%" fontSize="sm" placeholder="Segmento" focusBorderColor="black" bg="#E7E7E7" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                                    <ControlledSelect label="Segmento" mt="5" control={filterForm.control} defaultValue={""} error={filterForm.formState.errors.segment} h="45px" name="segment" w="100%" fontSize="sm" placeholder="Segmento" focusBorderColor="black" bg="#E7E7E7" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
                                         <option value="Imóvel">Imóvel</option>
                                         <option value="Veículo">Veículo</option>
                                     </ControlledSelect>
 
-                                    <ControlledSlider control={filterForm.control} min={20000} step={2000} value={100000} error={filterForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
-                                    <ControlledSlider control={filterForm.control} min={10000} step={2000} value={50000} error={filterForm.formState.errors.value} label="Valor da entrada" name="value" type="text" mask="money"/>
-                                    <ControlledSlider control={filterForm.control} value={120} min={60} max={200} step={10} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask="deadline"/>
+                                    <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
+                                    <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.value} label="Valor da entrada" name="value" type="text" mask="money"/>
+                                    <ControlledSlider control={filterForm.control} value={120} min={0} max={220} step={10} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask="deadline"/>
 
                                     {/* <ControlledInput control={filterForm.control} error={filterForm.formState.errors.credit} name="credit" label="Crédito" type="text"/>
                                     <ControlledInput control={filterForm.control} error={filterForm.formState.errors.value} name="value" label="Entrada" type="text"/>
@@ -342,9 +347,12 @@ export default function Contempladas({quotas}: ContempladasProps){
 
                                     
 
-                                    <OutlineButton w={isWideVersion ? "auto" : "100%"} isLoading={filterForm.formState.isSubmitting} type="submit"  _hover={{borderColor:"blue.primary", color: "blue.primary"}} borderRadius="6px">
-                                        Filtrar
-                                    </OutlineButton>
+                                    <Stack>
+                                        <OutlineButton w={isWideVersion ? "auto" : "100%"} isLoading={filterForm.formState.isSubmitting} type="submit"  _hover={{borderColor:"blue.primary", color: "blue.primary"}} borderRadius="6px">
+                                            Filtrar
+                                        </OutlineButton>
+                                        <Button onClick={() => handleClearFilter()} variant='link' fontSize={"12px"} color="gray.text" opacity="0.8" fontWeight={"normal"} transition="all ease 0.5s">Limpar Filtro</Button>
+                                    </Stack>
 
                                     {/* <ControlledInput control={filterForm.control} error={filterForm.formState.errors.segment} name="segment" label="Segmento" type="text"/> */}
                                 </Stack>
@@ -512,31 +520,42 @@ export default function Contempladas({quotas}: ContempladasProps){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    // const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
-    // console.log(quotasMainApi);
+    const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
 
-    // let mainFormattedQuotasApi:Quota[] = []
+    let mainFormattedQuotasApi:Quota[] = []
+    const formatNumber = new Intl.NumberFormat("pt-BR")
 
-    // if(quotasMainApi){
-    //     mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
-    //         const formattedQuota:Quota = {
-    //             id: quota.id.toString(),
-    //             administradora: quota.admin,
-    //             categoria: quota.segment,
-    //             entrada: quota.value.toFixed(2),
-    //             fundo: '',
-    //             parcelas: quota.value.toString(),
-    //             reserva: quota.reserved ? "Reservada" : "Disponível",
-    //             taxa: '',
-    //             valor_credito: quota.credit.toFixed(2).replace(",", "."),
-    //             valor_parcela: quota.parcel.toFixed(2).replace(",", ".")
-    //         }
-    //     })
-    // }
+    if(quotasMainApi){
+        mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
+            const formattedQuota:Quota = {
+                id: `${quota.id.toString()}s`,
+                administradora: quota.admin,
+                categoria: quota.segment,
+                entrada: formatNumber.format(quota.value), //quota.value.toFixed(2),
+                fundo: '',
+                parcelas: quota.deadline.toString(),
+                reserva: quota.reserved ? "Reservada" : "Disponível",
+                taxa: '',
+                valor_credito: formatNumber.format(quota.credit),
+                valor_parcela: formatNumber.format(quota.parcel)
+            }
+
+            return formattedQuota;
+        })
+
+        
+        console.log(mainFormattedQuotasApi);
+    }
 
     const response = await axios.get('https://contempladas.lanceconsorcio.com.br');
 
-    const quotas = response.data;
+    let quotas:Quota[] = []
+
+    if(quotasMainApi){
+        quotas = [...response.data, ...mainFormattedQuotasApi];
+    }else{
+        quotas = [response.data];
+    }
 
     const vehicleQuotas = quotas.filter((quota:Quota) => quota.categoria === "Veículo")
     vehicleQuotas.sort(function (a:Quota, b:Quota) {
