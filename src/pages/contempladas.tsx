@@ -520,42 +520,42 @@ export default function Contempladas({quotas}: ContempladasProps){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
+    // const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
 
-    let mainFormattedQuotasApi:Quota[] = []
-    const formatNumber = new Intl.NumberFormat("pt-BR")
+    // let mainFormattedQuotasApi:Quota[] = []
+    // const formatNumber = new Intl.NumberFormat("pt-BR")
 
-    if(quotasMainApi){
-        mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
-            const formattedQuota:Quota = {
-                id: `${quota.id.toString()}s`,
-                administradora: quota.admin,
-                categoria: quota.segment,
-                entrada: formatNumber.format(quota.value), //quota.value.toFixed(2),
-                fundo: '',
-                parcelas: quota.deadline.toString(),
-                reserva: quota.reserved ? "Reservada" : "Disponível",
-                taxa: '',
-                valor_credito: formatNumber.format(quota.credit),
-                valor_parcela: formatNumber.format(quota.parcel)
-            }
+    // if(quotasMainApi){
+    //     mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
+    //         const formattedQuota:Quota = {
+    //             id: `${quota.id.toString()}s`,
+    //             administradora: quota.admin,
+    //             categoria: quota.segment,
+    //             entrada: formatNumber.format(quota.value), //quota.value.toFixed(2),
+    //             fundo: '',
+    //             parcelas: quota.deadline.toString(),
+    //             reserva: quota.reserved ? "Reservada" : "Disponível",
+    //             taxa: '',
+    //             valor_credito: formatNumber.format(quota.credit),
+    //             valor_parcela: formatNumber.format(quota.parcel)
+    //         }
 
-            return formattedQuota;
-        })
+    //         return formattedQuota;
+    //     })
 
         
-        console.log(mainFormattedQuotasApi);
-    }
+    //     console.log(mainFormattedQuotasApi);
+    // }
 
     const response = await axios.get('https://contempladas.lanceconsorcio.com.br');
 
     let quotas:Quota[] = []
 
-    if(quotasMainApi){
-        quotas = [...response.data, ...mainFormattedQuotasApi];
-    }else{
+    // if(quotasMainApi){
+    //     quotas = [...response.data, ...mainFormattedQuotasApi];
+    // }else{
         quotas = [response.data];
-    }
+    //}
 
     const vehicleQuotas = quotas.filter((quota:Quota) => quota.categoria === "Veículo")
     vehicleQuotas.sort(function (a:Quota, b:Quota) {

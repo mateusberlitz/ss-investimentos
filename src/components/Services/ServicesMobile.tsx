@@ -11,11 +11,14 @@ export function ServicesMobile(){
                 <ServiceItemMobile overflow={"hidden"} title="Capital de Giro Empresarial" subtitle="Capital de Giro" cover="./images/sl_grafico.jpg">
                             O capital de giro é essencial para manter a saúde financeira de uma empresa. Ele representa o dinheiro necessário para cobrir as despesas operacionais do negócio, como o pagamento de fornecedores e salários dos colaboradores. Conte com os nossos especialistas em crédito para liberar capital para a sua empresa com as melhores taxas do mercado.
                 </ServiceItemMobile>
-                <ServiceItemMobile overflow={"hidden"} title="Renda com Aluguéis" subtitle="Renda com Aluguéis" cover="./images/sl_predio.jpg">
-                    Garanta novas fontes de renda passiva com investimentos imobiliários, nossos especialistas auxiliarão você a obter rentabilidade através de imóveis, para eles se pagarem e ainda gerar lucros para você.
+                <ServiceItemMobile overflow={"hidden"} title="Investimentos Imobiliários" subtitle="Consultoria Financeira" cover="./images/sl_predio.jpg">
+                    Garanta novas fontes de renda ativa e passiva para você ou sua empresa através de investimentos imobiliários, nossos especialistas auxiliarão você a adquirir imóveis com as melhores condições para obter lucros passivos ou rentabilizar o seu negócio de forma ativa.
                 </ServiceItemMobile>
-                <ServiceItemMobile overflow={"hidden"} title="Planos de Consórcio" subtitle="Consultoria Financeira" cover="./images/sl_freela.jpg">
-                    Com o consórcio você obtém uma grande possibilidade de ganhos, sempre alinhado com segurança e facilidade. Você pode investir para aquisição de automóveis, imóveis, frotas, náuticos e muitos outros.
+                <ServiceItemMobile overflow={"hidden"} title="Consultoria Financeira" subtitle="Consultoria Financeira" cover="./images/sl_aperto.jpg">
+                    Receba uma consultoria de investimentos exclusiva para investir de forma segura, planejada e lucrativa para alavancar o seu patrimônio. Para objetivos de curto a longo prazo, conte com a nossa assessoria qualificada com estratégias claras para alcançar seus objetivos.
+                </ServiceItemMobile>
+                <ServiceItemMobile overflow={"hidden"} title="Complemento de Aposentadoria" subtitle="Consultoria Jurídica" cover="./images/sl_olds.jpg">
+                    Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, viabilize oportunidades e proteja o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
                 </ServiceItemMobile>
                 <ServiceItemMobile overflow={"hidden"} title="Consultoria Jurídica" subtitle="Consultoria Jurídica" cover="./images/sl_gondola.jpg">
                     Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, viabilize oportunidades e proteja o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
