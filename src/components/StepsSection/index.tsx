@@ -205,7 +205,7 @@ export function StepsSection(){
                                         <Stack w="calc(100% - 90px)">
                                             <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Novos Desafios</Text>
                                             <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2019-2023</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Em 2019, com uma nova parceria com a Lance Consórcio, ajudamos a otimizar números e expandimos mediante a uma pandemia global. Em 2023, a SS Soluções & investimentos foi oficialmente fundada, com todo o conhecimento adquirido por nossa equipe durante anos, estamos preparados para te auxiliar da melhor forma nos seus investimentos.</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Em 2019, com uma nova parceria com a Lance Consórcio, ajudamos a otimizar números e expandimos mediante a uma pandemia global. Em 2023, a SS Soluções & Investimentos foi oficialmente fundada, com todo o conhecimento adquirido por nossa equipe durante anos, estamos preparados para te auxiliar da melhor forma nos seus investimentos.</Text>
                                         </Stack>
                                     </HStack>
 {/* 

@@ -11,7 +11,7 @@ const nextConfig = {
       return config;
     },
     env: {
-        API_URL: 'https://api.ssinvestimentos.com.br',
+        API_URL: 'https://api.ssinvestimentos.com.br/public/api/',
         LOCAL_API_URL: 'http://ss-investimentos-backend.test/api/',
     },
   }
