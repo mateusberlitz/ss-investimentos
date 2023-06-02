@@ -52,7 +52,7 @@ export function Footer(){
                         </Stack>
                     </Stack>
 
-                    <Stack spacing="6">
+                    {/* <Stack spacing="6">
                         <Text fontWeight={"normal"} fontSize={"lg"}>Soluções</Text>
 
                         <Stack spacing="4" fontSize="sm">
@@ -65,7 +65,7 @@ export function Footer(){
                             <FooterLink href="/">Consultoria Jurídica</FooterLink>
                             <FooterLink href="/">Soluções Contábeis</FooterLink>
                         </Stack>
-                    </Stack>
+                    </Stack> */}
                 </Stack>
 
                 <Stack spacing="16">
