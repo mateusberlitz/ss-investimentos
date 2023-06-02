@@ -180,7 +180,7 @@ export function StepsSection(){
                                         </Flex>
                                         <Stack w="calc(100% - 90px)">
                                             <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Expansão</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2009-2011</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2011-2015</Text>
                                             <Text fontSize={"lg"} fontWeight="light" color="gray.text">Sempre buscamos fortalecer o relacionamento com os nosso clientes e parceiros, então foi imprescindível estreitar laços junto a HS Consórcios, assim facilitando na efetuação, agilidade e otimização dos processos de liberação de crédito. Tudo em prol de beneficiar nossos clientes.</Text>
                                         </Stack>
                                     </HStack>

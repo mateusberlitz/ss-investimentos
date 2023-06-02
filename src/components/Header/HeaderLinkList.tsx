@@ -19,7 +19,7 @@ export function HeaderLinkList({whiteVersion}: HeaderLinkListProps){
                 <HeaderLink href="/#solucoes">Soluções</HeaderLink>
                 <HeaderLink href="/#clientes">Clientes</HeaderLink>
                 <HeaderLink href="contempladas">Contempladas</HeaderLink>
-                <HeaderLink href="blog">Blog</HeaderLink>
+                {/* <HeaderLink href="blog">Blog</HeaderLink> */}
                 <HeaderLink href="/#contato">Contato</HeaderLink>
 
                 {/* <Button rightIcon={<Icon as={ChevronDown} />} fontWeight="regular" variant="ghost" color="gray.600" _hover={{bg: "transparent", color:"white"}}>Idioma: PT</Button>

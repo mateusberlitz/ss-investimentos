@@ -116,7 +116,7 @@ export default function Home() {
                         }
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
-                            <Text fontWeight={"light"}>Créditos</Text>
+                            <Text fontWeight={"light"}>Crédito intermediado</Text>
                             <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 1.000.000.000</Text>
                         </Stack>
 
@@ -356,7 +356,7 @@ export default function Home() {
                                 <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente1.jpg'/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Katia Santos</Text>
-                                    <Text color="gray.300">CEO Lorem</Text>
+                                    <Text color="gray.300"></Text>
                                 </Stack>
                             </Stack>
                         </Stack>
@@ -394,7 +394,7 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguido o que ele me indicava começou como meu corretor hoje é um grande amigo todas indicação de consórcio mando direto pra ele vários amigos meus fizeram consócio pela qualidade no atendimento não é o cara que vai te vender o consórcio e sumir! Te dá todo o suporte que ele nem precisaria está fazendo. Grande amigo e profissional só vai crescer!</Text>
+                                <Text py="14">Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguido o que ele me indicava começou como meu corretor hoje é um grande amigo todas indicação de consórcio mando direto pra ele vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte que ele nem precisaria está fazendo...</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">

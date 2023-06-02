@@ -13,7 +13,7 @@ export function ServicesTwo(){
         slidesToScroll: 1,
         autoplay: true,
         speed: 2000,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 800,
         variableWidth: true,
         arrows: false,
         cssEase: "linear"
