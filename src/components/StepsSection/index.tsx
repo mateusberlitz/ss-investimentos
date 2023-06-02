@@ -141,7 +141,7 @@ export function StepsSection(){
 
                     <Stack spacing="10" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
 
-                        <Stack spacing="10" w={["100%", "100%", "50%"]} display={["flex", "flex", "flex", "flex", "flex"]}>
+                        <Stack spacing="16" w={["100%", "100%", "50%"]} display={["flex", "flex", "flex", "flex", "flex"]} pt={["28","28","64","44","36"]}>
                             <Heading color="blue.primary">Somos a SS Investimentos</Heading>
                             <Img src="./../images/robson.png"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
                         </Stack>

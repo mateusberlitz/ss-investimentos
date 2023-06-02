@@ -241,7 +241,7 @@ export default function Home() {
                     </Stack>
                 
                     <Stack spacing="16"  direction={["column", "column", "row"]}>
-                        <Img w={["100%", "100%", "40%"]} src="./images/corretores.jpg" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                        <Img w={["100%", "100%", "40%"]} src="./images/corretores.png" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
                         <Stack spacing="20">
                             <SS_HS width="100%"/>
                             <Stack spacing="12">
