@@ -9,7 +9,25 @@ export const showErrors = (error: any, toast: any) => {
     if(error.response){
         const responseData = error.response.data;
 
-        if(responseData.error){
+        if(responseData.errors){
+            Object.keys(responseData.errors).map((key, field) => {
+                responseData.errors[key].map((error:string) => {
+                    toast({
+                        title: key,
+                        description: error,
+                        status: "warning",
+                        duration: 12000,
+                        isClosable: true,
+                    });
+
+                    return true;
+                })
+
+                return true;
+            })
+
+            return;
+        }else if(responseData.error){
             errorMessage = responseData.error;
         }else if(responseData.access){
             errorMessage = responseData.access;

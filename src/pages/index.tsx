@@ -28,6 +28,7 @@ import Head from 'next/head';
 import { Loading } from '@/components/Loading';
 import { ServicesTwo } from '@/components/Services/ServicesTwo';
 import { ServicesMobile } from '@/components/Services/ServicesMobile';
+import { Contact } from '@/pageParts/Contact';
 
 
 export default function Home() {
@@ -240,7 +241,7 @@ export default function Home() {
                     </Stack>
                 
                     <Stack spacing="16"  direction={["column", "column", "row"]}>
-                        <Img w={["100%", "100%", "40%"]} src="./images/corretor.png" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                        <Img w={["100%", "100%", "40%"]} src="./images/corretores.jpg" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
                         <Stack spacing="20">
                             <SS_HS width="100%"/>
                             <Stack spacing="12">
@@ -348,13 +349,13 @@ export default function Home() {
 
                             <Stack zIndex={2} bg={activeSlide === 0 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                                <Text py="14">Nossa experiência com a S&S foi ótima. Robson conhece muito sobre investimentos e, como foi no nosso caso, sobre Consórcios. Transmite segurança e transparência na condução do contrato.</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="60px !important" h="60px !important"/>
+                                <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente1.jpg'/>
                                 <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Katia Santos</Text>
                                     <Text color="gray.300">CEO Lorem</Text>
                                 </Stack>
                             </Stack>
@@ -363,14 +364,14 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 1 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                                <Text py="14">Quero aqui testemunhar o atendimento diferenciado da S&S através da pessoa do Robson que além de esclarecer as dúvidas sobre o investimento em consórcios nos orienta sobre a melhor forma de investir conforme nosso perfil e renda disponível no momento.</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="60px !important" h="60px !important"/>
+                                <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente2.jpg'/>
                                 <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
-                                    <Text color="gray.300">CEO Lorem</Text>
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Paulo Airton Santos</Text>
+                                    <Text color="gray.300">Diretor PS&CA</Text>
                                 </Stack>
                             </Stack>
                         </Stack>
@@ -378,14 +379,14 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                                <Text py="14">Através do consórcio, adquirimos 10 cartas que nos aproximaram ainda mais do nosso tão sonhado objetivo. Estamos extremamente satisfeitos com o atendimento excepcional que recebemos, principalmente do Sr. Robson. Sua dedicação, conhecimento e prestatividade fizeram toda a diferença em cada etapa do processo. Mal podemos esperar pelo momento em que todas as nossas cartas de consórcio serão contempladas...</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="60px !important" h="60px !important"/>
+                                <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente3.jpg'/>
                                 <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
-                                    <Text color="gray.300">CEO Lorem</Text>
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Joao carlos E Lilian</Text>
+                                    <Text color="gray.300">Empresário e Médica</Text>
                                 </Stack>
                             </Stack>
                         </Stack>
@@ -393,14 +394,14 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Estou muito contente com o trabalho da SS. Virei cliente através da indicação de um amigo e até hoje tenho produtos em minha carteira de investimentos. Recomendo sem dúvidas!</Text>
+                                <Text py="14">Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguido o que ele me indicava começou como meu corretor hoje é um grande amigo todas indicação de consórcio mando direto pra ele vários amigos meus fizeram consócio pela qualidade no atendimento não é o cara que vai te vender o consórcio e sumir! Te dá todo o suporte que ele nem precisaria está fazendo. Grande amigo e profissional só vai crescer!</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="60px !important"/>
+                                <Avatar size="lg" w="60px !important" src='./images/cliente4.jpg'/>
                                 <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Marcela Ribeiro</Text>
-                                    <Text color="gray.300">CEO Lorem</Text>
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Ronaldo Peruchini</Text>
+                                    <Text color="gray.300">Proprietário Armazém da Venâncio</Text>
                                 </Stack>
                             </Stack>
                         </Stack>
@@ -410,7 +411,9 @@ export default function Home() {
             </Stack>
         </Flex>
 
-        <Flex id="contato" m="0 auto" w="100%" pos="relative" bg="url(./images/consultora.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+        <Contact/>
+
+        {/* <Flex id="contato" m="0 auto" w="100%" pos="relative" bg="url(./images/consultora.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
             <Flex bg="linear-gradient(356.76deg, rgba(33, 39, 73, 0.37) 6.14%, #212749 122.55%)" w="100%">
                 <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="left">
                     <Stack spacing="10" w="100%" maxW="600px">
@@ -430,7 +433,7 @@ export default function Home() {
                     </Stack>
                 </Stack>
             </Flex>
-        </Flex>
+        </Flex> */}
 
         <Footer/>
     </>

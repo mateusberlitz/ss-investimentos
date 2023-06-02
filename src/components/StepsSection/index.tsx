@@ -143,7 +143,7 @@ export function StepsSection(){
 
                         <Stack spacing="10" w={["100%", "100%", "50%"]} display={["flex", "flex", "flex", "flex", "flex"]}>
                             <Heading color="blue.primary">Somos a SS Investimentos</Heading>
-                            <Img src="./../images/robson.jpg"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                            <Img src="./../images/robson.png"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
                         </Stack>
 
                         <HStack w={["100%", "100%", "70%", "100%"]} p={["7"]} spacing={["8", "8", "14"]} maxW="700px">
