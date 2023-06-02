@@ -1,4 +1,4 @@
-import { Flex, HStack, Stack, Text } from "@chakra-ui/react";
+import { Flex, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 import Logo from '../../../public/logo.svg';
@@ -11,6 +11,7 @@ import Instagram from '../../../public/instagram.svg';
 import Email from '../../../public/email.svg';
 import HS from '../../../public/hs_white.svg';
 import Selo from '../../../public/selo.svg';
+import { Linkedin } from "react-feather";
 
 export function Footer(){
     return(
@@ -28,10 +29,11 @@ export function Footer(){
                     <Stack spacing="4">
                         <Text fontSize={"lg"} fontWeight="normal">Esteja conectado conosco</Text>
                         <HStack spacing="6">
-                            <Link href="https://api.whatsapp.com/send?phone=5551985994869&text="><Whatsapp width="24px"/></Link>
-                            <Link href=""><Facebook/></Link>
-                            <Link href=""><Instagram/></Link>
-                            <Link href=""><Email/></Link>
+                            <Link href="https://api.whatsapp.com/send?phone=5551985994869&text=" target={"_blank"}><Whatsapp width="24px"/></Link>
+                            <Link href="https://www.facebook.com/profile.php?id=100090839722753" target={"_blank"}><Facebook/></Link>
+                            <Link href="https://www.instagram.com/ssinvestimentos_/" target={"_blank"}><Instagram/></Link>
+                            <Link href="https://www.linkedin.com/company/ss-investimentos" target={"_blank"}><Icon as={Linkedin} fontSize="25px" color="#D69766" opacity="0.8"/></Link>
+                            <Link href="mailto:contato@ssinvestimentos.com.br" target={"_blank"}><Email/></Link>
                         </HStack>
                     </Stack>
                 </Stack>
