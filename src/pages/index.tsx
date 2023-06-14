@@ -413,6 +413,8 @@ export default function Home() {
 
         <Contact/>
 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.3155715277207!2d-51.163891723124564!3d-29.594511310560634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519455cfd1e5d49%3A0xdb424b8ee817576e!2sAv.%20Pres.%20Lucena%2C%203315%20-%20506%20-%20Centro%2C%20Ivoti%20-%20RS%2C%2093900-000!5e0!3m2!1spt-BR!2sbr!4v1686761463512!5m2!1spt-BR!2sbr" width="100%" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         {/* <Flex id="contato" m="0 auto" w="100%" pos="relative" bg="url(./images/consultora.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
             <Flex bg="linear-gradient(356.76deg, rgba(33, 39, 73, 0.37) 6.14%, #212749 122.55%)" w="100%">
                 <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="left">

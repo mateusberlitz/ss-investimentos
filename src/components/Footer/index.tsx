@@ -11,7 +11,7 @@ import Instagram from '../../../public/instagram.svg';
 import Email from '../../../public/email.svg';
 import HS from '../../../public/hs_white.svg';
 import Selo from '../../../public/selo.svg';
-import { Linkedin } from "react-feather";
+import { Linkedin, MapPin } from "react-feather";
 
 export function Footer(){
     return(
@@ -23,7 +23,10 @@ export function Footer(){
                     <Stack spacing="4">
                         <Text fontSize={"lg"} fontWeight="normal">Venha nos visitar e tomar um café</Text>
 
-                        <Text color="gray.300">Av. Castelo Branco, 58, Centro, Novo Hamburgo - RS, 93510-310</Text>
+                        <HStack>
+                            <MapPin/>
+                            <Text color="gray.300">Avenida Presidente Lucena 3315, sala 506, centro ivoti</Text>
+                        </HStack>
                     </Stack>
 
                     <Stack spacing="4">
