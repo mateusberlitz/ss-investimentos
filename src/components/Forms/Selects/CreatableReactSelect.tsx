@@ -58,9 +58,14 @@ export function CreatableReactSelect({name, register, control, value = "", varia
     
     return control ? (
         <FormControl pos="relative" isInvalid={!!error}>
-            {
+            {/* {
                 label && (
                      <FormLabel fontSize={focus ? "10px" : "sm"} color="gray.700" mb="1" left="16px" display="inline-block" position="absolute" top={focus ? "6px" : "15px"} zIndex="2">{label}</FormLabel>
+                )
+            } */}
+            {
+                label && (
+                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label}</FormLabel>
                 )
             }
             <Controller

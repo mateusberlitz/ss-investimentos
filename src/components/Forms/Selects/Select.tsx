@@ -56,7 +56,7 @@ export function Select({ name, children, variant, selectRef, value = "", label, 
                 )
             }
             
-            <ChakraSelect {...getRegister()} borderRadius="3px" h="50px" fontWeight={controlledValue ? 'semibold' : 'regular'} name={name} fontSize="sm" borderColor={"gray.200"} bgColor={"gray.100"} _hover={ {bgColor: 'gray.500'} } size="lg" color={controlledValue ? "black" : "gray.700"} {...rest}>
+            <ChakraSelect {...getRegister()} borderRadius="3px" h="50px" fontWeight={controlledValue ? 'semibold' : 'regular'} name={name} fontSize="sm" borderColor={"gray.200"} bgColor={"gray.100"} _hover={ {bgColor: 'gray.500'} } size="lg" color={controlledValue ? "blue.primary" : "gray.700"} {...rest}>
                 {children}
             </ChakraSelect>
 

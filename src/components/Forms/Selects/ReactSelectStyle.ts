@@ -8,7 +8,7 @@ export const customStyles = {
         height: '50px',
         paddingLeft: '16px',
         paddingRight: '16px',
-        paddingTop: '12px',
+        paddingTop: '0px',
     }),
     input: (styles:any) => ({ 
         ...styles ,

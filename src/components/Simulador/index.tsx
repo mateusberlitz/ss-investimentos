@@ -10,7 +10,7 @@ import { Select } from "../Forms/Selects/Select";
 import { TextTag } from "../TextTag";
 import { SimulationLead, SimulationProduct, useSimulador } from "../../contexts/SimuladorContext";
 
-import { ArrowLeft, ArrowRight } from 'react-feather'
+import { ArrowLeft, ArrowRight, ArrowUp } from 'react-feather'
 
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
@@ -56,6 +56,8 @@ export function Simulador(){
     const simulador = useSimulador();
     const isWideVersion = useBreakpointValue({base: false, lg: true,});
 
+    const [isOpenSimulationWindow, setIsOpenSimulationWindow] = useState(false);
+
     const productForm = useForm<SimulationProduct>({
         resolver: yupResolver(ProductFormSchema),
         defaultValues:{
@@ -100,7 +102,6 @@ export function Simulador(){
           <ModalOverlay w="100%"/>
 
           <ModalContent w="100%">
-            {/* <ModalHeader>Modal Title</ModalHeader> */}
 
             <ModalCloseButton />
 
@@ -108,22 +109,23 @@ export function Simulador(){
               <Stack w="100%" maxW="360px" m="0 auto" py="10" spacing="14">
                 {
                   (!simulador.step || (simulador.step === 0)) ? (
-                    <Stack spacing="6">
-                      <TextTag>SIMULADOR</TextTag>
-
-                      <Heading fontSize="3xl">Calcule seu consórcio gratuitamente.</Heading>
+                    <Stack spacing="12">
+                      <Stack spacing="5">
+                        <TextTag>SIMULADOR</TextTag>
+                        <Heading fontSize="3xl">Veja qual seu plano ideal</Heading>
+                      </Stack>
 
                       {/* <Text>Veja quantos pontos smiles você acumula</Text> */}
 
                       <Stack spacing="5" as="form" onSubmit={productForm.handleSubmit(saveFirstPart)}>
-                          <ControlledSelect control={productForm.control} value={simulador.productData?.segment} error={productForm.formState.errors.segment} h="50px" name="segment" w="100%" fontSize="sm" placeholder="Objetivo" focusBorderColor="black" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
-                            <option value="Imóvel">Imóvel</option>
-                            <option value="Veículo">Veículo</option>
-                            <option value="Máquina Agrícola">Máquina Agrícola</option>
-                            <option value="Náutico">Náutico</option>
-                            <option value="Energia Solar">Energia Solar</option>
-                            <option value="Investimento">Investimento</option>
-                          </ControlledSelect>
+                            <ControlledSelect label='*Segmento' control={productForm.control} value={simulador.productData?.segment} error={productForm.formState.errors.segment} h="50px" name="segment" w="100%" fontSize="sm" placeholder="Objetivo" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                                <option value="Imóvel">Imóvel</option>
+                                <option value="Veículo">Veículo</option>
+                                <option value="Máquina Agrícola">Máquina Agrícola</option>
+                                <option value="Náutico">Náutico</option>
+                                <option value="Energia Solar">Energia Solar</option>
+                                <option value="Investimento">Investimento</option>
+                            </ControlledSelect>
 
                           {/* <RadioGroup onChange={setValue} value={value}>
                             <Stack direction='row'>
@@ -141,7 +143,7 @@ export function Simulador(){
                             )
                           }
 
-                          <ControlledSelect control={productForm.control} value={simulador.productData?.deadline.toString() === "0" ? "" : simulador.productData?.deadline.toString()} error={productForm.formState.errors.deadline} h="50px" name="deadline" w="100%" fontSize="sm" placeholder="Prazo em meses" focusBorderColor="black" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                          <ControlledSelect label='*Prazo' control={productForm.control} value={simulador.productData?.deadline.toString() === "0" ? "" : simulador.productData?.deadline.toString()} error={productForm.formState.errors.deadline} h="50px" name="deadline" w="100%" fontSize="sm" placeholder="Prazo em meses" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
                             {
                               (productForm.watch('segment') === "Veículo" || productForm.watch('segment') === "Máquina Agrícola" || productForm.watch('segment') === "Náutico" || productForm.watch('segment') === "Energia Solar") ? (
                                 <>
@@ -160,7 +162,7 @@ export function Simulador(){
                           </ControlledSelect>
 
                           <MainButton isLoading={productForm.formState.isSubmitting} type="submit" size="lg" w="100%" fontSize="md" rightIcon={<Icon as={ArrowRight} stroke="#ffffff" fontSize="18" fill="none" ml="2"/>}>
-                            Simular 
+                            Continuar 
                           </MainButton>
                       </Stack>
                     </Stack>
@@ -173,7 +175,7 @@ export function Simulador(){
 
                       {
                         simulador.productData && (
-                          <Board boxShadow="none" border="1px solid" borderColor="gray.200" padding="5" display="flex" flexDir="row" justifyContent="space-between" alignItems="center">
+                          <Board boxShadow="none" padding="0" display="flex" flexDir="row" justifyContent="space-between" alignItems="center">
                             <Stack spacing="3" w="55%">
                               <TextTag fontSize="11" fontWeight="semibold">VOCÊ SELECIONOU</TextTag>
 
@@ -190,10 +192,12 @@ export function Simulador(){
                         )
                       }
 
-                      <Stack spacing="5" as="form" onSubmit={leadForm.handleSubmit(saveSecondPart)}>
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.name} error={leadForm.formState.errors.name} name="name" placeholder="Seu nome" label="Nome completo" type="text"/>
+                      <Divider />
 
-                        <ControlledSelect control={leadForm.control} value={simulador.leadData?.address_state === "0" ? "" : simulador.leadData?.address_state} error={leadForm.formState.errors.address_state} h="50px" name="address_state" w="100%" fontSize="sm" placeholder="Estado (UF)" focusBorderColor="black" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                      <Stack spacing="5" as="form" onSubmit={leadForm.handleSubmit(saveSecondPart)}>
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.name} error={leadForm.formState.errors.name} name="name" placeholder="Seu nome" label="*Nome completo" type="text"/>
+
+                        <ControlledSelect control={leadForm.control} value={simulador.leadData?.address_state === "0" ? "" : simulador.leadData?.address_state} error={leadForm.formState.errors.address_state} label="*Estado" h="50px" name="address_state" w="100%" fontSize="sm" placeholder="Estado" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
                           {
                               states && states.map((state) => {
                                 return(
@@ -203,11 +207,11 @@ export function Simulador(){
                           }
                         </ControlledSelect>
                         
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.address_city} error={leadForm.formState.errors.address_city} name="address_city" placeholder="Cidade onde mora" label="Cidade" type="text" />
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.address_city} error={leadForm.formState.errors.address_city} name="address_city" placeholder="Cidade onde mora" label="*Cidade" type="text" />
 
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.email} error={leadForm.formState.errors.email} name="email" label="E-mail" type="email" placeholder="Seu e-mail" />
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.email} error={leadForm.formState.errors.email} name="email" label="*E-mail" type="email" placeholder="Seu e-mail" />
 
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.phone} error={leadForm.formState.errors.phone} name="phone" label="Telefone" type="tel" mask="phone" placeholder="Seu telefone"/>
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.phone} error={leadForm.formState.errors.phone} name="phone" label="*Telefone" type="tel" mask="phone" placeholder="Seu telefone"/>
 
                         <MainButton isLoading={leadForm.formState.isSubmitting} type="submit" size="lg" w="100%" rightIcon={<Icon as={ArrowRight} stroke="#ffffff" fontSize="18" fill="none" ml="2"/>}>
                           Ver resultados
@@ -322,19 +326,12 @@ export function Simulador(){
 
               </Stack>
             </ModalBody>
-
-            {/* <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button variant='ghost'>Secondary Action</Button>
-            </ModalFooter> */}
           </ModalContent>
         </Modal>
 
         {
           (asPath !== "/contempladas" && asPath !== "/desagio") && (
-            <Box position="fixed" right="20px" bottom="20px" zIndex="9">
+            <Box position="fixed" right="20px" bottom="20px" zIndex="999999">
                 {/* <Text>Simule um plano</Text> */}
 
                 {/* <SolidButton bg="linear-gradient(225deg, #DB2C2C 0%, #FC5453 100%);" color="white" fontSize="md" size="lg" onClick={simulador.handleOpenSimulador}>
@@ -345,7 +342,24 @@ export function Simulador(){
                         Simular consórcio
                     </MainButton>
 
-                    <IconButton aria-label="Acessar whatsapp" w="55px" icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="gradient" _hover={{bg: "gradient", boxShadow: `0 8px 20px -8px #222222`}}/>
+                    {/* <Stack>
+                        <HStack>
+                            <SolidButton>
+                                Simular consórcio
+                            </SolidButton>
+                            <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
+                        </HStack>
+
+                        {
+                            isOpenSimulationWindow && (
+                                <Stack h="600px" w="340px" bg="gray.200">
+
+                                </Stack>
+                            )
+                        }
+                    </Stack> */}
+
+                    <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
                     {/* <MainButton onClick={simulador.handleOpenSimulador}>
                         <Text maxW="40px"><WhatsappWhite/></Text>
                     </MainButton> */}
