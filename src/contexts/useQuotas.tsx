@@ -37,8 +37,8 @@ export interface Quota{
     adjust_index?: string;
     description?: string;
     purchase_date?: string;
-    created_at?: Date;
-    updated_at?: Date;
+    created_at: string;
+    updated_at: string;
 }
 
 export function useQuotas(){

@@ -20,28 +20,30 @@ import { Quota, useQuotas } from "@/contexts/useQuotas";
 import { NewQuotaModal } from "../../pageParts/Quotas/NewQuotaModal";
 import { EditQuota, EditQuotaModal } from "../../pageParts/Quotas/EditQuotaModal";
 import { ConfirmQuotaRemoveModal, RemoveQuotaData } from "../../pageParts/Quotas/ConfirmQuotaRemoveModal";
+import { dateObject } from "@/utils/Date/dateObject";
 
-interface ProfileFormData{
-    name: string;
-    name_display?: string;
-    email: string;
-    email_display?: string;
-    address: string;
-    phone: string;
-    logo?: File;
-    color?: string;
-    second_color?: string;
+interface FilterFormData{
+    search?: string;
+    start_date?: string;
+    segment?: string;
+    end_date?: string;
+    group?: string;
+    quota?: string;
+    sold?: string;
+    is_contemplated?: number;
+    reserved?: string;
 }
 
-const profileFormSchema = yup.object().shape({
-    name: yup.string().required('É preciso inserir um nome'),
-    name_display: yup.string().nullable(),
-    email: yup.string().required('E-mail obrigatório').email('E-mail inválido.'),
-    email_display: yup.string().email('E-mail inválido.').nullable(),
-    address: yup.string().required('Endereço é obrigatório'),
-    phone: yup.string().required('Telefone é obrigatório'),
-    color: yup.string().required('Defina uma cor principal para sua página'),
-    second_color: yup.string().required('Defina uma cor secundária para sua página'),
+const filterFormSchema = yup.object().shape({
+    search: yup.string(),
+    start_date: yup.string(),
+    end_date: yup.string(),
+    group: yup.string(),
+    segment: yup.string(),
+    quota: yup.string(),
+    sold: yup.string(),
+    is_contemplated: yup.number().transform((v, o) => o === '' ? null : v).nullable(),
+    reserved: yup.string(),
 });
 
 export default function AdminPage(){
@@ -50,8 +52,16 @@ export default function AdminPage(){
     const { profile, signOut } = useProfile();
     const { quotas, loadQuotas, insertQuota } = useQuotas();
 
-    const { control, watch, handleSubmit, formState} = useForm<ProfileFormData>({
-        resolver: yupResolver(profileFormSchema),
+    const [filteredQuotas, setFilteredQuotas] = useState<Quota[]>([]);
+
+    useEffect(() => {
+        if(quotas){
+            setFilteredQuotas(quotas);
+        }
+    }, [quotas]);
+
+    const { control, watch, handleSubmit, formState} = useForm<FilterFormData>({
+        resolver: yupResolver(filterFormSchema),
     });
 
     const editLogoRef = useRef<HTMLInputElement>(null);
@@ -82,47 +92,65 @@ export default function AdminPage(){
         }
     }
 
-    const handleSaveProfile = async (selfData : ProfileFormData) => {
-        try{
-            const userFormedData = new FormData();
-            if(toFormFile !== undefined){
-                userFormedData.append('logo', toFormFile);
+    const handleFilter = async (filter : FilterFormData) => {
+        if(quotas){
+            let newFilteredQuotas = quotas;
+
+            if(filter.search && filter.search !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    return quota.id == parseInt(filter.search ? filter.search : "")
+                });
             }
 
-            userFormedData.append('name', selfData.name);
-            userFormedData.append('name_display', selfData.name_display ? selfData.name_display : '');
-            userFormedData.append('email', selfData.email);
-            userFormedData.append('email_display', selfData.email_display ? selfData.email_display : '');
-            userFormedData.append('phone', selfData.phone);
-            userFormedData.append('address', selfData.address);
-            userFormedData.append('color', selfData.color ? selfData.color : '');
-            userFormedData.append('second_color', selfData.second_color ? selfData.second_color : '');
+            if(filter.start_date && filter.start_date !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    const createdAt = new Date(quota.created_at);
+                    let startDate = dateObject(filter.start_date ? filter.start_date : "");
 
-            if(profile){
-                await serverApi.post('/users/self', userFormedData, {
-                    headers: {
-                        'content-type': 'multipart/form-data'
+                    return createdAt > startDate;
+                });
+            }
+
+            if(filter.end_date && filter.end_date !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    const createdAt = new Date(quota.created_at);
+                    let endDate = dateObject(filter.end_date ? filter.end_date : "");
+
+                    return createdAt > endDate;
+                });
+            }
+
+            if(filter.segment && filter.segment !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    return quota.segment == filter.segment;
+                });
+            }
+
+            if(filter.quota && filter.quota !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    return quota.quota == filter.quota;
+                });
+            }
+
+            if(filter.group && filter.group !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    return quota.group == filter.group;
+                });
+            }
+
+            if(filter.is_contemplated && filter.is_contemplated !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    if(filter.is_contemplated){
+                        return quota.is_contemplated == !!!filter.is_contemplated;
                     }
                 });
-
-                toast({
-                    title: "Sucesso",
-                    description: `Seus dados foram salvos.`,
-                    status: "success",
-                    variant: 'left-accent',
-                    duration: 12000,
-                    isClosable: true,
-                });
             }
 
-        }catch(error: any) {
-            showErrors(error, toast);
-
-            if(error.response && error.response.data.access){
-                router.push('/');
-            }
+            setFilteredQuotas(newFilteredQuotas);
         }
     }
+
+    //console.log(quotas);
 
     const [color, setColor] = useState("");
     const [secondColor, setSecondColor] = useState("");
@@ -280,6 +308,8 @@ export default function AdminPage(){
         setIsConfirmRemoveQuotaModalOpen(false);
     }
 
+    console.log(quotas);
+
     return profile ? (
         <Box bg="gray.100">
             <NewQuotaModal afterCreate={loadQuotas} isOpen={isNewQuotaModalOpen} onRequestClose={CloseNewQuotaModal}/>
@@ -306,7 +336,7 @@ export default function AdminPage(){
                 <Stack w="100%" maxW="1000px" m="0 auto" py="5" spacing="14" mb="32">
                     <Stack flexDirection={['column', 'row']} spacing="8" justifyContent="space-between">
                         <Stack>
-                            <TextTag>Olá {profile.name}!</TextTag>
+                            <TextTag>Olá, {profile.name}!</TextTag>
                             <Heading color="gray.900">Gerencie seu estoque de cartas</Heading>
                         </Stack>
                     </Stack>
@@ -314,27 +344,23 @@ export default function AdminPage(){
                     <Stack bg="rgba(0,0,0,0.04)" px="6" py="6" borderRadius={"7"}>
                         <Text fontSize={"2xl"}>Filtrar</Text>
 
-                        <Stack as="form" spacing="5" onSubmit={handleSubmit(handleSaveProfile)}>
+                        <Stack as="form" spacing="5" onSubmit={handleSubmit(handleFilter)}>
                             <Stack  direction={["column", "row"]} spacing="6">
-                                <ControlledInput control={control} type="text" name="search" value={profile.name} label="Procurar" error={formState.errors.name}/>
-                                <ControlledInput control={control} type="text" name="start_date" value={profile.name_display} label="Data Inicial" error={formState.errors.name_display}/>
-                                <ControlledInput control={control} type="text" name="end_date" value={profile.name_display} label="Data Final" error={formState.errors.name_display}/>
-                                <ControlledSelect control={control} name="segment" value={profile.name_display} label="Segmento" error={formState.errors.name_display}>
-                                    <option value="Imóvel">Imóvel</option>
-                                    <option value="Veículo">Veículo</option>
+                                <ControlledInput control={control} type="text" name="search" label="Procurar" error={formState.errors.search}/>
+                                <ControlledInput control={control} type="date" name="start_date" label="Data Inicial" error={formState.errors.start_date}/>
+                                <ControlledInput control={control} type="date" name="end_date" label="Data Final" error={formState.errors.end_date}/>
+                                <ControlledSelect control={control} name="segment" label="Segmento" placeholder="Todas" error={formState.errors.segment}>
+                                    <option value={"Imóvel"}>Imóvel</option>
+                                    <option value={"Veículo"}>Veículo</option>
                                 </ControlledSelect>
                             </Stack>
 
                             <Stack direction={["column", "row"]} spacing="6" alignItems={"self-end"}>
-                                <ControlledInput control={control} type="text" name="group" value={profile.email} label="Grupo" error={formState.errors.email}/>
-                                <ControlledInput control={control} type="text" name="quote" value={profile.email_display} label="Cota" error={formState.errors.email_display}/>
-                                <ControlledSelect control={control} name="segment" value={profile.name_display} label="Segmento" error={formState.errors.name_display}>
-                                    <option value="Imóvel">Imóvel</option>
-                                    <option value="Veículo">Veículo</option>
-                                </ControlledSelect>
-                                <ControlledSelect control={control} name="segment" value={profile.name_display} label="Segmento" error={formState.errors.name_display}>
-                                    <option value="Imóvel">Imóvel</option>
-                                    <option value="Veículo">Veículo</option>
+                                <ControlledInput control={control} type="text" name="group" label="Grupo" error={formState.errors.group}/>
+                                <ControlledInput control={control} type="text" name="quota" label="Cota" error={formState.errors.quota}/>
+                                <ControlledSelect control={control} name="is_contemplated" label="Situação" placeholder="Todas" error={formState.errors.is_contemplated}>
+                                    <option value={1}>Contemplada</option>
+                                    <option value={0}>Não contemplada</option>
                                 </ControlledSelect>
 
                                 <MainButton isLoading={formState.isSubmitting} type="submit" h="50">Filtrar</MainButton>
@@ -370,14 +396,13 @@ export default function AdminPage(){
                             <OutlineButton onClick={OpenNewQuotaModal} colorScheme={"green"} size="sm" h="32px" leftIcon={<Icon as={Plus}/>} px="6" pl="5">Adicionar</OutlineButton>
                             
                             {
-                                (quotas && quotas.length === 0 ) && (
+                                (filteredQuotas && filteredQuotas.length === 0 ) && (
                                     <Text>Nenhuma cota encontrada.</Text>
                                 )
                             }
 
                             {
-                                (quotas && quotas.length > 0) && quotas.map((quota:Quota) =>{
-                                    console.log(quota);
+                                (filteredQuotas && filteredQuotas.length > 0) && filteredQuotas.map((quota:Quota) =>{
                                     const toEditQuotaData:EditQuota = {
                                         id: quota.id,
                                         sold: quota.sold,
