@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, HStack, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Divider, Heading, HStack, Icon, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Board } from "../Board";
 import { MainButton } from "../Buttons/MainButton";
 import { OutlineButton } from "../Buttons/OutlineButton";
@@ -23,6 +23,11 @@ import { Slider } from "../Forms/Slider";
 import { ControlledSlider } from "../Forms/Slider/ControllerSlider";
 import { useRouter } from "next/router";
 import { serverApi } from "../../services/api";
+import { states } from "@/utils/states";
+
+import WhatsappWhite from '../../../public/whatsapp_white.svg';
+import * as gtag from '../../services/gtag';
+import { callWhatsapp } from "@/functions/callWhatsapp";
 
 interface State{
   id: number;
@@ -43,7 +48,7 @@ const LeadFormSchema = yup.object().shape({
   email: yup.string().email("Informe um e-mail válido").required('Preencha o e-mail'),
   phone: yup.string().required('Informe seu telefone'),
   address_city: yup.string().required('Informe a sua cidade'),
-  address_uf: yup.number().required('Informe o seu estado'),
+  address_state: yup.string().required('Informe o seu estado'),
 });
 
 export function Simulador(){
@@ -66,7 +71,7 @@ export function Simulador(){
         name: simulador.leadData?.name,
         email: simulador.leadData?.email,
         address_city: simulador.leadData?.address_city,
-        address_uf: simulador.leadData?.address_uf,
+        address_state: simulador.leadData?.address_state,
         phone: simulador.leadData?.phone,
       }
     });
@@ -79,17 +84,15 @@ export function Simulador(){
       const result = await simulador.handleSaveSimulationLead(leadData);
     }
 
-    const [states, setStates] = useState<State[]>();
+    //const [states, setStates] = useState<State[]>();
 
-    const getStates = async () => {
-      const response = await serverApi.get(`/public/states`).then(response => setStates(response.data));
-    }
+    // const getStates = async () => {
+    //   const response = await serverApi.get(`/public/states`).then(response => setStates(response.data));
+    // }
 
-    useEffect(() => {
-      getStates();
-    }, []);
-
-    //console.log(productForm.watch('segment'));
+    // useEffect(() => {
+    //   getStates();
+    // }, []);
 
     return(
       <>
@@ -188,23 +191,23 @@ export function Simulador(){
                       }
 
                       <Stack spacing="5" as="form" onSubmit={leadForm.handleSubmit(saveSecondPart)}>
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.name} error={leadForm.formState.errors.name} name="name" label="Nome completo" type="text"/>
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.name} error={leadForm.formState.errors.name} name="name" placeholder="Seu nome" label="Nome completo" type="text"/>
 
-                        <ControlledSelect control={leadForm.control} value={simulador.leadData?.address_uf.toString() === "0" ? "" : simulador.leadData?.address_uf.toString()} error={leadForm.formState.errors.address_uf} h="50px" name="address_uf" w="100%" fontSize="sm" placeholder="Estado (UF)" focusBorderColor="black" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                        <ControlledSelect control={leadForm.control} value={simulador.leadData?.address_state === "0" ? "" : simulador.leadData?.address_state} error={leadForm.formState.errors.address_state} h="50px" name="address_state" w="100%" fontSize="sm" placeholder="Estado (UF)" focusBorderColor="black" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
                           {
                               states && states.map((state) => {
                                 return(
-                                  <option key={state.name} value={state.id}>{state.name}</option>
+                                  <option key={state.name} value={state.uf}>{state.name}</option>
                                 )
                               })
                           }
                         </ControlledSelect>
                         
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.address_city} error={leadForm.formState.errors.address_city} name="address_city" label="Cidade" type="text" />
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.address_city} error={leadForm.formState.errors.address_city} name="address_city" placeholder="Cidade onde mora" label="Cidade" type="text" />
 
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.email} error={leadForm.formState.errors.email} name="email" label="E-mail" type="email" />
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.email} error={leadForm.formState.errors.email} name="email" label="E-mail" type="email" placeholder="Seu e-mail" />
 
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.phone} error={leadForm.formState.errors.phone} name="phone" label="Telefone" type="tel" mask="phone"/>
+                        <ControlledInput control={leadForm.control} value={simulador.leadData?.phone} error={leadForm.formState.errors.phone} name="phone" label="Telefone" type="tel" mask="phone" placeholder="Seu telefone"/>
 
                         <MainButton isLoading={leadForm.formState.isSubmitting} type="submit" size="lg" w="100%" rightIcon={<Icon as={ArrowRight} stroke="#ffffff" fontSize="18" fill="none" ml="2"/>}>
                           Ver resultados
@@ -279,7 +282,7 @@ export function Simulador(){
                               <>
                                 <TextTag fontSize="11" fontWeight="semibold">RESULTADO:</TextTag>
 
-                                <HStack position="relative" justifyContent="space-between" _before={{content: '""', pos: 'absolute', height: '74px', width: '2px', bg: 'red.400', left: '-22px', top: '-25px'}}>
+                                <HStack position="relative" justifyContent="space-between" _before={{content: '""', pos: 'absolute', height: '74px', width: '2px', bg: 'gradient', left: '-22px', top: '-25px'}}>
                                   <Stack spacing="1">
                                     <Text fontWeight="bold">Meia parcela</Text>
                                     <Text fontWeight="bold">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(simulador.simulationResult.halfParcel)}</Text>
@@ -307,7 +310,7 @@ export function Simulador(){
                         </Stack>
                       </Board>
 
-                      <MainButton size="lg" w="100%">
+                      <MainButton size="lg" w="100%" onClick={() => {callWhatsapp()}}>
                         Falar com consultor
                       </MainButton>
 
@@ -331,12 +334,22 @@ export function Simulador(){
 
         {
           (asPath !== "/contempladas" && asPath !== "/desagio") && (
-            <Box position="fixed" right="20px" bottom="20px" zIndex="2" boxShadow="lg">
+            <Box position="fixed" right="20px" bottom="20px" zIndex="9">
                 {/* <Text>Simule um plano</Text> */}
 
-                <SolidButton bg="linear-gradient(225deg, #DB2C2C 0%, #FC5453 100%);" color="white" fontSize="md" size="lg" onClick={simulador.handleOpenSimulador}>
+                {/* <SolidButton bg="linear-gradient(225deg, #DB2C2C 0%, #FC5453 100%);" color="white" fontSize="md" size="lg" onClick={simulador.handleOpenSimulador}>
                   Simular consórcio
-                </SolidButton>
+                </SolidButton> */}
+                <HStack>
+                    <MainButton onClick={simulador.handleOpenSimulador}>
+                        Simular consórcio
+                    </MainButton>
+
+                    <IconButton aria-label="Acessar whatsapp" w="55px" icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="gradient" _hover={{bg: "gradient", boxShadow: `0 8px 20px -8px #222222`}}/>
+                    {/* <MainButton onClick={simulador.handleOpenSimulador}>
+                        <Text maxW="40px"><WhatsappWhite/></Text>
+                    </MainButton> */}
+                </HStack>
             </Box>
           )
         }

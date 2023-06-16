@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-//import { GA_TRACKING_ID, GOOGLE_ANALYTICS_TRACKING_ID } from '../services/gtag';
+import { GA_TRACKING_ID, GOOGLE_ANALYTICS_TRACKING_ID } from '../services/gtag';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -18,6 +18,36 @@ class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css2?family=Volkhov:wght@300;400;600&family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet" />
                 
                     <link rel="shortcut icon" href="logotipo.svg" type="image/svg+xml" />
+
+
+                    {/* Global Site Tag (gtag.js) - Google Analytics */}
+                    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_TRACKING_ID}`} />
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                            
+                                gtag('config', '${GOOGLE_ANALYTICS_TRACKING_ID}');
+                            `,
+                        }}
+                    />
+
+                    {/* Global Site Tag (gtag.js) - Google Ads */}
+                    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                            
+                                gtag('config', '${GA_TRACKING_ID}');
+                            `,
+                        }}
+                    />
+
 
                     <meta name="robots" content="index, follow"></meta>
 

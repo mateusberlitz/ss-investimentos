@@ -2,7 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 
 export const theme = extendTheme({
     shadows: {
-        outline: `0 0 0 3px #DB2C2C`,
+        outline: `0 0 0 3px #2D3250`,
     },
     components: {
         Checkbox: {

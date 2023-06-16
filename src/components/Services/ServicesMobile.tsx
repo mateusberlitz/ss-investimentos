@@ -17,7 +17,7 @@ export function ServicesMobile(){
                 <ServiceItemMobile overflow={"hidden"} title="Consultoria Financeira" subtitle="Consultoria Financeira" cover="./images/sl_aperto.jpg">
                     Receba uma consultoria de investimentos exclusiva para investir de forma segura, planejada e lucrativa para alavancar o seu patrimônio. Para objetivos de curto a longo prazo, conte com a nossa assessoria qualificada com estratégias claras para alcançar seus objetivos.
                 </ServiceItemMobile>
-                <ServiceItemMobile overflow={"hidden"} title="Complemento de Aposentadoria" subtitle="Consultoria Jurídica" cover="./images/sl_olds.jpg">
+                <ServiceItemMobile overflow={"hidden"} title="Aposentadoria planejada" subtitle="Consultoria Jurídica" cover="./images/sl_olds.jpg">
                     Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, viabilize oportunidades e proteja o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
                 </ServiceItemMobile>
                 <ServiceItemMobile overflow={"hidden"} title="Consultoria Jurídica" subtitle="Consultoria Jurídica" cover="./images/sl_gondola.jpg">

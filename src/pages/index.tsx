@@ -12,6 +12,7 @@ import Shield from '../../public/shield.svg';
 import Conversation from '../../public/conversation.svg';
 import Smile from '../../public/smile.svg';
 import Page from '../../public/page.svg';
+import Persons from '../../public/persons.svg';
 import LogoTipo from '../../public/logotipo.svg';
 import HSGold from '../../public/hs_gold.svg';
 import SS_HS from '../../public/ss_hs.svg';
@@ -29,6 +30,7 @@ import { Loading } from '@/components/Loading';
 import { ServicesTwo } from '@/components/Services/ServicesTwo';
 import { ServicesMobile } from '@/components/Services/ServicesMobile';
 import { Contact } from '@/pageParts/Contact';
+import { callWhatsapp } from '@/functions/callWhatsapp';
 
 
 export default function Home() {
@@ -42,11 +44,11 @@ export default function Home() {
         dots: true,
         centerMode: true,
         infinite: true,
-        speed: 500,
+        speed: 1400,
         slidesToShow: isWideVersion ? 3 : 1,
         slidesToScroll: 1,
-        //autoplay: true,
-        autoplaySpeed: 2000,
+        autoplay: true,
+        autoplaySpeed: 3500,
         pauseOnHover: true,
         beforeChange: (current: number, next: number) => setActiveSlide(next),
     };
@@ -91,7 +93,7 @@ export default function Home() {
                 <Stack spacing="24" px="6" w="100%" maxW="1200px" m="0 auto" py="20" alignItems={"center"}>
                     <Stack id="introText" textAlign={"center"} alignItems={"center"} spacing="24">
                         <Heading color="white" fontSize={["42px","48px","52px"]} fontWeight="regular">Conquiste os seus objetivos com uma<br/>estratégia de investimento inteligente!</Heading>
-                        <MainButton onClick={() => callConsultant()}>Agende sua consultoria</MainButton>
+                        <MainButton onClick={() => {callWhatsapp()}}>Faça seu Planejamento</MainButton>
                     </Stack>
 
                     <Stack fontSize={["md","md","md","md"]} spacing={["8","8","8","8"]} pos="relative" zIndex={2} color="white" w="100%"  px={["12","12","20"]} py="10" justifyContent="space-between" alignItems={"center"} direction={["column", "column", "row"]}>
@@ -116,7 +118,7 @@ export default function Home() {
                         }
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
-                            <Text fontWeight={"light"}>Crédito intermediado</Text>
+                            <Text fontWeight={"light"}>Créditos intermediados</Text>
                             <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 1.000.000.000</Text>
                         </Stack>
 
@@ -210,10 +212,20 @@ export default function Home() {
 
                             <Text color="white">Acompanhamento completo durante todo o processo, a fim de oferecer todo o suporte necessário.</Text>
                         </HStack>
+
+                        <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
+                            <Flex pos="relative" minH="63px" minW="63px" zIndex={2} alignItems="center" justifyContent={"center"}>
+                                <Box pos="absolute" borderRadius="full" left="0" right="0" bottom="0" top="0" bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" zIndex={-1} opacity="0.2"/>
+                                <Persons/>
+                            </Flex>
+
+                            <Text color="white">Profissionais capacitados para montar o melhor planejamento financeiro para você.</Text>
+                        </HStack>
                     </Stack>
 
                     <Stack textAlign={"left"} spacing="8" w={["100%", "100%", "50%"]} alignItems="center" justifyContent={"center"}>
-                        <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Foco em experiência e resultado</Text>
+                        {/* <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Foco em experiência e resultado</Text> */}
+                        <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Foco no cliente com o objetivo em trazer o melhor resultado.</Text>
                         <Text fontSize={"lg"} fontWeight="light" color="gray.200">Com serviços de qualidade que geram os melhores resultados de acordo com o seu propósito!</Text>
                     </Stack>
                 </Stack>
@@ -226,18 +238,19 @@ export default function Home() {
                     <Stack spacing="16" maxW="800px" color="white" textAlign={"center"}  alignItems="center">
                         <Text fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Dê o primeiro passo para conquistar os seus sonhos</Text>
                         <Text fontSize={"xl"}>Uma consultoria especializada pode ajudá-lo a traçar o melhor plano para você atingir seus objetivos de maneira mais eficiente e segura.</Text>
-                        <MainButton onClick={() => callConsultant()}>Agende sua consultoria</MainButton>
+                        <MainButton onClick={() => {callWhatsapp()}}>Faça seu Planejamento</MainButton>
                     </Stack>
                 </Stack>
             </Flex>
         </Flex>
 
         <Flex m="0 auto" w="100%" pos="relative">
-            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column">
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="32" pb="40" px="6" flexDirection="column">
                 <Stack spacing="16">
-                    <Stack maxW="900px" spacing="8">
+                    <Stack  spacing="8">
                         <Text color="blue.primary" fontSize={"52px"} fontWeight="medium">Corretor autorizado HS Consórcios</Text>
-                        <Text fontSize={"xl"}>Nossa empresa possui um histórico comprovado de excelência em serviços, aliado a medidas rigorosas de segurança, visamos sempre proporcionar aos nossos clientes uma experiência confiável e positiva.</Text>
+                        {/* <Text fontSize={"xl"}>Nossa empresa possui um histórico comprovado de excelência em serviços, aliado a medidas rigorosas de segurança, visamos sempre proporcionar aos nossos clientes uma experiência confiável e positiva.</Text> */}
+                        <Text maxW="700px" fontSize={"md"}>Nossa empresa possui um histórico comprovado de excelência em serviços e atendimentos, aliado a medidas rigorosas de segurança. Visamos sempre proporcionar aos nossos clientes uma experiência única, de forma confiável e positiva.</Text>
                     </Stack>
                 
                     <Stack spacing="16"  direction={["column", "column", "row"]}>
@@ -277,7 +290,7 @@ export default function Home() {
                                     <Flex w="35px">
                                         <Check width="35px"/>
                                     </Flex>
-                                    <Text fontWeight={"normal"}>Equipe profissional, bem treinada e comprometida com a excelência.</Text>
+                                    <Text fontWeight={"normal"}>Equipe dedicada com profissionais qualificados e comprometidos com os objetivos dos nossos clientes</Text>
                                 </HStack>
                             </Stack>
                         </Stack>
@@ -379,7 +392,7 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Através do consórcio, adquirimos 10 cartas que nos aproximaram ainda mais do nosso tão sonhado objetivo. Estamos extremamente satisfeitos com o atendimento excepcional que recebemos, principalmente do Sr. Robson. Sua dedicação, conhecimento e prestatividade fizeram toda a diferença em cada etapa do processo. Mal podemos esperar pelo momento em que todas as nossas cartas de consórcio serão contempladas...</Text>
+                                <Text py="14">Através do consórcio, adquirimos 10 cartas que nos aproximaram ainda mais do nosso tão sonhado objetivo. Estamos extremamente satisfeitos com o atendimento excepcional que recebemos, principalmente do Sr. Robson. Sua dedicação, conhecimento fizeram a diferença em cada etapa do processo...</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -394,7 +407,7 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py="14">Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguido o que ele me indicava começou como meu corretor hoje é um grande amigo todas indicação de consórcio mando direto pra ele vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte que ele nem precisaria está fazendo...</Text>
+                                <Text py="14">Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguindo o que ele me indicava. Começou como meu corretor hoje é um grande amigo. Vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte...</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">

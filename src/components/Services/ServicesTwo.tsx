@@ -64,7 +64,7 @@ export function ServicesTwo(){
                         <ServiceItem h="480px" overflow={"hidden"} title="Consultoria Financeira" subtitle="Consultoria Financeira" cover="./images/sl_aperto.jpg">
                             Receba uma consultoria de investimentos exclusiva para investir de forma segura, planejada e lucrativa para alavancar o seu patrimônio. Para objetivos de curto a longo prazo, conte com a nossa assessoria qualificada com estratégias claras para alcançar seus objetivos.
                         </ServiceItem>
-                        <ServiceItem h="480px" overflow={"hidden"} title="Complemento de Aposentadoria" subtitle="Consultoria Financeira" cover="./images/sl_olds.jpg">
+                        <ServiceItem h="480px" overflow={"hidden"} title="Aposentadoria planejada" subtitle="Consultoria Financeira" cover="./images/sl_olds.jpg">
                             Um planejamento financeiro para garantir uma aposentadoria digna e confortável, com a nossa equipe você pode planejar de forma antecipada a sua aposentadoria, para chegar na melhor idade com segurança e tranquilidade.
                         </ServiceItem>
                         <ServiceItem h="480px" overflow={"hidden"} title="Consultoria Jurídica" subtitle="Consultoria Jurídica" cover="./images/sl_gondola.jpg">

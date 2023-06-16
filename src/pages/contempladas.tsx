@@ -246,7 +246,7 @@ export default function Contempladas({quotas}: ContempladasProps){
             filteredQuotas = filteredQuotas.filter(quota => {
                 const parsedValue = parseFloat(quota.entrada.replace(".", "").replace(",", "."));
 
-                return  parsedValue < filterData.value * 1.30 && parsedValue > filterData.value * 0.70
+                return  parsedValue < filterData.value * 1.30// && parsedValue > filterData.value * 0.70
             })
         }
 
@@ -338,7 +338,7 @@ export default function Contempladas({quotas}: ContempladasProps){
                                     </ControlledSelect>
 
                                     <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
-                                    <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.value} label="Valor da entrada" name="value" type="text" mask="money"/>
+                                    <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.value} label="Entrada até" name="value" type="text" mask="money"/>
                                     <ControlledSlider control={filterForm.control} value={120} min={0} max={220} step={10} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask="deadline"/>
 
                                     {/* <ControlledInput control={filterForm.control} error={filterForm.formState.errors.credit} name="credit" label="Crédito" type="text"/>
@@ -521,42 +521,42 @@ export default function Contempladas({quotas}: ContempladasProps){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
+    // const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
 
-    let mainFormattedQuotasApi:Quota[] = []
-    const formatNumber = new Intl.NumberFormat("pt-BR")
+    // let mainFormattedQuotasApi:Quota[] = []
+    // const formatNumber = new Intl.NumberFormat("pt-BR")
 
-    if(quotasMainApi){
-        mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
-            const formattedQuota:Quota = {
-                id: `${quota.id.toString()}s`,
-                administradora: quota.admin,
-                categoria: quota.segment,
-                entrada: formatNumber.format(quota.value), //quota.value.toFixed(2),
-                fundo: '',
-                parcelas: quota.deadline.toString(),
-                reserva: quota.reserved ? "Reservada" : "Disponível",
-                taxa: '',
-                valor_credito: formatNumber.format(quota.credit),
-                valor_parcela: formatNumber.format(quota.parcel)
-            }
+    // if(quotasMainApi){
+    //     mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
+    //         const formattedQuota:Quota = {
+    //             id: `${quota.id.toString()}s`,
+    //             administradora: quota.admin,
+    //             categoria: quota.segment,
+    //             entrada: formatNumber.format(quota.value), //quota.value.toFixed(2),
+    //             fundo: '',
+    //             parcelas: quota.deadline.toString(),
+    //             reserva: quota.reserved ? "Reservada" : "Disponível",
+    //             taxa: '',
+    //             valor_credito: formatNumber.format(quota.credit),
+    //             valor_parcela: formatNumber.format(quota.parcel)
+    //         }
 
-            return formattedQuota;
-        })
+    //         return formattedQuota;
+    //     })
 
         
-        console.log(mainFormattedQuotasApi);
-    }
+    //     console.log(mainFormattedQuotasApi);
+    // }
 
     const response = await axios.get('https://contempladas.lanceconsorcio.com.br');
 
     let quotas:Quota[] = []
 
-    if(quotasMainApi){
-        quotas = [...response.data, ...mainFormattedQuotasApi];
-    }else{
-        const quotas = response.data;
-    }
+    // if(quotasMainApi){
+    //     quotas = [...response.data, ...mainFormattedQuotasApi];
+    // }else{
+        quotas = response.data;
+    //}
 
     const vehicleQuotas = quotas.filter((quota:Quota) => quota.categoria === "Veículo")
     vehicleQuotas.sort(function (a:Quota, b:Quota) {

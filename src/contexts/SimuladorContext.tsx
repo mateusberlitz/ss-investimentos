@@ -5,7 +5,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import { useErrors } from "../hooks/useErrors";
 import { api } from "../services/api";
 //import { useFacebookPixel } from "../Facebook";
-//import * as gtag from '../../services/gtag';
+import * as gtag from '../services/gtag';
 
 interface SimuladorContextProps{
     children?: ReactNode;
@@ -34,7 +34,7 @@ export interface SimulationProduct{
 export interface SimulationLead{
     name: string;
     address_city: string;
-    address_uf: string;
+    address_state: string;
     email: string;
     phone: string;
     user_email?: string;
@@ -141,9 +141,6 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
 
             setCampaignOrigin(parsedStoredCampaignOrigin);
         }
-
-
-        console.log(campaignName);
     }, []);
 
     const handleOpenSimulador = () => {
@@ -198,7 +195,7 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
                 //     const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL", value: productData?.credit});
                 // }
     
-                // gtag.track('conversion', { sendTo: 'AW-797158179/GciSCJ6BwbkBEKPWjvwC', value: productData?.credit, currency: 'BRL'}));
+                gtag.track('conversion', { sendTo: 'AW-11140098875/953YCPK2tZYYELvWgcAp', value: productData?.credit, currency: 'BRL'});
             }
         }catch(error: any){
             showErrors(error, toast);

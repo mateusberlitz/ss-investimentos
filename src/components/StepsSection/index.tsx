@@ -7,6 +7,8 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
+import SS from '../../../public/ss.svg';
+
 export function StepsSection(){
     const sectionRef = useRef(null);
     const progressRef = useRef(null);
@@ -142,7 +144,16 @@ export function StepsSection(){
                     <Stack spacing="10" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
 
                         <Stack spacing="16" w={["100%", "100%", "50%"]} display={["flex", "flex", "flex", "flex", "flex"]} pt={["28","28","64","44","36"]}>
-                            <Heading color="blue.primary">Somos a SS Investimentos</Heading>
+                            
+                            <Stack>
+                                <HStack>
+                                    <Heading color="blue.primary">Somos a </Heading>
+                                </HStack>
+                                <HStack alignItems={"center"}>
+                                    <Flex maxW="50px"><SS/></Flex>
+                                    <Heading color="blue.primary" pt="3">Investimentos</Heading>
+                                </HStack>
+                            </Stack>
                             <Img src="./../images/robson.png"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
                         </Stack>
 
