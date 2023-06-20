@@ -272,14 +272,14 @@ background: #DA9B68;
     bottom: -90px
   }
   #clientes .slick-dots li{
-    width: 70px;
+    width: 60px;
   }
   #clientes .slick-dots li button{
-    width: 70px;
+    width: 60px;
   }
   #clientes .slick-dots li button:before{
     content: "";
     height: 3px;
-    width: 70px;
+    width: 60px;
     background-color: white;
   }
