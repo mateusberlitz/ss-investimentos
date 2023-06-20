@@ -56,7 +56,7 @@ export function Contact(){
     }
 
     return(
-        <Flex id="contato" m="0 auto" w="100%" pos="relative" bg="url(./images/robson_bg.jpg)" backgroundSize="cover" backgroundPosition="center right">
+        <Flex id="contato" m="0 auto" w="100%" pos="relative" bg="url(./images/robson_bg.jpg)" backgroundSize="cover" backgroundPosition={["center left","center left","center right","center right","center right"]}>
             <Flex bg="linear-gradient(356.76deg, rgba(33, 39, 73, 0.37) 6.14%, #212749 122.55%)" w="100%" _before={{content: '""', pos: "absolute", bg: "gradient", height: "100%", w: ["5px","10px","10px","10px","20px"]}}>
                 <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="left">
                     <Stack spacing="16" w="100%" maxW="500px" as="form" onSubmit={contactForm.handleSubmit(handleSendContact)}>

@@ -118,7 +118,7 @@ export function StepsSectionClean(){
     return (
         <Flex id="sobre" m="0 auto" w="100%" pos="relative" ref={sectionRef}>
             <Flex direction="column" w="100%" >
-                <Flex w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px={["1","6","6","6"]} flexDirection="column" pos="relative">
+                <Flex w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px={["6","6","6","6"]} flexDirection="column" pos="relative">
 
                     <Stack spacing="10" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]} pos="relative">
 

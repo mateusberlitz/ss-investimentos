@@ -25,8 +25,8 @@ export function ServiceItemMobile({title, subtitle, children, cover, ...rest}: S
     return(
         <Flex bg={`url(${cover})`} onClick={() => setActive(!active)} backgroundSize="cover" backgroundPosition="0 0px" cursor={"pointer"} {...rest} transition={"all ease 0.5s"}>
             <Stack w={"100%"} bg="rgba(45,50,80,0.7)" h={active ? "500px" : "140px"} spacing="10" p="8" pos="relative" transition={"all ease 0.5s"}>
-                <HStack>
-                    <Text fontSize={"2xl"}>{title}</Text>
+                <HStack justifyContent={"space-between"}>
+                    <Text fontSize={"2xl"} maxW="160px">{title}</Text>
                     <IconButton onClick={() => setActive(!active)} icon={<Icon as={ChevronDown} fontSize="35px" transform={active ? "rotate(180deg)" : "rotate(0deg)"} transition={"all ease 0.5s"}/>} aria-label="Ver mais" bg="transparent" _focus={{bg:"rgba(255,255,255,0.2)"}} _active={{bg:"rgba(255,255,255,0.2)"}}/>
                 </HStack>
                 <Stack spacing="10">

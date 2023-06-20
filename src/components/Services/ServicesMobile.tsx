@@ -26,7 +26,7 @@ export function ServicesMobile(){
                 <ServiceItemMobile overflow={"hidden"} title="Seguro e Previdência" subtitle="Seguro e Previdência" cover="./images/sl_freela.jpg">
                     Desfrute da segurança e da tranquilidade que você e sua família merecem, conte com seguros de vida e previdência privada para proteger você, sua família. Contrate também para sua empresa e colaboradores, para garantir diversos benefícios e vantagens fiscais.
                 </ServiceItemMobile>
-                <ServiceItemMobile overflow={"hidden"} title="Agronegócio" subtitle="Agronegócio" cover="./images/sl_agro.jpg">
+                <ServiceItemMobile overflow={"hidden"} title="Investimento Agronegócio" subtitle="Agronegócio" cover="./images/sl_agro.jpg">
                     Invista para o desenvolvimento da sua produção rural através de implementos agrícolas. Expanda a capacidade produtiva do seu negócio rural, trazendo mais tecnologia para o seu trabalho com a aquisição ou renovação de maquinário.
                 </ServiceItemMobile>
                 <ServiceItemMobile overflow={"hidden"} title="Consultoria Contábil" subtitle="Consultoria Contábil" cover="./images/sl_contabil.jpg">
