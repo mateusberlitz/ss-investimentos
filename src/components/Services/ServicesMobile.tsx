@@ -23,6 +23,12 @@ export function ServicesMobile(){
                 <ServiceItemMobile overflow={"hidden"} title="Consultoria Jurídica" subtitle="Consultoria Jurídica" cover="./images/sl_gondola.jpg">
                     Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, viabilize oportunidades e proteja o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
                 </ServiceItemMobile>
+                <ServiceItemMobile overflow={"hidden"} title="Seguro e Previdência" subtitle="Seguro e Previdência" cover="./images/sl_freela.jpg">
+                    Desfrute da segurança e da tranquilidade que você e sua família merecem, conte com seguros de vida e previdência privada para proteger você, sua família. Contrate também para sua empresa e colaboradores, para garantir diversos benefícios e vantagens fiscais.
+                </ServiceItemMobile>
+                <ServiceItemMobile overflow={"hidden"} title="Agronegócio" subtitle="Agronegócio" cover="./images/sl_agro.jpg">
+                    Invista para o desenvolvimento da sua produção rural através de implementos agrícolas. Expanda a capacidade produtiva do seu negócio rural, trazendo mais tecnologia para o seu trabalho com a aquisição ou renovação de maquinário.
+                </ServiceItemMobile>
                 <ServiceItemMobile overflow={"hidden"} title="Consultoria Contábil" subtitle="Consultoria Contábil" cover="./images/sl_contabil.jpg">
                     Uma boa assessoria contábil é fundamental para a saúde financeira da sua empresa. Além de garantir que as obrigações fiscais e tributárias sejam cumpridas de forma correta, ela ajuda a otimizar processos, reduzir custos, ampliar seus ganhos e identificar oportunidades de crescimento. Com uma equipe de contadores experientes ao seu lado, você pode tomar decisões mais precisas e estratégicas para o seu negócio.
                 </ServiceItemMobile>

@@ -31,6 +31,7 @@ import { ServicesTwo } from '@/components/Services/ServicesTwo';
 import { ServicesMobile } from '@/components/Services/ServicesMobile';
 import { Contact } from '@/pageParts/Contact';
 import { callWhatsapp } from '@/functions/callWhatsapp';
+import { StepsSectionClean } from '@/components/StepsSectionClean';
 
 
 export default function Home() {
@@ -119,7 +120,7 @@ export default function Home() {
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
                             <Text fontWeight={"light"}>Créditos intermediados</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 1.000.000.000</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ R$ 900.000.000</Text>
                         </Stack>
 
                         {
@@ -135,7 +136,8 @@ export default function Home() {
             </Box>
         </Flex>   
         
-        <StepsSection/>
+        {/* <StepsSection/> */}
+        <StepsSectionClean/>
 
         <Box id="solucoes"/>
 
@@ -355,12 +357,27 @@ export default function Home() {
                     </Stack>
 
                     <Slider {...settings}>
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 0 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text py="14">O Robson é sinônimo de comprometimento, sempre responde rápido não importando a hora que o chamo, explica tudo quantas vezes forem preciso, em resumo seu atendimento é impecável! Já estou na segunda carta e não pretendo parar de comprar com ele!</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente5.jpg'/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Guilherme Rizzo</Text>
+                                    <Text color="gray.300">Sócio e Fundador do Grupo Rizzo</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
                         <Stack alignItems={"center"} color="white" pos="relative" width="100%">
                             {/* {
                                activeSlide === 0 && <Box pos="absolute" bg="#6D7DD9" filter="blur(135px)" h="260px" w="260px" zIndex={-1}/>
                             } */}
 
-                            <Stack zIndex={2} bg={activeSlide === 0 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 1 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
                                 <Text py="14">Nossa experiência com a S&S foi ótima. Robson conhece muito sobre investimentos e, como foi no nosso caso, sobre Consórcios. Transmite segurança e transparência na condução do contrato.</Text>
                             </Stack>
@@ -369,13 +386,13 @@ export default function Home() {
                                 <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente1.jpg'/>
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Katia Santos</Text>
-                                    <Text color="gray.300"></Text>
+                                    <Text color="gray.300">Admistradora Financeira</Text>
                                 </Stack>
                             </Stack>
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 1 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
                                 <Text py="14">Quero aqui testemunhar o atendimento diferenciado da S&S através da pessoa do Robson que além de esclarecer as dúvidas sobre o investimento em consórcios nos orienta sobre a melhor forma de investir conforme nosso perfil e renda disponível no momento.</Text>
                             </Stack>
@@ -390,7 +407,7 @@ export default function Home() {
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
                                 <Text py="14">Através do consórcio, adquirimos 10 cartas que nos aproximaram ainda mais do nosso tão sonhado objetivo. Estamos extremamente satisfeitos com o atendimento excepcional que recebemos, principalmente do Sr. Robson. Sua dedicação, conhecimento fizeram a diferença em cada etapa do processo...</Text>
                             </Stack>
@@ -405,7 +422,7 @@ export default function Home() {
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 4 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
                                 <Quote/>
                                 <Text py="14">Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguindo o que ele me indicava. Começou como meu corretor hoje é um grande amigo. Vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte...</Text>
                             </Stack>

@@ -30,7 +30,7 @@ interface FilterFormData{
     group?: string;
     quota?: string;
     sold?: string;
-    is_contemplated?: number;
+    is_contemplated?: string;
     reserved?: string;
 }
 
@@ -42,7 +42,7 @@ const filterFormSchema = yup.object().shape({
     segment: yup.string(),
     quota: yup.string(),
     sold: yup.string(),
-    is_contemplated: yup.number().transform((v, o) => o === '' ? null : v).nullable(),
+    is_contemplated: yup.string().nullable(),
     reserved: yup.string(),
 });
 
@@ -53,15 +53,32 @@ export default function AdminPage(){
     const { quotas, loadQuotas, insertQuota } = useQuotas();
 
     const [filteredQuotas, setFilteredQuotas] = useState<Quota[]>([]);
+    const [filter, setFilter] = useState<FilterFormData>({
+        sold: "0"
+    });
+
+    // useEffect(() => {
+    //     if(quotas){
+    //         const newFilteredQuotas = quotas?.filter((quota) => {
+    //             return quota.sold == false;
+    //         });
+
+    //         setFilteredQuotas(newFilteredQuotas);
+    //     }
+    // }, [quotas]);
 
     useEffect(() => {
+        console.log(filter);
         if(quotas){
-            setFilteredQuotas(quotas);
+            handleFilter()
         }
-    }, [quotas]);
+    }, [filter, setFilter]);
 
     const { control, watch, handleSubmit, formState} = useForm<FilterFormData>({
         resolver: yupResolver(filterFormSchema),
+        defaultValues:{
+          sold: "0",
+        }
     });
 
     const editLogoRef = useRef<HTMLInputElement>(null);
@@ -92,7 +109,11 @@ export default function AdminPage(){
         }
     }
 
-    const handleFilter = async (filter : FilterFormData) => {
+    const handleChangeFilter = async (newFilter : FilterFormData) => {
+        setFilter({...filter, ...newFilter});
+    }
+
+    const handleFilter = async () => {
         if(quotas){
             let newFilteredQuotas = quotas;
 
@@ -141,7 +162,23 @@ export default function AdminPage(){
             if(filter.is_contemplated && filter.is_contemplated !== undefined){
                 newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
                     if(filter.is_contemplated){
-                        return quota.is_contemplated == !!!filter.is_contemplated;
+                        return quota.is_contemplated == !!parseFloat(filter.is_contemplated);
+                    }
+                });
+            }
+
+            if(filter.sold && filter.sold !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    if(filter.sold){
+                        return quota.sold == !!parseFloat(filter.sold);
+                    }
+                });
+            }
+
+            if(filter.reserved && filter.reserved !== undefined){
+                newFilteredQuotas = newFilteredQuotas?.filter((quota) => {
+                    if(filter.reserved){
+                        return quota.reserved == !!parseFloat(filter.reserved);
                     }
                 });
             }
@@ -308,8 +345,6 @@ export default function AdminPage(){
         setIsConfirmRemoveQuotaModalOpen(false);
     }
 
-    console.log(quotas);
-
     return profile ? (
         <Box bg="gray.100">
             <NewQuotaModal afterCreate={loadQuotas} isOpen={isNewQuotaModalOpen} onRequestClose={CloseNewQuotaModal}/>
@@ -344,7 +379,7 @@ export default function AdminPage(){
                     <Stack bg="rgba(0,0,0,0.04)" px="6" py="6" borderRadius={"7"}>
                         <Text fontSize={"2xl"}>Filtrar</Text>
 
-                        <Stack as="form" spacing="5" onSubmit={handleSubmit(handleFilter)}>
+                        <Stack as="form" spacing="5" onSubmit={handleSubmit(handleChangeFilter)}>
                             <Stack  direction={["column", "row"]} spacing="6">
                                 <ControlledInput control={control} type="text" name="search" label="Procurar" error={formState.errors.search}/>
                                 <ControlledInput control={control} type="date" name="start_date" label="Data Inicial" error={formState.errors.start_date}/>
@@ -353,14 +388,24 @@ export default function AdminPage(){
                                     <option value={"Imóvel"}>Imóvel</option>
                                     <option value={"Veículo"}>Veículo</option>
                                 </ControlledSelect>
+
+                                <ControlledSelect control={control} name="is_contemplated" label="Situação" placeholder="Todas" error={formState.errors.is_contemplated}>
+                                    <option value={1}>Contemplada</option>
+                                    <option value={0}>Não contemplada</option>
+                                </ControlledSelect>
                             </Stack>
 
                             <Stack direction={["column", "row"]} spacing="6" alignItems={"self-end"}>
                                 <ControlledInput control={control} type="text" name="group" label="Grupo" error={formState.errors.group}/>
                                 <ControlledInput control={control} type="text" name="quota" label="Cota" error={formState.errors.quota}/>
-                                <ControlledSelect control={control} name="is_contemplated" label="Situação" placeholder="Todas" error={formState.errors.is_contemplated}>
-                                    <option value={1}>Contemplada</option>
-                                    <option value={0}>Não contemplada</option>
+                                <ControlledSelect control={control} name="reserved" label="Reserva" placeholder="Todas" error={formState.errors.reserved}>
+                                    <option value={1}>Reservada</option>
+                                    <option value={0}>Não Reservada</option>
+                                </ControlledSelect>
+
+                                <ControlledSelect control={control} value={0} name="sold" label="Estoque" placeholder="Todas" error={formState.errors.sold}>
+                                    <option value={1}>Vendida</option>
+                                    <option value={0}>Disponível</option>
                                 </ControlledSelect>
 
                                 <MainButton isLoading={formState.isSubmitting} type="submit" h="50">Filtrar</MainButton>
@@ -447,35 +492,35 @@ export default function AdminPage(){
                                                     quota.categoria === "Imóvel" ? <Icon as={Home} stroke="#333" w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "14px"}></Icon> : <Icon as={Car} w={isWideVersion ? "18px" : "14px"} h={isWideVersion ? "18px" : "12px"}  fill="#333"></Icon>
                                                 } */}
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved ? 1 : 0.6} >
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} >
                                                 <HStack spacing="1" fontWeight="bold">
                                                     <Text>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(quota.credit)}</Text>
                                                 </HStack>
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={quota.reserved ? 1 : 0.6} >
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} >
                                                 <HStack spacing="1">
                                                     <Text>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(quota.value ? quota.value : 0)}</Text>
                                                 </HStack>
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved ? 1 : 0.6} >
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} >
                                                 {quota.deadline}x
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved ? 1 : 0.6} >
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} >
                                                 <HStack spacing="1">
                                                     <Text>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(quota.parcel)}</Text>
                                                 </HStack>
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved ? 1 : 0.6} >
+                                            <Td bg="rgba(67, 67, 67, 0.05)" p="2px" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} >
                                                 {quota.admin}
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" opacity={!quota.reserved ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.reserved ? "green.400" : "gray.text"}>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.reserved ? "green.400" : "gray.text"}>
                                                 {
                                                     !quota.reserved ? <Text>--</Text> : <X width="12px" color="#DB2C2C"/>
                                                 }
                                             </Td>
-                                            <Td bg="rgba(67, 67, 67, 0.05)" opacity={!quota.reserved ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.reserved ? "green.400" : "gray.text"}>
+                                            <Td bg="rgba(67, 67, 67, 0.05)" opacity={!quota.reserved && !quota.sold ? 1 : 0.6} borderRightRadius={"6"} p="2px" color={quota.sold ? "green.400" : "gray.text"}>
                                                 {
-                                                    !quota.reserved ? <Text>--</Text> : <X width="12px" color="#DB2C2C"/>
+                                                    !quota.sold ? <Text>--</Text> : <X width="12px" color="#DB2C2C"/>
                                                 }
                                             </Td>
                                             <Td bg="rgba(67, 67, 67, 0.05)" opacity={!quota.reserved ? 1 : 0.6} borderRightRadius={"6"} p="2px" >

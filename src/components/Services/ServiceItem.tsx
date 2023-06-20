@@ -1,3 +1,4 @@
+import { callWhatsapp } from "@/functions/callWhatsapp";
 import { ChakraProps, Flex, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { MainButton } from "../Buttons/MainButton";
 
@@ -15,9 +16,9 @@ export function ServiceItem({title, subtitle, children, cover, active = false, .
         "2xl": true,
     });
 
-    const callConsultant = () => {
-        window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
-    }
+    // const callConsultant = () => {
+    //     window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
+    // }
 
     return(
         <Flex bg={`url(${cover})`} backgroundSize="cover" backgroundPosition="0 0px" h="100%" cursor={"pointer"} {...rest}>
@@ -29,7 +30,7 @@ export function ServiceItem({title, subtitle, children, cover, active = false, .
                 <Text fontSize={"md"} pl="14" opacity={isWideVersion && active ? "1" : "0"} marginTop={isWideVersion && active ? "70px !important" : "120px !important"} _groupHover={{opacity: 1, marginTop: "70px !important", transitionDelay: "0.5s"}} transition={"all 0.5s ease 0s"}>
                     {children}
                 </Text>
-                <MainButton onClick={() => callConsultant()} maxW="calc(100% - 50px)" size="sm" ml="14 !important" mt="30px !important" opacity={isWideVersion && active ? "1" : "0"} _groupHover={{opacity: 1, transitionDelay: "0.5s"}} transition={"all .5s ease 0s"}>Falar com especialista</MainButton>
+                <MainButton onClick={() => callWhatsapp()} maxW="calc(100% - 50px)" size="sm" ml="14 !important" mt="30px !important" opacity={isWideVersion && active ? "1" : "0"} _groupHover={{opacity: 1, transitionDelay: "0.5s"}} transition={"all .5s ease 0s"}>Falar com especialista</MainButton>
             </Stack>
         </Flex>
     )
