@@ -415,7 +415,7 @@ export default function Home() {
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
                                 <Avatar size="lg" w="60px !important" h="60px !important" src='./images/cliente3.jpg'/>
                                 <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Joao carlos E Lilian</Text>
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>João Carlos E Lilian</Text>
                                     <Text color="gray.300">Empresário e Médica</Text>
                                 </Stack>
                             </Stack>

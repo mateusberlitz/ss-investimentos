@@ -223,9 +223,9 @@ export function Quotation(){
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                 <QuotationItem ticker="Euro" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(euro.value)} percent={euro.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="INCC" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(incc.value)}%`} />
+                <QuotationItem ticker="INCC" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(incc.value)}% últ. 12m`} />
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="IGPM" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(igpm.value)}%`}/>
+                <QuotationItem ticker="IGPM" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(igpm.value)}% últ. 12m`}/>
 
                 <HStack w="fit-content" h="35px" bg="blue.primary" color="gray.200" fontSize={"sm"}>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
@@ -241,9 +241,9 @@ export function Quotation(){
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                     <QuotationItem ticker="Euro" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(euro.value)} percent={euro.variation}/>
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="INCC" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(incc.value)}%`} />
+                    <QuotationItem ticker="INCC" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(incc.value)}% últ. 12m`} />
                     <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                    <QuotationItem ticker="IGPM" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(igpm.value)}%`}/>
+                    <QuotationItem ticker="IGPM" value={`${Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(igpm.value)}% últ. 12m`}/>
                 </HStack>
             </HStack>
         </HStack>
