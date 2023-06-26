@@ -149,7 +149,7 @@ export function Simulador(){
                                 <>
                                   {/* <option value={36}>36 vezes</option> */}
                                   <option value={60}>60 vezes</option>
-                                  <option value={80}>120 vezes</option>
+                                  <option value={80}>80 vezes</option>
                                   <option value={100}>100 vezes</option>
                                   <option value={120}>120 vezes</option>
                                 </>
