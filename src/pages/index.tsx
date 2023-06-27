@@ -49,7 +49,7 @@ export default function Home() {
         slidesToShow: isWideVersion ? 3 : 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 4500,
+        autoplaySpeed: 7500,
         pauseOnHover: true,
         beforeChange: (current: number, next: number) => setActiveSlide(next),
     };
