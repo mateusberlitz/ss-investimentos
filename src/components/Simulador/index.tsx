@@ -118,16 +118,16 @@ export function Simulador(){
                       {/* <Text>Veja quantos pontos smiles você acumula</Text> */}
 
                       <Stack spacing="5" as="form" onSubmit={productForm.handleSubmit(saveFirstPart)}>
-                            <ControlledSelect label='*Segmento' control={productForm.control} value={simulador.productData?.segment} error={productForm.formState.errors.segment} h="50px" name="segment" w="100%" fontSize="sm" placeholder="Objetivo" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                            {/* <ControlledSelect label='*Segmento' control={productForm.control} value={simulador.productData?.segment} error={productForm.formState.errors.segment} h="50px" name="segment" w="100%" fontSize="sm" placeholder="Objetivo" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
                                 <option value="Imóvel">Imóvel</option>
                                 <option value="Veículo">Veículo</option>
                                 <option value="Máquina Agrícola">Máquina Agrícola</option>
                                 <option value="Náutico">Náutico</option>
                                 <option value="Energia Solar">Energia Solar</option>
                                 <option value="Investimento">Investimento</option>
-                            </ControlledSelect>
+                            </ControlledSelect> */}
 
-                            <ReactSelect name={"segment"} options={[
+                            <ReactSelect control={productForm.control} value={simulador.productData?.segment} name={"segment"} label='*Segmento' placeholder="Escolher Segmento" options={[
                                 {
                                     value: "Imóvel",
                                     label: "Imóvel",
@@ -147,6 +147,11 @@ export function Simulador(){
                                     value: "Investimento",
                                     label: "Investimento",
                                     description: "Aumento patrimonial / Renda complementar / Poupança"
+                                },
+                                {
+                                    value: "Capital de Giro",
+                                    label: "Capital de Giro",
+                                    description: "Para a sua empresa"
                                 },
                                 {
                                     value: "Náutico",

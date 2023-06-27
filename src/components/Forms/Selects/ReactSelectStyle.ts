@@ -42,16 +42,18 @@ export const customStyles = {
     }),
     placeholder: (styles: any, state: any) => ({ 
         ...styles, 
-        opacity: '0' ,
+        //opacity: '0' ,
         position: 'absolute',
         display: 'block',
-        top: state.isFocused ? "-8px" : '4px',
+        //top: state.isFocused ? "-8px" : '4px',
         left: '0',
-        fontSize: state.isFocused ? "11px" : '15px',
+        color: "#6e7191",
+        fontSize: '14px',
+        fontWeight: "normal",
         transition: 'all ease-in 0.1s',
-        ':focus': {
-            top: "-15px"
-        },
+        // ':focus': {
+        //     top: "-15px"
+        // },
     }),
     dropdownIndicator: (styles: any, state: any) => ({ 
         ...styles,

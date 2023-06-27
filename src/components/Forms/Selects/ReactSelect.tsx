@@ -25,6 +25,7 @@ interface ReactSelectProps{
     marginBottom?: string;
     maxWidth?: string
     label?: string;
+    placeholder?: string;
 }
 
 const CustomPlaceholder = (props: PlaceholderProps) => {
@@ -81,7 +82,7 @@ export function ReactSelect({name, register, control, value = "", variant = 'out
         <FormControl pos="relative" isInvalid={!!error}>
             {
                 label && (
-                    <Text fontSize="sm" mb="1" display="inline-block">{label}</Text>
+                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label}</FormLabel>
                 )
             }
             <Controller
@@ -89,7 +90,7 @@ export function ReactSelect({name, register, control, value = "", variant = 'out
                 control={control}
                 defaultValue={controlledValue}
                 render={({ field: {ref, onChange, value, ...select} }) => 
-                    <Select {...select} ref={ref} options={options} styles={customStyles} value={options.find(c => c.value === controlledValue)} onChange={val => {onChange(val ? val.value : ""); setControlledValue(val ? val.value : "");}} {...rest}/>
+                    <Select {...select} ref={ref} formatOptionLabel={formatOption} options={options} styles={customStyles} value={options.find(c => c.value === controlledValue)} onChange={val => {onChange(val ? val.value : ""); setControlledValue(val ? val.value : "");}} {...rest}/>
                 }
             />
             {/* <Select options={options} styles={customStyles}/> */}
@@ -104,7 +105,7 @@ export function ReactSelect({name, register, control, value = "", variant = 'out
         <FormControl pos="relative" isInvalid={!!error}>
             {
                 label && (
-                     <FormLabel fontSize={focus ? "11px" : "sm"} color="gray.700" mb="1" left="16px" display="inline-block" position="absolute" top={focus ? "6px" : "15px"} zIndex="2">{label}</FormLabel>
+                    <FormLabel zIndex="1" cursor="text" color={variant === "white" ? "white" : "blue.primary"} transition="ease 0.2s" fontWeight="normal" fontSize={"md"} top={controlledValue === "" ? "14px" : "6px"}>{label}</FormLabel>
                 )
             }
 
