@@ -161,7 +161,7 @@ export function Simulador(){
                                 {
                                     value: "Energia Solar",
                                     label: "Energia Solar",
-                                    description: "Jet Ski / Lancha / Barco"
+                                    description: "Residencial / Empresarial"
                                 }
                             ]}/>
 
