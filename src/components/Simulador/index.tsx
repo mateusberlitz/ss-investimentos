@@ -379,7 +379,7 @@ export function Simulador(){
                 </SolidButton> */}
                 <HStack>
                     <MainButton onClick={simulador.handleOpenSimulador}>
-                        Simular consórcio
+                        Simular
                     </MainButton>
 
                     {/* <Stack>
