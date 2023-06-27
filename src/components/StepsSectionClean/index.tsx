@@ -127,7 +127,7 @@ export function StepsSectionClean(){
                                 <Stack>
                                     <Stack spacing="4">
                                         <Text>Sobre nós</Text>
-                                        <Heading color="blue.primary">Somos a experiência de resultado!</Heading>
+                                        <Heading color="blue.primary">Temos experiência em gerar resultados!</Heading>
                                     </Stack>
                                     {/* <HStack alignItems={"center"}>
                                         <Flex maxW="50px"><SS/></Flex>

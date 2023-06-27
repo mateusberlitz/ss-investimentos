@@ -1,3 +1,4 @@
+import { callWhatsapp } from "@/functions/callWhatsapp";
 import { ChakraProps, Flex, HStack, Icon, IconButton, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
@@ -8,17 +9,18 @@ interface ServiceItemProps extends ChakraProps{
     subtitle: string;
     children: string;
     cover: string;
+    callText?: string;
 }
 
-export function ServiceItemMobile({title, subtitle, children, cover, ...rest}: ServiceItemProps){
+export function ServiceItemMobile({title, subtitle, children, callText, cover, ...rest}: ServiceItemProps){
     const isWideVersion = useBreakpointValue({
         base: false,
         "2xl": true,
     });
 
-    const callConsultant = () => {
-        window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
-    }
+    // const callConsultant = () => {
+    //     window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
+    // }
 
     const [active, setActive] = useState(false);
 
@@ -34,7 +36,7 @@ export function ServiceItemMobile({title, subtitle, children, cover, ...rest}: S
                     <Text fontSize={"md"} pl="0" transition={"all ease 0.5s"}>
                         {children}
                     </Text>
-                    <MainButton onClick={() => callConsultant()} size="sm" transition={"all .5s ease 0s"}>Falar com especialista</MainButton>
+                    <MainButton onClick={() => callWhatsapp(callText)} size="sm" transition={"all .5s ease 0s"}>Falar com especialista</MainButton>
                 </Stack>
             </Stack>
         </Flex>

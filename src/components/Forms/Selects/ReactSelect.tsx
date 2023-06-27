@@ -1,13 +1,14 @@
-import { FormControl, FormErrorMessage, FormLabel, Text } from "@chakra-ui/react";
+import { FormControl, FormErrorMessage, FormLabel, Stack, Text } from "@chakra-ui/react";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Controller, FieldError, UseFormRegister } from "react-hook-form";
-import Select, {components, PlaceholderProps, ValueContainerProps} from "react-select";
+import Select, {components, OptionProps, PlaceholderProps, ValueContainerProps} from "react-select";
 import { customStyles } from "./ReactSelectStyle";
 const { ValueContainer, Placeholder } = components;
 
 interface SelectOption{
     value: string,
     label: string,
+    description: string,
 }
 
 interface ReactSelectProps{
@@ -43,7 +44,28 @@ const CustomPlaceholder = (props: PlaceholderProps) => {
 //         {children}
 //       </ValueContainer>
 //     );
-//   };
+
+// const CustomOption = ({...props }: OptionProps) => {
+//     return (
+//         <Stack pos="relative">
+//             {/* <components.Option {...props} /> */}
+//             <Text>{props.data.description}</Text>
+//         </Stack>
+//     );
+// };
+
+// interface formatOptionsProps{
+//     value: string,
+//     label: string,
+//     description: string
+// }
+
+const formatOption = ({ value, label, description}: SelectOption) => (
+    <Stack spacing="1">
+        <Text>{label}</Text>
+        <Text fontSize={"10px"}>{description}</Text>
+    </Stack>
+);
 
 export function ReactSelect({name, register, control, value = "", variant = 'outline', label, error, options, width, marginBottom, maxWidth, ...rest} : ReactSelectProps){
 
@@ -86,7 +108,7 @@ export function ReactSelect({name, register, control, value = "", variant = 'out
                 )
             }
 
-            <Select options={options} styles={customStyles} onFocus={() => {setFocus(true)}} onMenuClose={() => {setFocus(controlledValue !== "")}} onChange={val => {setControlledValue(val ? val.value : ""); setFocus(val !== undefined)}} {...rest}/>
+            <Select formatOptionLabel={formatOption} options={options} styles={customStyles} onFocus={() => {setFocus(true)}} onMenuClose={() => {setFocus(controlledValue !== "")}} onChange={val => {setControlledValue(val ? val.value : ""); setFocus(val !== undefined)}} {...rest}/>
         
             {/* { !!error && (
                 <FormErrorMessage>

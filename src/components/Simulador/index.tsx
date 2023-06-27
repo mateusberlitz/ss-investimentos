@@ -127,6 +127,39 @@ export function Simulador(){
                                 <option value="Investimento">Investimento</option>
                             </ControlledSelect>
 
+                            <ReactSelect name={"segment"} options={[
+                                {
+                                    value: "Imóvel",
+                                    label: "Imóvel",
+                                    description: "Casa / Apartamento / Terreno / Construção / Imóvel na Praia "
+                                },
+                                {
+                                    value: "Veículo",
+                                    label: "Veículo",
+                                    description: "Moto / Carro / Caminhão / Caminhonete"
+                                },
+                                {
+                                    value: "Agronegócio",
+                                    label: "Agronegócio",
+                                    description: "Area Rural/ Máquinas / Implementos Agrícola"
+                                },
+                                {
+                                    value: "Investimento",
+                                    label: "Investimento",
+                                    description: "Aumento patrimonial / Renda complementar / Poupança"
+                                },
+                                {
+                                    value: "Náutico",
+                                    label: "Náutico",
+                                    description: "Jet Ski / Lancha / Barco"
+                                },
+                                {
+                                    value: "Energia Solar",
+                                    label: "Energia Solar",
+                                    description: "Jet Ski / Lancha / Barco"
+                                }
+                            ]}/>
+
                           {/* <RadioGroup onChange={setValue} value={value}>
                             <Stack direction='row'>
                               <Radio value='1'>First</Radio>
