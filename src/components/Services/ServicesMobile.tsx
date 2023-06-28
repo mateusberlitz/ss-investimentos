@@ -41,11 +41,11 @@ export function ServicesMobile(){
                     Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, viabilize oportunidades e proteja o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
                 </ServiceItemMobile>
                 <ServiceItemMobile overflow={"hidden"} 
-                title="Consultoria Jurídica" 
-                subtitle="Consultoria Jurídica" 
+                title="Assessoria Jurídica" 
+                subtitle="Assessoria Jurídica" 
                 cover="./images/sl_gondola.jpg"
                 callText={`Olá Robson!\nGostaria de obter uma consultoria jurídica.`}>
-                    Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, viabilize oportunidades e proteja o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
+                    Conte com a nossa equipe jurídica para avaliar questões legais da sua empresa, revisar contratos, viabilizar oportunidades e proteger o seu patrimônio de forma correta. Previna riscos, litígios e resolva questões legais complexas.
                 </ServiceItemMobile>
                 <ServiceItemMobile overflow={"hidden"} 
                 title="Seguro e Previdência" 

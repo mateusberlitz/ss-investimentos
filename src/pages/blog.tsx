@@ -51,7 +51,7 @@ export default function Blog({posts}: BlogProps){
     return(
         <Box position="relative">
             <Head>
-                <title>Blog - SS Investimentos</title>
+                <title>Blog - S&S Investimentos</title>
 
                 <meta name="description" content="Cresça no seu conhecimento financeiro junto conosco."></meta>
             </Head>

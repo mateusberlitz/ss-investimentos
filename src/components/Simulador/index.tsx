@@ -377,33 +377,36 @@ export function Simulador(){
                 {/* <SolidButton bg="linear-gradient(225deg, #DB2C2C 0%, #FC5453 100%);" color="white" fontSize="md" size="lg" onClick={simulador.handleOpenSimulador}>
                   Simular consórcio
                 </SolidButton> */}
-                <HStack>
-                    <MainButton onClick={simulador.handleOpenSimulador}>
-                        Simular
-                    </MainButton>
+                <Stack bg="blue.primary" p="4" px="6" borderRadius="4" spacing={"4"}>
+                    <Text color="white" w="100%" textAlign={"center"}>Soluções & Investimentos</Text>
+                    <HStack spacing="5">
+                        <MainButton onClick={simulador.handleOpenSimulador}>
+                            Simular
+                        </MainButton>
 
-                    {/* <Stack>
-                        <HStack>
-                            <SolidButton>
-                                Simular consórcio
-                            </SolidButton>
-                            <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
-                        </HStack>
+                        {/* <Stack>
+                            <HStack>
+                                <SolidButton>
+                                    Simular consórcio
+                                </SolidButton>
+                                <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
+                            </HStack>
 
-                        {
-                            isOpenSimulationWindow && (
-                                <Stack h="600px" w="340px" bg="gray.200">
+                            {
+                                isOpenSimulationWindow && (
+                                    <Stack h="600px" w="340px" bg="gray.200">
 
-                                </Stack>
-                            )
-                        }
-                    </Stack> */}
+                                    </Stack>
+                                )
+                            }
+                        </Stack> */}
 
-                    <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
-                    {/* <MainButton onClick={simulador.handleOpenSimulador}>
-                        <Text maxW="40px"><WhatsappWhite/></Text>
-                    </MainButton> */}
-                </HStack>
+                        <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
+                        {/* <MainButton onClick={simulador.handleOpenSimulador}>
+                            <Text maxW="40px"><WhatsappWhite/></Text>
+                        </MainButton> */}
+                    </HStack>
+                </Stack>
             </Box>
           )
         }

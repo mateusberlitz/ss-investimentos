@@ -8,6 +8,7 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 import SS from '../../../public/ss.svg';
+import Image from "next/image";
 
 export function StepsSectionClean(){
     const sectionRef = useRef(null);
@@ -134,7 +135,15 @@ export function StepsSectionClean(){
                                         <Heading color="blue.primary" pt="3">Investimentos</Heading>
                                     </HStack> */}
                                 </Stack>
-                                <Img src="./../images/robson.png"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                                {/* <Img src="./../images/robson.png"  w={["100%"]} right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/> */}
+                                <Stack spacing="6">
+                                    <Image src="/images/robson.webp"  width={420} height={420} alt="Robson Seibel"/>
+
+                                    <Stack spacing="1">
+                                        <Text fontSize={"lg"}>Robson Seibel</Text>
+                                        <Text fontSize={"sm"} opacity="0.8">Sócio fundador da S&S Soluções e Investimentos</Text>
+                                    </Stack>
+                                </Stack>
                             </Stack>
                         </Stack>
 
@@ -207,7 +216,7 @@ export function StepsSectionClean(){
                                         <Stack w="calc(100% - 90px)">
                                             <Text fontSize={["2xl", "4xl", "4xl"]} fontWeight="normal" color="blue.primary">Novo ciclo</Text>
                                             <Text fontSize={"lg"} fontWeight="light" color="blue.secondary">2023</Text>
-                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Em 2023, a SS Soluções & Investimentos foi oficialmente fundada. Com toda a experiência e conhecimento adquirido por nossa equipe durante todos estes anos, estamos preparados para lhe auxiliar da melhor forma nas suas escolhas, sejam elas para aquisições ou investimentos.</Text>
+                                            <Text fontSize={"lg"} fontWeight="light" color="gray.text">Em 2023, a S&S Soluções e Investimentos resolve abrir as suas portas. Com toda a experiência e conhecimento adquirido por nossa equipe durante todos estes anos, estamos preparados para lhe auxiliar da melhor forma nas suas escolhas, sejam elas para aquisições ou investimentos.</Text>
                                         </Stack>
                                     </HStack>
 {/* 

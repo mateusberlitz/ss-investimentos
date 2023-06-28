@@ -58,20 +58,20 @@ class MyDocument extends Document {
                     <meta name="google-site-verification" content="Q5dGY-imD4ur2aZOKlLTgMCEIefxpB2AgWR36Ne2H2A"></meta>
 
                     <meta name="category" content="Finance" />
-                    <link rel="index" title="SS Investimentos" href="https://startril.com.br/"/>
+                    <link rel="index" title="S&S Investimentos" href="https://startril.com.br/"/>
                     <link rel="logo" type="image/svg" href="/logotipo.svg"/>
                     <link rel="sitemap" type="application/xml" href="https://startril.com.br/sitemap.xml"></link>
 
                     <meta name="url" content="https://ssinvestimentos.com.br/"></meta>
                     <meta property="og:url" content="https://ssinvestimentos.com.br/blog"></meta>
 
-                    <meta property="og:site_name" content="SS Investimentos"></meta>
+                    <meta property="og:site_name" content="S&S Investimentos"></meta>
                     <meta property="og:locale" content="pt_BR"></meta>
-                    <meta property="og:title" content="SS Investimentos - Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
+                    <meta property="og:title" content="S&S Investimentos - Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
                     <meta property="og:description" content="Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
 
                     <meta property="og:image" content="./images/card.jpg"></meta>
-                    <meta property="og:image:alt" content="SS Investimentos - Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
+                    <meta property="og:image:alt" content="S&S Investimentos - Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
                     <meta property="og:app_id" content="ns67765jnmz8"></meta>
                     <meta property="og:type" content="website"></meta>
                 </Head>

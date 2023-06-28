@@ -78,7 +78,7 @@ export default function Home() {
     return (
     <>
         <Head>
-            <title>SS Investimentos - Soluções financeiras para sua alavancagem patrimonial</title>
+            <title>S&S Investimentos - Soluções financeiras para sua alavancagem patrimonial</title>
 
             <meta name="description" content="Fornecemos o meio financeiro para você adquirir imóveis, veículos, investimentos e alavancar seu patrimônio."></meta>
         </Head>
@@ -256,7 +256,8 @@ export default function Home() {
                     </Stack>
                 
                     <Stack spacing="16"  direction={["column", "column", "row"]}>
-                        <Img w={["100%", "100%", "40%"]} src="./images/corretores.png" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/>
+                        {/* <Img w={["100%", "100%", "40%"]} src="./images/corretores.webp" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/> */}
+                        <Image width={420} height={650} src="/images/corretores.webp" alt="Equipe qualificada"/>
                         <Stack spacing="20">
                             <SS_HS width="100%"/>
                             <Stack spacing="12">
