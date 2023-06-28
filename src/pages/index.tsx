@@ -185,7 +185,7 @@ export default function Home() {
                                 <Shield/>
                             </Flex>
 
-                            <Text color="white">Processos descomplicados e 100% seguro</Text>
+                            <Text color="white">Processos descomplicados e 100% seguros.</Text>
                         </HStack>
 
                         <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
@@ -194,7 +194,7 @@ export default function Home() {
                                 <Conversation/>
                             </Flex>
 
-                            <Text color="white">Orientação e esclarecimento de dúvidas sobre os serviços e assessoria.</Text>
+                            <Text color="white">Orientação e esclarecimento de dúvidas sobre os serviços e assessorias.</Text>
                         </HStack>
 
                         <HStack px="4" py="4" borderRadius="7" spacing="8" _hover={{bg:"linear-gradient(181.69deg, rgba(255, 255, 255, 0.15) 30.32%, rgba(255, 255, 255, 0) 111.43%)"}}>
@@ -227,8 +227,8 @@ export default function Home() {
 
                     <Stack textAlign={"left"} spacing="8" w={["100%", "100%", "50%"]} alignItems="center" justifyContent={"center"}>
                         {/* <Text color="white" fontSize={"46px"} fontWeight="medium" lineHeight={"58px"}>Foco em experiência e resultado</Text> */}
-                        <Text color="white" fontSize={["38px", "46px"]} fontWeight="medium" lineHeight={["48px", "58px"]}>Com experiência e foco no cliente, temos o objetivo de trazer o melhor resultado.</Text>
-                        <Text fontSize={"lg"} fontWeight="light" color="gray.200">Com serviços de qualidade que geram os melhores resultados de acordo com o seu propósito!</Text>
+                        <Text color="white" fontSize={["38px", "46px"]} fontWeight="medium" lineHeight={["48px", "58px"]}>Com experiência e foco no cliente, temos o objetivo de trazer o melhor resultado para você.</Text>
+                        {/* <Text fontSize={"lg"} fontWeight="light" color="gray.200">Com serviços de qualidade que geram os melhores resultados de acordo com o seu propósito!</Text> */}
                     </Stack>
                 </Stack>
             </Stack>
