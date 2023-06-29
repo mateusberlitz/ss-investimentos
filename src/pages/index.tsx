@@ -359,9 +359,9 @@ export default function Home() {
 
                     <Slider {...settings}>
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 0 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
-                                <Quote/>
-                                <Text py={["6","8","8","8","14"]} fontSize={["sm", "sm", "sm", "sm", "md"]}>O Robson é sinônimo de comprometimento, sempre responde rápido não importando a hora que o chamo, explica tudo quantas vezes forem preciso, em resumo seu atendimento é impecável! Já estou na segunda carta e não pretendo parar de comprar com ele!</Text>
+                            <Stack zIndex={2} bg={activeSlide === 0 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
+                                <Quote />
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>O Robson é sinônimo de comprometimento, sempre responde rápido não importando a hora que o chamo, explica tudo quantas vezes forem preciso, em resumo seu atendimento é impecável! Já estou na segunda carta e não pretendo parar de comprar com ele!</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -378,9 +378,9 @@ export default function Home() {
                                activeSlide === 0 && <Box pos="absolute" bg="#6D7DD9" filter="blur(135px)" h="260px" w="260px" zIndex={-1}/>
                             } */}
 
-                            <Stack zIndex={2} bg={activeSlide === 1 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 1 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py={["6","8","8","8","14"]} fontSize={["sm", "sm", "sm", "sm", "md"]}>Nossa experiência com a S&S foi ótima. Robson conhece muito sobre investimentos e, como foi no nosso caso, sobre Consórcios. Transmite segurança e transparência na condução do contrato.</Text>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Nossa experiência com a S&S foi ótima. Robson conhece muito sobre investimentos e, como foi no nosso caso, sobre Consórcios. Transmite segurança e transparência na condução do contrato.</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -393,9 +393,9 @@ export default function Home() {
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 2 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py={["6","8","8","8","14"]} fontSize={["sm", "sm", "sm", "sm", "md"]}>Quero aqui testemunhar o atendimento diferenciado da S&S através da pessoa do Robson que além de esclarecer as dúvidas sobre o investimento em consórcios nos orienta sobre a melhor forma de investir conforme nosso perfil e renda disponível no momento.</Text>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Quero aqui testemunhar o atendimento diferenciado da S&S através da pessoa do Robson que além de esclarecer as dúvidas sobre o investimento em consórcios nos orienta sobre a melhor forma de investir conforme nosso perfil e renda disponível no momento.</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -408,9 +408,9 @@ export default function Home() {
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 3 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py={["6","8","8","8","14"]} fontSize={["sm", "sm", "sm", "sm", "md"]}>Através do consórcio, adquirimos 10 cartas que nos aproximaram ainda mais do nosso tão sonhado objetivo. Estamos extremamente satisfeitos com o atendimento excepcional que recebemos, principalmente do Sr. Robson. Sua dedicação, conhecimento fizeram a diferença em cada etapa do processo...</Text>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Através do consórcio, adquirimos 10 cartas que nos aproximaram ainda mais do nosso tão sonhado objetivo. Estamos extremamente satisfeitos com o atendimento excepcional que recebemos, principalmente do Sr. Robson. Sua dedicação, conhecimento fizeram a diferença em cada etapa do processo...</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -423,9 +423,9 @@ export default function Home() {
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 4 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" minH="330px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 4 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text py={["6","8","8","8","14"]} fontSize={["sm", "sm", "sm", "sm", "md"]}>Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguindo o que ele me indicava. Começou como meu corretor hoje é um grande amigo. Vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte...</Text>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguindo o que ele me indicava. Começou como meu corretor hoje é um grande amigo. Vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte...</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -433,6 +433,21 @@ export default function Home() {
                                 <Stack spacing="0">
                                     <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Ronaldo Peruchini</Text>
                                     <Text color="gray.300">Proprietário Armazém da Venâncio</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 5 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Nos buscamos a S&S Solução e Investimentos para fazermos uma aquisição de uma carta de consórcio da HS Consórcios. Conheço o Robson e o Cristiano a mais de 20 anos, são pessoas sérias, sempre comprometidas em ajudar seus clientes e amigos da melhor forma, indicando formas de investimento. Recomendo muito o atendimento e os serviços deles. Desejo sucesso na caminhada sempre.</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg" w="60px !important" src='./images/cliente6.jpg'/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Márcio Goldschmidt e Daiana Fröhlich</Text>
+                                    <Text color="gray.300">Empresário e Coordenadora Pedagógica</Text>
                                 </Stack>
                             </Stack>
                         </Stack>

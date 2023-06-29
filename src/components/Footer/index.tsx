@@ -1,4 +1,4 @@
-import { Flex, HStack, Icon, Stack, Text } from "@chakra-ui/react";
+import { Flex, HStack, Icon, Stack, Text, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 
 import Logo from '../../../public/logo.svg';
@@ -10,8 +10,10 @@ import Facebook from '../../../public/facebook.svg';
 import Instagram from '../../../public/instagram.svg';
 import Email from '../../../public/email.svg';
 import HS from '../../../public/hs_white.svg';
+import BACEN from '../../../public/abac_white.svg';
+import ABAC from '../../../public/bacen_white.svg';
 import Selo from '../../../public/selo.svg';
-import { Linkedin, MapPin } from "react-feather";
+import { Box, Linkedin, MapPin } from "react-feather";
 
 export function Footer(){
     return(
@@ -72,9 +74,14 @@ export function Footer(){
                 </Stack>
 
                 <Stack spacing="16">
-                    <Flex>
-                        <HS/>
-                    </Flex>
+                    <VStack spacing={7}>
+                        <Text>Corretor autorizado</Text>
+                        <HS/>    
+                        <HStack spacing={5}>
+                            <BACEN/>
+                            <ABAC/>
+                        </HStack>               
+                    </VStack>
 
                     <Selo/>
                 </Stack>

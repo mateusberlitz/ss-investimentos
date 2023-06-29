@@ -338,7 +338,7 @@ export default function Contempladas({quotas}: ContempladasProps){
 
                                     <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
                                     <ControlledSlider control={filterForm.control} min={0} step={2000} value={0} error={filterForm.formState.errors.value} label="Entrada até" name="value" type="text" mask="money"/>
-                                    <ControlledSlider control={filterForm.control} value={120} min={0} max={220} step={10} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask="deadline"/>
+                                    <ControlledSlider control={filterForm.control} value={1} min={0} max={220} step={10} error={filterForm.formState.errors.deadline} label="Prazo" name="deadline" type="text" mask="deadline"/>
 
                                     {/* <ControlledInput control={filterForm.control} error={filterForm.formState.errors.credit} name="credit" label="Crédito" type="text"/>
                                     <ControlledInput control={filterForm.control} error={filterForm.formState.errors.value} name="value" label="Entrada" type="text"/>

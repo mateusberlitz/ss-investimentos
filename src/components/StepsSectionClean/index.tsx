@@ -140,7 +140,7 @@ export function StepsSectionClean(){
                                     <Image src="/images/robson.webp"  width={420} height={420} alt="Robson Seibel"/>
 
                                     <Stack spacing="1">
-                                        <Text fontSize={"lg"}>Robson Seibel</Text>
+                                        <Text as='b' fontSize={"lg"}>Robson Seibel</Text>
                                         <Text fontSize={"sm"} opacity="0.8">Sócio fundador da S&S Soluções e Investimentos</Text>
                                     </Stack>
                                 </Stack>
