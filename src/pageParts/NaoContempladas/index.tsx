@@ -1,63 +1,23 @@
-import { Box, Button, Checkbox, filter, Flex, Heading, HStack, Icon, IconButton, Stack, Table, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue, useToast } from "@chakra-ui/react";
-import axios from "axios";
-import { GetStaticProps } from "next";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { MainButton } from "../components/Buttons/MainButton";
-import { OutlineButton } from "../components/Buttons/OutlineButton";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
-
-import Whatsapp from '../../public/whatsapp.svg';
-import { Check, ChevronRight, Download, Home, Printer, Search, X } from "react-feather";
-import { SolidButton } from "../components/Buttons/SolidButton";
-import Sum from "../components/Sum";
-import Link from "next/link";
-import ReactToPrint from "react-to-print";
-import { CSVLink, CSVDownload } from "react-csv";
-import Head from "next/head";
-import { TextTag } from "../components/TextTag";
+import { OutlineButton } from "@/components/Buttons/OutlineButton";
+import { ControlledSelect } from "@/components/Forms/Selects/ControlledSelect";
+import { TextTag } from "@/components/TextTag"
+import { ContemplatedsFilter, Quota } from "@/pages/cartas";
+import { Button, Checkbox, HStack, IconButton, Icon, Stack, Table, Tbody, Td, Th, Thead, Tr, useBreakpointValue, useToast, Text, Flex, Box } from "@chakra-ui/react"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import * as yup from 'yup';
-import { ControlledInput } from "../components/Forms/Inputs/ControlledInput";
-import { ControlledSelect } from "../components/Forms/Selects/ControlledSelect";
+import { ChangeEvent, useRef, useState } from "react";
+import { Check, Download, Printer, Search, X } from "react-feather";
 import { ControlledSlider } from "@/components/Forms/Slider/ControllerSlider";
-import { serverApi } from "@/services/api";
-import { useQuotas, Quota as MainQuota } from "@/contexts/useQuotas";
-import { Exo_2 } from "next/font/google";
+import ReactToPrint from "react-to-print";
+import { CSVLink } from "react-csv";
+import { MainButton } from "@/components/Buttons/MainButton";
+import Whatsapp from '../../../public/whatsapp.svg';
+import Sum from "@/components/Sum";
 
-export interface Quota{
-    id: string;
-    administradora: string;
-    categoria: string;
-    entrada: string;
-    parcelas: string;
-    valor_credito: string;
-    valor_parcela: string;
-    reserva: string;
-    taxa: string;
-    fundo: string;
-    contemplada?: boolean;
-}
 
-interface ContempladasProps{
+interface NaoContempladasProps{
     quotas: Quota[];
-}
-
-interface SelectQuota{
-    id: number;
-    selected: boolean;
-}
-
-interface ContemplatedsFilter{
-    credit: number;
-    value: number;
-    deadline?: number;
-    segment?: string;
-    reserved?: string;
-    adm?:string;
-    contemplada?:boolean;
 }
 
 const FilterFormSchema = yup.object().shape({
@@ -69,13 +29,13 @@ const FilterFormSchema = yup.object().shape({
     adm: yup.string().nullable(),
 });
 
-export default function Contempladas({quotas}: ContempladasProps){
+export function NaoContempladas({quotas} : NaoContempladasProps){
     const toast = useToast();
     const fontSize = useBreakpointValue({base: '9px', md: 'sm', lg: '',});
     const buttonFontSize = useBreakpointValue({base: 'sm', md: 'sm', lg: '',});
     const isWideVersion = useBreakpointValue({base: false, lg: true});
 
-    const [showingQuotas, setShowingQuotas] = useState<Quota[]>(quotas.filter(quota => quota.contemplada != false));
+    const [showingQuotas, setShowingQuotas] = useState<Quota[]>(quotas);
 
     const border = {borderBottom: "1px solid", borderColor:"gray.500"}
 
@@ -83,14 +43,6 @@ export default function Contempladas({quotas}: ContempladasProps){
     const [selectedQuotas, setSelectedQuotas] = useState<Quota[]>([]);
 
     const [showReserved, setShowReserved] = useState(true);
-
-    // const handleAddSelectedQuota = (id: number) => {
-    //     setSelectedQuotas([...selectedQuotas, id]);
-    // }
-
-    // const handleRemoveSelectedQuota = (id: number) => {
-    //     setSelectedQuotas(selectedQuotas.filter(value => value === id));
-    // }
 
     const handleSelect = (event: ChangeEvent<HTMLInputElement>) => {
         if(event.target?.checked){
@@ -229,12 +181,11 @@ export default function Contempladas({quotas}: ContempladasProps){
             segment: '',
             reserved: '',
             adm: '',
-            contemplada: true
         }
     });
 
     const handleFilter = (filterData: ContemplatedsFilter) => {
-        let filteredQuotas = quotas.filter(quota => quota.contemplada != false);
+        let filteredQuotas = quotas;
 
         if(filterData.credit && filterData.credit !== undefined){
             filteredQuotas = filteredQuotas.filter(quota => {
@@ -287,35 +238,18 @@ export default function Contempladas({quotas}: ContempladasProps){
 
     const handleClearFilter = () => {
         filterForm.reset();
-        setShowingQuotas(quotas.filter(quota => quota.contemplada != false));
+        setShowingQuotas(quotas);
     }
 
     const [showingFilter, setShowingFilter] = useState(false);
 
-    return (
-        <Box position="relative">
-            <Head>
-                <title>Contempladas - S&S Investimentos</title>
 
-                <meta name="description" content="Ofertas de crédito contemplado pronto para a utilização que é mais barato que financiamento e não contabiliza no banco."></meta>
-            </Head>
-
-            <Header whiteVersion={true} />
-
+    return(
+        <>
             <Sum isOpen={isSumOpen} handleCloseSumModal={handleCloseSumModal} selectedQuotas={selectedQuotas}/>
 
             <Flex flexDir="column" w="100%" px="6">
-                <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" pb="2" pt="16" spacing="20" justifyContent="space-between">
-                    <Stack spacing="5">
-                        <HStack fontSize={"md"}>
-                            <Link href="/"><Text _hover={{textDecor:"underline"}} color="rgba(67, 67, 67, 0.5)">Home</Text></Link>
-                            <Text><ChevronRight color="rgba(67, 67, 67, 0.5)"/></Text>
-                            <Text>Cartas Contempladas</Text>
-                        </HStack>
-                        <Heading fontSize={["4xl","5xl","6xl","6xl"]}>Cartas Contempladas</Heading>
-                        <Text>Encontre abaixo a melhor opção para cumprir os seus objetivos!</Text>
-                    </Stack>
-
+                <Stack flexDir="column" w="100%" maxW="1200px" m="0 auto" pb="2" pt="16" spacing="12" justifyContent="space-between">
                     <Stack spacing="4" px={["6", "2"]}>
                         <HStack justifyContent="space-between">
                             <TextTag color="blue.primary">Filtre sua escolha</TextTag>
@@ -364,6 +298,7 @@ export default function Contempladas({quotas}: ContempladasProps){
                         }
 
                     </Stack>
+                    
 
                     <Stack spacing="8" borderRadius="4px" overflow="hidden" px="2">
                         <Stack justifyContent="space-between" p="4" direction={["column", "column", "row","row"]} spacing={["6","6","2","2","2"]}>
@@ -508,87 +443,13 @@ export default function Contempladas({quotas}: ContempladasProps){
                         </Tbody>
                     </Table>
                 </Stack>
+
+                <Box position="fixed" right="20px" bottom="20px" zIndex="2" boxShadow="lg">
+                    <MainButton onClick={() => handleOpenSumModal()} fontSize="md" size="lg">
+                        Somar
+                    </MainButton>
+                </Box>
             </Flex>
-
-            <Box position="fixed" right="20px" bottom="20px" zIndex="2" boxShadow="lg">
-                {/* <Text>Simule um plano</Text> */}
-
-                <MainButton onClick={() => handleOpenSumModal()} fontSize="md" size="lg">
-                    Somar
-                </MainButton>
-            </Box>
-
-            <Footer/>
-        </Box>
+        </>
     )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-    const quotasMainApi = await serverApi.get('/contempladas').then((response) => response.data);
-
-    let mainFormattedQuotasApi:Quota[] = []
-    const formatNumber = new Intl.NumberFormat("pt-BR", {minimumFractionDigits: 2, maximumFractionDigits: 2})
-
-    if(quotasMainApi){
-        mainFormattedQuotasApi = quotasMainApi.map((quota: MainQuota) => {
-            const formattedQuota:Quota = {
-                id: `${quota.id.toString()}s`,
-                administradora: quota.admin,
-                categoria: quota.segment,
-                entrada: formatNumber.format(quota.value), //quota.value.toFixed(2),
-                fundo: '',
-                parcelas: quota.deadline.toString(),
-                reserva: quota.reserved ? "Reservada" : "Disponível",
-                taxa: '',
-                valor_credito: formatNumber.format(quota.credit),
-                valor_parcela: formatNumber.format(quota.parcel),
-                contemplada: quota.is_contemplated
-            }
-
-            return formattedQuota;
-        })
-    }
-
-    const response = await axios.get('https://contempladas.lanceconsorcio.com.br');
-
-    let quotas:Quota[] = []
-
-    if(quotasMainApi){
-        quotas = [...response.data, ...mainFormattedQuotasApi];
-    }else{
-        quotas = response.data;
-    }
-
-    const vehicleQuotas = quotas.filter((quota:Quota) => quota.categoria === "Veículo")
-    vehicleQuotas.sort(function (a:Quota, b:Quota) {
-        if(parseFloat(a.valor_credito.replace(".", "").replace(",", ".")) > parseFloat(b.valor_credito.replace(".", "").replace(",", "."))){
-            return 1;
-        }
-
-        if(parseFloat(a.valor_credito.replace(".", "").replace(",", ".")) < parseFloat(b.valor_credito.replace(".", "").replace(",", "."))){
-            return -1;
-        }
-
-        return 0;
-    });
-
-    const realtyQuotas = quotas.filter((quota:Quota) => quota.categoria === "Imóvel")
-    realtyQuotas.sort(function (a:Quota, b:Quota) {
-        if(parseFloat(a.valor_credito.replace(".", "").replace(",", ".")) > parseFloat(b.valor_credito.replace(".", "").replace(",", "."))){
-            return 1;
-        }
-
-        if(parseFloat(a.valor_credito.replace(".", "").replace(",", ".")) < parseFloat(b.valor_credito.replace(".", "").replace(",", "."))){
-            return -1;
-        }
-
-        return 0;
-    });
-
-    return {
-        props: {
-            quotas: [...vehicleQuotas, ...realtyQuotas]
-        },
-        revalidate: 60 * 5
-    }
 }
