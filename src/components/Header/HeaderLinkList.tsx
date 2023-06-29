@@ -18,7 +18,7 @@ export function HeaderLinkList({whiteVersion}: HeaderLinkListProps){
                 <HeaderLink href="/#sobre">Sobre</HeaderLink>
                 <HeaderLink href="/#solucoes">Soluções</HeaderLink>
                 <HeaderLink href="/#clientes">Clientes</HeaderLink>
-                <HeaderLink href="contempladas">Contempladas</HeaderLink>
+                <HeaderLink href="cartas">Contempladas</HeaderLink>
                 {/* <HeaderLink href="blog">Blog</HeaderLink> */}
                 <HeaderLink href="/#contato">Contato</HeaderLink>
 

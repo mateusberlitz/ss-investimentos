@@ -144,7 +144,7 @@ export default function Cartas({quotas}: ContempladasProps){
                     <HStack>
                         <OutlineButton onClick={() => handleSwitchTab(true)} bg={isContemplatedsTabSelected ? "blue.primary" : ""} color={isContemplatedsTabSelected ? "white" : ""} _focus={{bg:"blue.primary", color:"white"}}>Contempladas</OutlineButton>
                         <OutlineButton onClick={() => handleSwitchTab(false)} bg={!isContemplatedsTabSelected ? "blue.primary" : ""} color={!isContemplatedsTabSelected ? "white" : ""} _focus={{bg:"blue.primary", color:"white"}}>Não contempladas</OutlineButton>
-                        <OutlineButton onClick={simulador.handleOpenSimulador}>Crédito novo</OutlineButton>
+                        <OutlineButton onClick={simulador.handleOpenSimulador}>Créditos novos</OutlineButton>
                     </HStack>
                 </Stack>
             </Flex>
