@@ -141,7 +141,7 @@ export function Simulador(){
                                 {
                                     value: "Agronegócio",
                                     label: "Agronegócio",
-                                    description: "Area Rural/ Máquinas / Implementos Agrícola"
+                                    description: "Área Rural/ Máquinas / Implementos Agrícola"
                                 },
                                 {
                                     value: "Investimento",
