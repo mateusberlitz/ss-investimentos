@@ -146,7 +146,7 @@ export function Simulador(){
                                 {
                                     value: "Investimento",
                                     label: "Investimento",
-                                    description: "Aumento patrimonial / Renda complementar / Poupança"
+                                    description: "Aumento patrimonial / Renda complementar / Aplicação Financeira"
                                 },
                                 {
                                     value: "Capital de Giro",
