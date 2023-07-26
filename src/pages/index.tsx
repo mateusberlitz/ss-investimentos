@@ -443,7 +443,7 @@ export default function Home() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 5 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Nos buscamos a S&S Solução e Investimentos para fazermos uma aquisição de uma carta de consórcio da HS Consórcios. Conheço o Robson e o Cristiano a mais de 20 anos, são pessoas sérias, sempre comprometidas em ajudar seus clientes e amigos da melhor forma, indicando formas de investimento. Recomendo muito o atendimento e os serviços deles. Desejo sucesso na caminhada sempre.</Text>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Conheço o Robson e o Cristiano a mais de 20 anos, são pessoas sérias, sempre comprometidas em ajudar seus clientes e amigos da melhor forma, indicando formas de investimento. Recomendo muito o atendimento e os serviços deles.</Text>
                             </Stack>
 
                             <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
@@ -453,7 +453,24 @@ export default function Home() {
                                     <Text color="gray.300">Empresário e Coordenadora Pedagógica</Text>
                                 </Stack>
                             </Stack>
+                           
                         </Stack>
+
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 6 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Depois que fomos contemplados e percebemos que nosso maior sonho estava na ponta do lápis para se concretizar nunca mais ficamos sem. O consórcio serve para você conquistar o que deseja de maneira bem planejada e sem pagar juros, e assim, conquistamos nosso lar e um carro na época e assim, fomos realizando os nossos sonhos.</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg" w="60px !important" src='./images/cliente7.jpg'/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Patrícia e Antônio Klauck</Text>
+                                    <Text color="gray.300">Professora e Chefe de Setor</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
                     </Slider>
 
                 </Stack>
