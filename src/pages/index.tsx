@@ -471,6 +471,21 @@ export default function Home() {
                             </Stack>
                         </Stack>
 
+                        <Stack alignItems={"center"} color="white">
+                            <Stack zIndex={2} bg={activeSlide === 7 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
+                                <Quote/>
+                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Quando o assunto é consórcio a gente sabe onde encontrar um parceiro honesto e confiável. Robson é um agente fantástico de vendas da HS Consórcios! Com ele planejamos nosso futuro familiar sem medo. Além de confiabilidade, que é um fator indispensável, quando tratamos de investimento, Robson, também buscar para seus clientes o melhor caminho para que tudo ocorra conforme o planejamento.</Text>
+                            </Stack>
+
+                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
+                                <Avatar size="lg" w="60px !important" src='./images/cliente8.jpg'/>
+                                <Stack spacing="0">
+                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Alejandro Brittes e Magali de Rossi</Text>
+                                    <Text color="gray.300">Músico e Produtora</Text>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+
                     </Slider>
 
                 </Stack>
