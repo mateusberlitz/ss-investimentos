@@ -370,7 +370,7 @@ export function Simulador(){
         </Modal>
 
         {
-          (asPath !== "/contempladas" && asPath !== "/cartas") && (
+          (asPath !== "/contempladas" && asPath !== "/cartas" && asPath !== "/chat") && (
             <Box position="fixed" right="20px" bottom="20px" zIndex="999999">
                 {/* <Text>Simule um plano</Text> */}
 
