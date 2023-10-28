@@ -1,6 +1,6 @@
 import { MainButton } from "@/components/Buttons/MainButton";
 import { OutlineButton } from "@/components/Buttons/OutlineButton";
-import { Flex, HStack, Stack } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack } from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function chat(){
@@ -15,6 +15,8 @@ export default function chat(){
             </HStack>
             <iframe
             src="https://viewer.typebot.io/ss-investimentos-geral-ubgdnz8" height={"100%"} width={"100%"}></iframe>
+
+            <Box bottom="0" left="0" right="0" h="50px" pos="fixed" bg="#2d3250"/>
         </Stack>
     )
 }
