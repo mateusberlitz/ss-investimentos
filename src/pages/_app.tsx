@@ -6,10 +6,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../styles/theme'
 import { SimuladorProvider } from "@/contexts/SimuladorContext";
 import { Simulador } from "@/components/Simulador";
+import { FacebookPixelProvider } from "@/components/Facebook";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    // <FacebookPixelProvider>
+    <FacebookPixelProvider>
 
         <ChakraProvider theme={theme}>
             <SimuladorProvider>
@@ -18,6 +19,6 @@ export default function App({ Component, pageProps }: AppProps) {
             </SimuladorProvider>
         </ChakraProvider>
 
-    //</FacebookPixelProvider>
+    </FacebookPixelProvider>
   )
 }

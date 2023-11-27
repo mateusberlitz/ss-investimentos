@@ -13,6 +13,7 @@ const nextConfig = {
     env: {
         API_URL: 'https://api.ssinvestimentos.com.br/public/api/',
         LOCAL_API_URL: 'http://ss-investimentos-backend.test/api/',
+        META_PIXEL: '748691677297618',
     },
   }
   

@@ -1,3 +1,4 @@
+import { useFacebookPixel } from "@/components/Facebook";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 //import { invertScale } from "framer-motion/types/value/use-inverted-scale";
@@ -59,7 +60,7 @@ const SimuladorContext = createContext<SimuladorContextData>({} as SimuladorCont
 export const SimuladorProvider = ({children}: SimuladorContextProps) => {
     const { showErrors } = useErrors();
     const toast = useToast();
-    //const {reactPixel} = useFacebookPixel();
+    const {reactPixel} = useFacebookPixel();
 
     const [isOpen, setIsOpen] = useState(false);
     const [step, setStep] = useState<number>();
@@ -191,9 +192,9 @@ export const SimuladorProvider = ({children}: SimuladorContextProps) => {
             //console.log(result.newLead);
 
             if(result.newLead){
-                // if(reactPixel){
-                //     const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL", value: productData?.credit});
-                // }
+                if(reactPixel){
+                    const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL"});
+                }
     
                 gtag.track('conversion', { sendTo: 'AW-11140098875/953YCPK2tZYYELvWgcAp', value: productData?.credit, currency: 'BRL'});
             }
