@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { Avatar, Box, Flex, Heading, HStack, Img, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react'
+import { AspectRatio, Avatar, Box, Flex, Heading, HStack, Img, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react'
 import Slider from "react-slick";
 import { Header } from '../components/Header'
 import { MainButton } from '@/components/Buttons/MainButton'
@@ -106,14 +106,20 @@ export default function Home() {
                                 <Img src='./images/custumers.png'/>
                                 <Img src='./images/Stars.svg'/>
                             </HStack>
+
+                            <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
                         </Stack>
 
                         <VStack w={["100%", "100%", "50%", "50%"]} alignContent={"left"} spacing={"4"}>
                             
-                            <Img maxWidth={"450px"} src='./images/video.png'/>
+                            {/* <Img maxWidth={"450px"} src='./images/video.png'/> */}
 
-                            <VStack>
-                                <Heading color="#ffffff">Robson Seibel</Heading>
+                            <AspectRatio maxW={"100%"} w="100%" ratio={4/5} mt="-30px">
+                                <iframe width="900" src="https://www.youtube.com/embed/LhQBdxAItfs?si=3xm3pMD9PsMh2pGK" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                            </AspectRatio>
+
+                            <VStack spacing={"1"}>
+                                <Heading fontSize={"xl"} color="#ffffff">Robson Seibel</Heading>
                                 <Text color="#dbdbdb">Fundador da S&S Soluções e Investimentos</Text>
                                 <Text fontWeight={"semibold"} color="#D59665">Diversas premiações de nivel nacional</Text>
                             </VStack>
@@ -224,7 +230,7 @@ export default function Home() {
                     </HStack>
 
                     <Flex width={"100%"} justifyContent={"center"} textAlign={"center"}>
-                        <MainButton>Simule Seu Investimento</MainButton>
+                        <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
                     </Flex>
                 </Stack>
 
@@ -471,7 +477,7 @@ export default function Home() {
                                     </HStack>
                                 </VStack>
 
-                                <MainButton>Simule seu Investimento</MainButton>
+                                <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
 
                             </Stack>
 
