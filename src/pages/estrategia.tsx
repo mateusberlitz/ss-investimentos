@@ -95,17 +95,17 @@ export default function Home() {
                     <HeaderAlt/>
                 </Flex>
                 
-                <Stack px="6" w="100%" maxW="1200px" m="0 auto" py="20">
-                    <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={"24"}>
-                        <Stack textAlign={"left"} alignItems={"left"}  spacing="16" w={["100%", "100%", "50%", "50%"]}>
+                <Stack px="6" w="100%" maxW="1200px" m="0 auto" py={["5","20","20","20"]} pb="20">
+                    <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
+                        <Stack textAlign={"left"} alignItems={"left"}  spacing={["8","12","16","16"]} w={["100%", "100%", "50%", "50%"]}>
                             <TextTag textTransform={"uppercase"} letterSpacing={"5px"}>Novo Método</TextTag>
                             <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista, Adquira e rentabilize o seu dinheiro</Heading>
-                            <Text color={"#ffffff"} fontSize={"28px"}>Veja a estratégia do especialista de investimentos que já ajudou milhares de pessoas em seu sucesso financeiro.</Text>
+                            <Text color={"#ffffff"} fontSize={["16px","20px","24px","28px"]}>Veja a estratégia do especialista de investimentos que já ajudou milhares de pessoas em seu sucesso financeiro.</Text>
                         
-                            <HStack spacing={"8"}>
-                                <Img src='./images/custumers.png'/>
-                                <Img src='./images/Stars.svg'/>
-                            </HStack>
+                            <Stack flexDirection={["column","column","row","row"]} spacing={"8"}>
+                                <Img maxW="200px" src='./images/custumers.png'/>
+                                <Img maxW="200px" src='./images/Stars.svg'/>
+                            </Stack>
 
                             <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
                         </Stack>
@@ -162,7 +162,7 @@ export default function Home() {
 
                                 <Stack spacing={"4"}>
                                     <Heading fontSize={"24px"}>2. Contempla o Crédito</Heading>
-                                    <Text>Ao contemplar você vai para o segundo estágio do investimento.</Text>
+                                    <Text>Ao contemplar você precisa decidir o que fazer com o capital.</Text>
                                 </Stack>
                             </HStack>
                         </Stack>
@@ -223,11 +223,11 @@ export default function Home() {
 
                     <Text fontSize={"36px"}>Invista de forma planejada para conquistar os seus objetivos pagando pouco.</Text>
 
-                    <HStack display={"flex"} spacing={"12"} w={"100%"} justifyContent={"center"} textAlign={"center"} py="14">
+                    <Stack flexDirection={["column","column","row","row"]} display={"flex"} spacing={"12"} w={"100%"} justifyContent={"center"} textAlign={"center"} py="14">
                         <Text color={"#D59665"} textTransform={"uppercase"} fontWeight={"bold"} fontSize={"32px"}>Sem Juros</Text>
                         <Text color={"#D59665"} textTransform={"uppercase"} fontWeight={"bold"} fontSize={"32px"}>Sem Entrada</Text>
                         <Text color={"#D59665"} textTransform={"uppercase"} fontWeight={"bold"} fontSize={"32px"}>Pague Apenas meia Parcela</Text>
-                    </HStack>
+                    </Stack>
 
                     <Flex width={"100%"} justifyContent={"center"} textAlign={"center"}>
                         <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>

@@ -92,9 +92,9 @@ export function Quotation(){
     const previousMonthStart = new Date(today.getFullYear(), today.getMonth() -1, 1);
     const previousMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
     
-    const fetchSelic = () => {
-        brapi.get('v2/prime-rate?country=brazil').then(response => setSelic({value: response.data["prime-rate"][0].value}));
-    }
+    // const fetchSelic = () => {
+    //     brapi.get('v2/prime-rate?country=brazil&token=7fJi6cNcpgdBQbV7FjRTKU').then(response => setSelic({value: response.data["prime-rate"][0].value}));
+    // }
 
     const fetchIbov = () => {
         axios.get('https://api-python-finance.herokuapp.com').then(response => {
@@ -108,37 +108,37 @@ export function Quotation(){
         });
     }
 
-    const fetchIpca = async () => {
-        const ipcaValue = await brapi.get('v2/inflation').then(response => {
-            //setIpca({value: response.data.inflation[0].value})
-            return response.data.inflation[0].value;
-        });
+    // const fetchIpca = async () => {
+    //     const ipcaValue = await brapi.get('v2/inflation&token=7fJi6cNcpgdBQbV7FjRTKU').then(response => {
+    //         //setIpca({value: response.data.inflation[0].value})
+    //         return response.data.inflation[0].value;
+    //     });
 
-        const previousValue = await brapi.get(`v2/inflation?country=brazil&historical=true&start=${previousMonthStart.toLocaleDateString().split(',')[0]}&end=${previousMonthEnd.toLocaleDateString().split(',')[0]}`).then(response => {
-            //setIpca({value: response.data.inflation[0].value})
-            return response.data.inflation[0].value;
-        });
+    //     const previousValue = await brapi.get(`v2/inflation?country=brazil&token=7fJi6cNcpgdBQbV7FjRTKU&historical=true&start=${previousMonthStart.toLocaleDateString().split(',')[0]}&end=${previousMonthEnd.toLocaleDateString().split(',')[0]}`).then(response => {
+    //         //setIpca({value: response.data.inflation[0].value})
+    //         return response.data.inflation[0].value;
+    //     });
 
-        const ipcaVariation = previousValue > ipcaValue ? previousValue - ipcaValue : ipcaValue - previousValue
+    //     const ipcaVariation = previousValue > ipcaValue ? previousValue - ipcaValue : ipcaValue - previousValue
 
-        setIpca({value: ipcaValue, variation: ipcaVariation});
-    }
+    //     setIpca({value: ipcaValue, variation: ipcaVariation});
+    // }
 
     const fetchBitcoin = () => {
-        brapi.get('v2/crypto?coin=BTC&currency=BRL').then(response => {
-            setBitcoin({value: response.data.coins[0].regularMarketPrice})
+        axios.get('https://economia.awesomeapi.com.br/last/BTC-BRL').then(response => {
+            setEuro({value: parseFloat(response.data.BTCBRL.bid), variation: parseFloat(response.data.BTCBRL.varBid)})
         });
     }
 
     const fetchDolar = () => {
-        brapi.get('v2/currency?currency=USD-BRL').then(response => {
-            setDolar({value: parseFloat(response.data["currency"][0].bidPrice), variation: parseFloat(response.data["currency"][0].bidVariation)})
+        axios.get('https://economia.awesomeapi.com.br/last/USD-BRL').then(response => {
+            setDolar({value: parseFloat(response.data.USDBRL.bid), variation: parseFloat(response.data.USDBRL.varBid)})
         });
     }
 
     const fetchEuro = () => {
-        brapi.get('v2/currency?currency=EUR-BRL').then(response => {
-            setEuro({value: parseFloat(response.data["currency"][0].bidPrice), variation: parseFloat(response.data["currency"][0].bidVariation)})
+        axios.get('https://economia.awesomeapi.com.br/last/EUR-BRL').then(response => {
+            setEuro({value: parseFloat(response.data.EURBRL.bid), variation: parseFloat(response.data.EURBRL.varBid)})
         });
     }
 
@@ -149,6 +149,26 @@ export function Quotation(){
             }, 0);
 
             setCdi({value: newCdi, variation: response.data[response.data.length]});
+        });
+    }
+
+    const fetchIpca = () => {
+        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados?formato=html&dataInicial=${finalDate.toLocaleDateString().split(',')[0]}&dataFinal=${finalDate.toLocaleDateString().split(',')[0]}`).then(response => {
+            const newIpca = response.data.reduce((amount: number, value: BacenData) => {
+                return amount + parseFloat(value.valor);
+            }, 0);
+
+            setIpca({value: newIpca, variation: response.data[response.data.length]});
+        });
+    }
+
+    const fetchSelic = () => {
+        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=html&dataInicial=${finalDate.toLocaleDateString().split(',')[0]}&dataFinal=${finalDate.toLocaleDateString().split(',')[0]}`).then(response => {
+            const newSelic = response.data.reduce((amount: number, value: BacenData) => {
+                return amount + parseFloat(value.valor);
+            }, 0);
+
+            setSelic({value: newSelic, variation: response.data[response.data.length]});
         });
     }
 

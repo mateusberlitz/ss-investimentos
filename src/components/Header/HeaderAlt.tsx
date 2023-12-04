@@ -130,7 +130,7 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
                             </Link>
                         </Flex>
 
-                        <MainButton onClick={simulador.handleOpenSimulador}>Faça seu Planejamento</MainButton>
+                        <MainButton onClick={simulador.handleOpenSimulador} fontSize={["14px","sm","md","lg"]} h={["38px","45px","57px","57px"]}>Faça seu Planejamento</MainButton>
                         
                     </HStack>
 

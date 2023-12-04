@@ -40,7 +40,7 @@ interface State{
 const ProductFormSchema = yup.object().shape({
   segment: yup.string().required('Selecione o tipo de consórcio.'),
   credit: yup.number().required('Informe o valor do crédito.').min(30000, "O valor do crédito é no mínimo de R$30.000,00"),
-  deadline: yup.string().required('Em quantos meses quer pagar?'),
+  deadline: yup.string().required('Em quantos meses quer investir?'),
 });
 
 const LeadFormSchema = yup.object().shape({
@@ -370,7 +370,7 @@ export function Simulador(){
         </Modal>
 
         {
-          (asPath !== "/contempladas" && asPath !== "/cartas" && asPath !== "/chat") && (
+          (asPath !== "/contempladas" && asPath !== "/cartas" && asPath !== "/chat" && asPath !== "/estrategia") && (
             <Box position="fixed" right="20px" bottom="20px" zIndex="999999">
                 {/* <Text>Simule um plano</Text> */}
 
@@ -380,7 +380,7 @@ export function Simulador(){
                 <Stack bg="blue.primary" p="4" px="6" borderRadius="4" spacing={"4"}>
                     <Text color="white" w="100%" textAlign={"center"}>Soluções & Investimentos</Text>
                     <HStack spacing="5">
-                        <MainButton onClick={simulador.handleOpenSimulador}>
+                        <MainButton onClick={simulador.handleOpenSimulador} h={["38px","45px","57px","57px"]}>
                             Simular
                         </MainButton>
 
@@ -401,7 +401,7 @@ export function Simulador(){
                             }
                         </Stack> */}
 
-                        <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
+                        <IconButton aria-label="Acessar whatsapp" w={["37px","44px","55px","55px"]} h={["37px","44px","55px","55px"]} onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
                         {/* <MainButton onClick={simulador.handleOpenSimulador}>
                             <Text maxW="40px"><WhatsappWhite/></Text>
                         </MainButton> */}
