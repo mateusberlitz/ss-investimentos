@@ -102,7 +102,7 @@ export default function Home() {
                             <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista, Adquira e rentabilize o seu dinheiro</Heading>
                             <Text color={"#ffffff"} fontSize={["16px","20px","24px","28px"]}>Veja a estratégia do especialista de investimentos que já ajudou milhares de pessoas em seu sucesso financeiro.</Text>
                         
-                            <Stack flexDirection={["column","column","row","row"]} spacing={"8"}>
+                            <Stack direction={["column","column","row","row"]} spacing={"8"}>
                                 <Img maxW="200px" src='./images/custumers.png'/>
                                 <Img maxW="200px" src='./images/Stars.svg'/>
                             </Stack>
@@ -223,7 +223,7 @@ export default function Home() {
 
                     <Text fontSize={"36px"}>Invista de forma planejada para conquistar os seus objetivos pagando pouco.</Text>
 
-                    <Stack flexDirection={["column","column","row","row"]} display={"flex"} spacing={"12"} w={"100%"} justifyContent={"center"} textAlign={"center"} py="14">
+                    <Stack direction={["column","column","row","row"]} display={"flex"} spacing={"12"} w={"100%"} justifyContent={"center"} textAlign={"center"} py="14">
                         <Text color={"#D59665"} textTransform={"uppercase"} fontWeight={"bold"} fontSize={"32px"}>Sem Juros</Text>
                         <Text color={"#D59665"} textTransform={"uppercase"} fontWeight={"bold"} fontSize={"32px"}>Sem Entrada</Text>
                         <Text color={"#D59665"} textTransform={"uppercase"} fontWeight={"bold"} fontSize={"32px"}>Pague Apenas meia Parcela</Text>
