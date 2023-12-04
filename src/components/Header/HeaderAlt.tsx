@@ -109,7 +109,7 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
             {/* pos="fixed" top="12px" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(40px)"} */}
 
                 {/* <Stack w="100%"> */}
-                    <HStack justify="space-between" px="6" maxW="1200px" w="100%">
+                    <HStack justify="space-between" px="4" maxW="1200px" w="100%">
                         <Flex w={["250px", "320px", "380px"]} id="logo" p={"2"}>
                             <Link href="/">
                                 {

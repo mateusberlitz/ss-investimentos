@@ -88,7 +88,7 @@ export function Quotation(){
 
     const finalDate = new Date(today.getFullYear(), today.getMonth(), 0);
     const startDate = new Date(today.getFullYear(), today.getMonth() -13, 0);
-    const oneYearLater = new Date(today.getFullYear(), today.getMonth() -13, 1);
+    const oneYearLater = new Date(today.getFullYear(), today.getMonth() -12, today.getDay());
     const previousMonthStart = new Date(today.getFullYear(), today.getMonth() -1, 1);
     const previousMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
     
@@ -143,7 +143,7 @@ export function Quotation(){
     }
 
     const fetchCdi = () => {
-        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=html&dataInicial=${startDate.toLocaleDateString().split(',')[0]}&dataFinal=${finalDate.toLocaleDateString().split(',')[0]}`).then(response => {
+        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=html&dataInicial=${oneYearLater.toLocaleDateString().split(',')[0]}&dataFinal=${today.toLocaleDateString().split(',')[0]}`).then(response => {
             const newCdi = response.data.reduce((amount: number, value: BacenData) => {
                 return amount + parseFloat(value.valor);
             }, 0);
@@ -184,7 +184,7 @@ export function Quotation(){
     }
 
     const fetchIgpm = () => {
-        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados?formato=html&dataInicial=${startDate.toLocaleDateString().split(',')[0]}&dataFinal=${finalDate.toLocaleDateString().split(',')[0]}`).then(response => {
+        axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados?formato=html&dataInicial=${oneYearLater.toLocaleDateString().split(',')[0]}&dataFinal=${today.toLocaleDateString().split(',')[0]}`).then(response => {
             const newIgpm = response.data.reduce((amount: number, value: BacenData) => {
                 return amount + parseFloat(value.valor);
             }, 0);
