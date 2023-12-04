@@ -177,7 +177,7 @@ export function Simulador(){
                             isWideVersion ? (
                               <CreatableReactSelect control={productForm.control} value={simulador.productData?.credit} error={productForm.formState.errors.credit} name="credit" options={creditValues} width="100%" label="Valor do crédito"/>
                             ):(
-                              <ControlledSlider control={productForm.control} value={simulador.productData?.credit} error={productForm.formState.errors.credit} label="Valor do crédito" name="credit" type="text" mask="money"/>
+                              <ControlledSlider control={productForm.control} value={simulador.productData?.credit} error={productForm.formState.errors.credit} label="Valor do capital" name="credit" type="text" mask="money"/>
                             )
                           }
 

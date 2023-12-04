@@ -65,17 +65,17 @@ export function Slider({ name, type, icon, variant = "", value = 200000, min = 3
 
     return(
         <FormControl pos="relative" isInvalid={!!error} maxW={maxW}>
-            <Stack w="100%" justifyContent="space-between" mb="3">
-                <FormLabel w="100%" fontSize="md" mb="7" color="blue.primary">{label}</FormLabel>
-                {/* <CurrencyInput decimalSeparator="," groupSeparator="." prefix="R$" {...getControlledInputAttributes()}
+            <HStack w="100%" justifyContent="space-between" mb="3">
+                <FormLabel w="100%" fontSize="md" mb="0" color="blue.primary">{label}</FormLabel>
+                <CurrencyInput decimalSeparator="," groupSeparator="." prefix="R$" {...getControlledInputAttributes()}
                     className={styles.sliderCurrency}
                     name={name}
                     defaultValue={sliderValue}
                     //value={sliderValue}
                     decimalsLimit={2}
-                />; */}
+                />;
 
-            </Stack>
+            </HStack>
 
             <ChakraSlider pos="relative" focusThumbOnChange={false} size="lg" aria-label='slider-ex-6' colorScheme='blue' value={sliderValue} defaultValue={sliderValue} min={min} max={max} step={step} 
             onChange={(value) => {
