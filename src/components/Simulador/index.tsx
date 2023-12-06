@@ -45,10 +45,10 @@ const ProductFormSchema = yup.object().shape({
 
 const LeadFormSchema = yup.object().shape({
   name: yup.string().required('Qual o seu nome?'),
-  email: yup.string().email("Informe um e-mail válido").required('Preencha o e-mail'),
+  //email: yup.string().email("Informe um e-mail válido").required('Preencha o e-mail'),
   phone: yup.string().required('Informe seu telefone'),
   address_city: yup.string().required('Informe a sua cidade'),
-  address_state: yup.string().required('Informe o seu estado'),
+  //address_state: yup.string().required('Informe o seu estado'),
 });
 
 export function Simulador(){
@@ -71,9 +71,9 @@ export function Simulador(){
       resolver: yupResolver(LeadFormSchema),
       defaultValues:{
         name: simulador.leadData?.name,
-        email: simulador.leadData?.email,
+        //email: simulador.leadData?.email,
         address_city: simulador.leadData?.address_city,
-        address_state: simulador.leadData?.address_state,
+        //address_state: simulador.leadData?.address_state,
         phone: simulador.leadData?.phone,
       }
     });
@@ -237,7 +237,7 @@ export function Simulador(){
                       <Stack spacing="5" as="form" onSubmit={leadForm.handleSubmit(saveSecondPart)}>
                         <ControlledInput control={leadForm.control} value={simulador.leadData?.name} error={leadForm.formState.errors.name} name="name" placeholder="Seu nome" label="*Nome completo" type="text"/>
 
-                        <ControlledSelect control={leadForm.control} value={simulador.leadData?.address_state === "0" ? "" : simulador.leadData?.address_state} error={leadForm.formState.errors.address_state} label="*Estado" h="50px" name="address_state" w="100%" fontSize="sm" placeholder="Estado" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
+                        {/* <ControlledSelect control={leadForm.control} value={simulador.leadData?.address_state === "0" ? "" : simulador.leadData?.address_state} error={leadForm.formState.errors.address_state} label="*Estado" h="50px" name="address_state" w="100%" fontSize="sm" placeholder="Estado" focusBorderColor="blue.primary" bg="gray.400" variant="filled" _hover={ {bgColor: 'gray.500'} } size="lg">
                           {
                               states && states.map((state) => {
                                 return(
@@ -245,11 +245,11 @@ export function Simulador(){
                                 )
                               })
                           }
-                        </ControlledSelect>
+                        </ControlledSelect> */}
                         
                         <ControlledInput control={leadForm.control} value={simulador.leadData?.address_city} error={leadForm.formState.errors.address_city} name="address_city" placeholder="Cidade onde mora" label="*Cidade" type="text" />
 
-                        <ControlledInput control={leadForm.control} value={simulador.leadData?.email} error={leadForm.formState.errors.email} name="email" label="*E-mail" type="email" placeholder="Seu e-mail" />
+                        {/* <ControlledInput control={leadForm.control} value={simulador.leadData?.email} error={leadForm.formState.errors.email} name="email" label="*E-mail" type="email" placeholder="Seu e-mail" /> */}
 
                         <ControlledInput control={leadForm.control} value={simulador.leadData?.phone} error={leadForm.formState.errors.phone} name="phone" label="*Telefone" type="tel" mask="phone" placeholder="Seu telefone"/>
 

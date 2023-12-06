@@ -35,8 +35,8 @@ export interface SimulationProduct{
 export interface SimulationLead{
     name: string;
     address_city: string;
-    address_state: string;
-    email: string;
+    //address_state: string;
+    //email: string;
     phone: string;
     user_email?: string;
 }
@@ -51,7 +51,7 @@ interface SimulationResult{
 interface Lead{
     id: number;
     name: string;
-    email: string;
+    //email: string;
     phone: string;
 }
 
