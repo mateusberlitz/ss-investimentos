@@ -20,9 +20,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface HeaderProps{
     whiteVersion?: boolean
+    fixed?: boolean
 }
 
-export function Header({whiteVersion}: HeaderProps){
+export function Header({whiteVersion, fixed}: HeaderProps){
     const navRef = useRef(null);
 
     const isWideVersion = useBreakpointValue({
@@ -53,53 +54,55 @@ export function Header({whiteVersion}: HeaderProps){
 
         const ctx = gsap.context(() => {
 
-            const headerTimeline = gsap.timeline({
-                //paused: true,
-                immediateRender: true,
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "120px 100px",
-                    end: "top 0",
-                    scrub: true
-                }
-            });
-
-            headerTimeline
-            .fromTo(navRef.current, { 
-                    backgroundColor: "transparent" ,
-                    position: "relative",
+            if(!fixed){
+                const headerTimeline = gsap.timeline({
+                    //paused: true,
+                    immediateRender: true,
+                    scrollTrigger: {
+                        trigger: "body",
+                        start: "120px 100px",
+                        end: "top 0",
+                        scrub: true
+                    }
+                });
+    
+                headerTimeline
+                .fromTo(navRef.current, { 
+                        backgroundColor: "transparent" ,
+                        position: "relative",
+                        duration: 1,
+                        top: "0"
+                    },{ 
+                        position: "fixed",
+                        top: "0px",
+                        duration: 1,
+                        background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
+                        backdropFilter: "blur(30px)",
+                }).to("#logo", { 
+                    width: "300px" ,
                     duration: 1,
-                    top: "0"
-                },{ 
-                    position: "fixed",
-                    top: "0px",
+                }).to("#quotation", { 
+                    //autoAlpha: 0,
+                    fontSize: "10px !important" ,
+                    height: "30px" ,
                     duration: 1,
-                    background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
-                    backdropFilter: "blur(30px)",
-            }).to("#logo", { 
-                width: "300px" ,
-                duration: 1,
-            }).to("#quotation", { 
-                //autoAlpha: 0,
-                fontSize: "10px !important" ,
-                height: "30px" ,
-                duration: 1,
-            });
-
-            // ScrollTrigger.create({
-            //     trigger: "body",
-            //     start: "120px 100px",
-            //     end: "top 0",
-            //     scrub: true,
-            //     animation: attach
-            // });
+                });
+    
+                // ScrollTrigger.create({
+                //     trigger: "body",
+                //     start: "120px 100px",
+                //     end: "top 0",
+                //     scrub: true,
+                //     animation: attach
+                // });
+            }
         });
           
         return () => ctx.revert();
-    }, [])
+    }, [fixed])
     
     return(
-        <Stack as="nav" alignItems="center" pos="relative" top="0" w="100%" left="0" h="140px" m="0" transition="0.4s" justifyContent={"flex-start"}>
+        <Stack spacing="0" as="nav" alignItems="center" pos="relative" top="0" w="100%" left="0" h="auto" m="0" transition="0.4s" justifyContent={"flex-start"}>
              {/* bg="rgb(8,5,16,0.7)" backdropFilter="blur(40px)" */}
             <Stack ref={navRef} zIndex={99999} w="100%" m="0 auto" py="0" justifyContent={"center"} alignItems="center" spacing="0"> 
             {/* pos="fixed" top="12px" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(40px)"} */}
