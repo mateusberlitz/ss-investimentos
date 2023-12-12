@@ -219,7 +219,61 @@ export default function Home() {
             </Stack>
 
         </Flex>
+        
+        <Flex m="0 auto" w="100%" pos="relative" bg="linear-gradient(285.92deg, #2D3250 17.26%, #181818 92.19%);">
+            <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" textAlign={"center"} >
 
+                    <HStack w={"100%"} mb="50px">
+                        <Box display={["none", "none", "flex", "flex"]} h={"2px"} w={"25%"} bg={"linear-gradient(90deg, rgba(0,0,2,0) 0%, rgba(167,116,75,1) 75%);"} />
+                        <VStack alignContent={"center"} textAlign={"center"} w={["100%", "100%", "50%", "50%"]}>
+                            <Heading fontSize={["52px", "52px", "42px", "42px"]} color={"white"}>Cases de Sucesso</Heading>
+                        </VStack>
+                        <Box display={["none", "none", "flex", "flex"]} h={"2px"} w={"25%"} bg={"linear-gradient(-90deg, rgba(0,0,2,0) 0%, rgba(167,116,75,1) 75%);"} />
+                    </HStack>
+
+                <Stack spacing="16" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
+
+                    <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Img w="100%" src='images/extrato3.png' />
+
+                        <Text color={"white"} fontSize={"20px"}>Contemplado no 1º mês, lucro líquido de</Text>
+
+                        <Heading color="white" fontSize={"35px"}>R$18.000 em um mês</Heading>
+
+                    </Stack>
+
+                    <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Img w="100%" src='images/extrato4.png' />
+
+                        <Text color={"white"} fontSize={"20px"}>Contemplado no 2º mês, lucro líquido de</Text>
+
+                        <Heading color="white" fontSize={"35px"}>R$15.000 em dois meses</Heading>
+
+                    </Stack>
+
+                    <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Img w="100%" src='images/extrato1.png' />
+
+                        <Heading color="#D59665" fontSize={"25px"}>Juros compostos</Heading>
+
+                        <Text color={"white"}>Após contemplar, deixou o crédito total rendendo para receber ganhos superiores a investimentos tradicionais.</Text>
+                    </Stack>
+
+                    <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Img w="100%" src='images/extrato2.png' />
+
+                        <Heading color="#D59665" fontSize={"25px"}>Aquisição</Heading>
+
+                        <Text color={"white"}>Após contemplar, adquiriu um apartamento para alugar e receber renda passiva proveniente do seu novo imóvel.</Text>
+                    </Stack>
+
+                </Stack>
+            </Stack>
+        </Flex>
+
+
+
+        
         <Flex m="0 auto" w="100%" pos="relative" bg="#ffffff" backgroundSize="cover" backgroundPosition="0 0px">
            
             <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="center">
