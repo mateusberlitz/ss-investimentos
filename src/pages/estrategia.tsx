@@ -226,7 +226,7 @@ export default function Home() {
                     <HStack w={"100%"} mb="50px">
                         <Box display={["none", "none", "flex", "flex"]} h={"2px"} w={"25%"} bg={"linear-gradient(90deg, rgba(0,0,2,0) 0%, rgba(167,116,75,1) 75%);"} />
                         <VStack alignContent={"center"} textAlign={"center"} w={["100%", "100%", "50%", "50%"]}>
-                            <Heading fontSize={["52px", "52px", "42px", "42px"]} color={"white"}>Cases de Sucesso</Heading>
+                            <Heading fontSize={["52px", "52px", "42px", "42px"]} color={"white"}>Resultados Entregues</Heading>
                         </VStack>
                         <Box display={["none", "none", "flex", "flex"]} h={"2px"} w={"25%"} bg={"linear-gradient(-90deg, rgba(0,0,2,0) 0%, rgba(167,116,75,1) 75%);"} />
                     </HStack>
