@@ -112,7 +112,8 @@ export function Simulador(){
                     <Stack spacing="12">
                       <Stack spacing="5">
                         <TextTag>SIMULADOR</TextTag>
-                        <Heading fontSize="3xl">Veja qual seu plano ideal</Heading>
+                        <Heading fontSize="3xl">Calcule gratuitamente seu investimento!</Heading>
+                        <Text>Veja seus potenciais ganhos de lucro na venda, em juros ou a definição do seu objetivo</Text>
                       </Stack>
 
                       {/* <Text>Veja quantos pontos smiles você acumula</Text> */}
@@ -298,7 +299,7 @@ export function Simulador(){
                     <Stack spacing="6">
                       <TextTag>SIMULADOR</TextTag>
 
-                      <Heading fontSize="3xl">Este é o seu consórcio novo!</Heading>
+                      <Heading fontSize="3xl">Este é o seu plano calculado:</Heading>
 
                       <Board border="2px solid" borderColor="gray.200" padding="5" display="flex" flexDir="row" justifyContent="space-between" alignItems="center">
                         <Stack spacing="3" w="100%">
@@ -326,7 +327,7 @@ export function Simulador(){
                               <>
                                 <TextTag fontSize="11" fontWeight="semibold">RESULTADO:</TextTag>
 
-                                <HStack position="relative" justifyContent="space-between" _before={{content: '""', pos: 'absolute', height: '74px', width: '2px', bg: 'gradient', left: '-22px', top: '-25px'}}>
+                                <HStack position="relative" justifyContent="space-between" >
                                   <Stack spacing="1">
                                     <Text fontWeight="bold">Meia parcela</Text>
                                     <Text fontWeight="bold">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(simulador.simulationResult.halfParcel)}</Text>
@@ -335,6 +336,42 @@ export function Simulador(){
                                   <Stack spacing="1">
                                     <Text fontWeight="regular" color="gray.700">Parcela</Text>
                                     <Text fontWeight="bold" color="gray.700">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(simulador.simulationResult.fullParcel)}</Text>
+                                  </Stack>
+                                </HStack>
+
+                                {/* <Divider />
+
+                                <HStack justifyContent="space-between" fontSize="sm">
+                                  <Text fontWeight="regular" color="gray.800">Smiles</Text>
+                                  <Text fontWeight="regular">{Math.floor(simulador.simulationResult.smilesPoints)} milhas/mês</Text>
+                                </HStack>
+
+                                <Text fontSize="11px">Pontos podem variar de mês a mês devido a conversão do dolar.</Text> */}
+                              </>
+                            )
+                          }
+
+{
+                            ((simulador.productData && simulador.simulationResult) && (simulador.productData.segment === "Imóvel" || simulador.productData.segment === "Investimento")) && (
+                              <>
+                                <TextTag fontSize="11" fontWeight="semibold">RENTABILIDADE:</TextTag>
+
+                                <HStack position="relative" justifyContent="space-between" _before={{content: '""', pos: 'absolute', height: '74px', width: '2px', bg: 'gradient', left: '-22px', top: '-25px'}}>
+                                  <Stack spacing="1">
+                                    <Text fontWeight="bold">Potencial de ganhos na venda do crédito</Text>
+                                    <Text fontWeight="bold">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format((simulador.productData.credit*0.20) - simulador.simulationResult.halfParcel)}</Text>
+                                  </Stack>
+                                </HStack>
+
+                                <HStack position="relative" justifyContent="space-between" _before={{content: '""', pos: 'absolute', height: '74px', width: '2px', bg: 'gradient', left: '-22px', top: '-25px'}}>
+                                  <Stack spacing="1">
+                                    <Text fontWeight="bold">Aplicação</Text>
+                                    <Text fontWeight="bold">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format((simulador.productData.credit*0.0090))} / mês</Text>
+                                  </Stack>
+
+                                  <Stack spacing="1">
+                                    <Text fontWeight="regular" color="gray.700">Locação</Text>
+                                    <Text fontWeight="bold" color="gray.700">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format((simulador.productData.credit*0.0070))} / mês</Text>
                                   </Stack>
                                 </HStack>
 

@@ -17,6 +17,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) =>{
                 email: lead.email,
                 phone: lead.phone
             }}).catch(error => {
+                console.log(error);
                 return error.response;
             });
 
@@ -79,7 +80,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) =>{
         }catch(error: any){
             console.log(error);
             //return error;
-            return response.status(error.request.res.statusCode);
+            //return response.status(error.request.res.statusCode);
         }
     }else{
         response.setHeader('Allow', 'POST');
