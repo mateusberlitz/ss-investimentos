@@ -39,7 +39,7 @@ export default function Imoveis(){
         <meta name="description" content="Construa ou reforme sua casa, compre seu apartamento ou terreno com as melhores condições."></meta>
       </Head>
 
-      <Flex px="6" flexDir="column" w="100%" bg="url(https://cdn.discordapp.com/attachments/415479229858185218/931207833406550016/casa_grande.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+      <Flex px="6" flexDir="column" w="100%" bg="url(./images/capa_imoveis.png)" backgroundSize="cover" backgroundPosition="0 0px">
 
         <Flex flexDir="column" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(30px)"}>
             <Header fixed={true}/>
@@ -55,9 +55,9 @@ export default function Imoveis(){
               Construa ou reforme sua casa, compre seu apartamento ou terreno com as melhores condições.
             </Text>
 
-            <OutlineButton size="lg" borderColor="#444" _hover={{borderColor: '#fff'}} onClick={simulador.handleOpenSimulador}>
+            <MainButton size="lg" borderColor="#444" _hover={{borderColor: '#fff'}} onClick={simulador.handleOpenSimulador}>
               Simular consórcio
-            </OutlineButton>
+            </MainButton>
           </Stack>
         </Container>
       </Flex>
@@ -104,14 +104,14 @@ export default function Imoveis(){
           </Stack>
 
           <Stack w={["100%", "100%","40%"]}>
-            <Img src="./images/familia.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
+            <Img src="./images/dinheiro_imoveis.png" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
 
         </Container>
 
         <Container>
           <Stack w={["100%", "100%","40%"]}>
-            <Img src="./images/woman_dog.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
+            <Img src="./images/house_imoveis.png" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
 
           <Stack spacing="6" w={["100%", "100%","50%"]}>
@@ -146,7 +146,7 @@ export default function Imoveis(){
           </Stack>
 
           <Stack w={["100%", "100%","40%"]}>
-            <Img src="./images/casal_comprando.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
+            <Img src="./images/handshake_imoveis.png" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
 
         </Container>
@@ -156,47 +156,48 @@ export default function Imoveis(){
             <Table borderRadius="4px" overflow="hidden">
               <Thead>
                 <Tr>
-                  <Th bg="blue.primary" fontSize="sm" py="16px" color="white">Parte</Th>
-                  <Th bg="blue.primary" fontSize="sm" py="16px" color="white">Valor</Th>
+                  <Th bg="blue.primary" fontSize="16px" py="16px" color="white"> </Th>
+                  <Th bg="blue.primary" fontSize="16px" py="16px" color="white">Financiamento</Th>
+                  <Th bg="blue.primary" fontSize="16px" py="16px" color="white">Consórcio</Th>
                 </Tr>
               </Thead>
               <Tbody fontSize="sm">
                 <Tr>
-                  <Td bg="gray.200">Crédito</Td>
-                  <Td bg="gray.200">R$200.000,00</Td>
+                  <Td bg="gray.200" fontWeight="bold" fontSize={"16px"}>Crédito</Td>
+                  <Td bg="red.200" fontSize={"18px"} fontWeight="bold">R$400.000,00</Td>
+                  <Td bg="green.200" fontSize={"18px"} fontWeight="bold">R$400.000,00</Td>
                 </Tr>
                 <Tr>
-                  <Td bg="gray.200">Taxa de adm.(22%)</Td>
-                  <Td bg="gray.200">R$44.000,00</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>Prazo</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>180 meses</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>180 meses</Td>
                 </Tr>
                 <Tr>
-                  <Td bg="gray.200">Fundo reserva.(1%)</Td>
-                  <Td bg="gray.200">R$2.000,00</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>Taxa de Administração</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>0,00</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>R$92.000,00</Td>
                 </Tr>
                 <Tr>
-                  <Td bg="gray.200">Juros (0%)</Td>
-                  <Td bg="gray.200">R$0,00</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>Juros</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>R$582.173,60</Td>
+                  <Td bg="gray.200" fontSize={"16px"}>R$0,00</Td>
                 </Tr>
                 <Tr>
                   <Td bg="gray.200" fontWeight="bold">Total</Td>
-                  <Td bg="gray.200" fontWeight="bold">R$246.000,00</Td>
+                  <Td bg="red.200" fontSize={"18px"} fontWeight="bold">R$982.173,00</Td>
+                  <Td bg="green.200" fontSize={"18px"} fontWeight="bold">R$492.000,00</Td>
                 </Tr>
               </Tbody>
-              <Tfoot>
-                <Tr>
-                  <Th bg="black" color="white" textTransform="capitalize" fontSize="sm" py="16px">Prazo: 180 meses</Th>
-                  <Th bg="black" color="white" textTransform="capitalize" fontSize="sm" py="16px">Meia parcela: R$683,00</Th>
-                </Tr>
-              </Tfoot>
+          
             </Table>
           </Stack>
 
           <Stack spacing="8" w={["100%", "100%","50%"]}>
-            <TextTag>EXEMPLO</TextTag>
+            <TextTag>Pague menos no seu imóvel</TextTag>
 
-            <Heading fontSize="5xl">O que compõe a parcela?</Heading>
+            <Heading fontSize="5xl">Comparando as principais modalidades de compra</Heading>
 
-            <Text fontSize="lg">A <b>meia parcela</b> é um recurso exclusivo da administradora <b>HS consórcios</b>, no qual você paga este valor reduzido até ser <b>contemplado</b>, e então depois passa a pagar a parcela integralmente mas já com o bem em mãos.</Text>
+            <Text fontSize="lg">Com um <b>investimento planejado</b> você aproveita de uma forma muito mais consciente os seus recursos para <b>conquistar o seu sonho</b> e fica longe do perigo das dívidas e juros abusivos.</Text>
           </Stack>
         </Container>
 
