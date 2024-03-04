@@ -25,13 +25,6 @@ export function WeHelpYou() {
           </MainButton>
         </Stack>
 
-        <Stack spacing="4" textAlign="center" alignItems="center">
-          <Text fontSize="sm">Ainda tem dúvidas?</Text>
-
-          <OutlineButton w="230px" size="lg" borderColor="#ddd" _hover={{ borderColor: '#000' }} onClick={() => { router.push('/faq') }}>
-            Dúvidas frequentes
-          </OutlineButton>
-        </Stack>
       </Stack>
     </Stack>
   )
