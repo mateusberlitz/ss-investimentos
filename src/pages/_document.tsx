@@ -85,7 +85,7 @@ class MyDocument extends Document {
                     <meta property="og:title" content="S&S Investimentos - Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
                     <meta property="og:description" content="Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
 
-                    <meta property="og:image" content="./images/card.jpg"></meta>
+                    <meta property="og:image" content="./images/card.png"></meta>
                     <meta property="og:image:alt" content="S&S Investimentos - Conquiste seus objetivos financeiros com as soluções mais completas e precisas para alavancagem patrimonial."></meta>
                     <meta property="og:app_id" content="ns67765jnmz8"></meta>
                     <meta property="og:type" content="website"></meta>
