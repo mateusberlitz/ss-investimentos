@@ -92,9 +92,7 @@ export default function Imoveis(){
               <TextTag>CONDIÇÕES</TextTag>
 
               <Link href="/consorcio">
-                  <ChakraLink href="/consorcio">
-                      <Text fontSize="sm">O que é consórcio?</Text>
-                  </ChakraLink>
+                    <Text fontSize="sm">O que é consórcio?</Text>
               </Link>
             </HStack>
 

@@ -38,7 +38,7 @@ export default function Veiculos(){
         <meta name="description" content="Troque ou adquira seu veículo de pequeno a grande porte como carros, vans e caminhões."></meta>
       </Head>
 
-      <Flex px="6" flexDir="column" w="100%" bg="url(https://cdn.discordapp.com/attachments/415479229858185218/931638477181833267/casal_carro_2.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
+      <Flex px="6" flexDir="column" w="100%" bg="url(./images/banner-veiculo.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
 
       <Flex flexDir="column" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(30px)"}>
             <Header fixed={true}/>
@@ -91,9 +91,7 @@ export default function Veiculos(){
               <TextTag>OBJETIVO</TextTag>
 
               <Link href="/consorcio">
-                  <ChakraLink href="/consorcio">
-                      <Text fontSize="sm">O que é consórcio?</Text>
-                  </ChakraLink>
+                    <Text fontSize="sm">O que é consórcio?</Text>
               </Link>
             </HStack>
 
@@ -140,7 +138,7 @@ export default function Veiculos(){
           </Stack>
 
           <Stack w={["100%", "100%","40%"]}>
-            <Img src="./images/man_truck.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
+            <Img src="./images/scania.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
         </Container>
 
@@ -163,7 +161,7 @@ export default function Veiculos(){
           </Stack>
 
           <Stack w={["100%", "100%","40%"]}>
-            <Img src="./images/casal_comprando.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
+            <Img src="./images/couple-deal.jpg" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
 
         </Container>
