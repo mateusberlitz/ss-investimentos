@@ -12,6 +12,7 @@ interface Window {
         const script = document.createElement('script');
         script.src = scriptUrl;
         script.async = true;
+        // @ts-ignore
         script.onload = () => window.initIframe('https://cartas.formuladoconsorcio.com.br/interface?token=MTI0NjE0X3BlcmUtMg==');
         document.body.appendChild(script);
       };

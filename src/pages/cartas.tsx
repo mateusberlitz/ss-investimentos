@@ -29,7 +29,7 @@ import { Exo_2 } from "next/font/google";
 import { NaoContempladas } from "@/pageParts/NaoContempladas";
 import { Contempladas } from "@/pageParts/Contempladas";
 import { useSimulador } from "@/contexts/SimuladorContext";
-import CartasLike from "./CartasLike";
+import CartasLike from "./cartaslike";
 
 
 
