@@ -1,7 +1,7 @@
 import { OutlineButton } from "@/components/Buttons/OutlineButton";
 import { ControlledSelect } from "@/components/Forms/Selects/ControlledSelect";
 import { TextTag } from "@/components/TextTag"
-import { ContemplatedsFilter, Quota } from "@/pages/cartas";
+import { ContemplatedsFilter, Quota } from "@/pages/cartasOld";
 import { Button, Checkbox, HStack, IconButton, Icon, Stack, Table, Tbody, Td, Th, Thead, Tr, useBreakpointValue, useToast, Text, Flex, Box } from "@chakra-ui/react"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
