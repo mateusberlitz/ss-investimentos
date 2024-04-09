@@ -144,6 +144,8 @@ export function Quotation(){
 
     const fetchCdi = () => {
         axios.get(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=html&dataInicial=${oneYearLater.toLocaleDateString().split(',')[0]}&dataFinal=${today.toLocaleDateString().split(',')[0]}`).then(response => {
+            console.log(response);
+        
             const newCdi = response.data.reduce((amount: number, value: BacenData) => {
                 return amount + parseFloat(value.valor);
             }, 0);
@@ -233,11 +235,11 @@ export function Quotation(){
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                 <QuotationItem ticker="IBOV" value={ibov.value !== 0 ? Intl.NumberFormat('pt-BR', {maximumFractionDigits: 0}).format(ibov.value) : '--'} percent={ibov.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="IPCA" value={`${Intl.NumberFormat('pt-BR', {}).format(ipca.value)}% últ. 12m`} percent={ipca.variation}/>
+                <QuotationItem ticker="IPCA" value={selic.value !== 0 ? `${Intl.NumberFormat('pt-BR', {}).format(ipca.value)}% últ. 12m` : '--'} percent={ipca.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="SELIC" value={`${Intl.NumberFormat('pt-BR', {}).format(selic.value)}% ao ano`} percent={undefined}/>
+                <QuotationItem ticker="SELIC" value={selic.value !== 0 ? `${Intl.NumberFormat('pt-BR', {}).format(selic.value)}% ao ano` : '--'} percent={undefined}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
-                <QuotationItem ticker="CDI" value={`${Intl.NumberFormat('pt-BR', {}).format(cdi.value)} ao ano%`} />
+                <QuotationItem ticker="CDI" value={selic.value !== 0 ? `${Intl.NumberFormat('pt-BR', {}).format(cdi.value)} ao ano%` : '--'} />
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
                 <QuotationItem ticker="Dolar" value={Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(dolar.value)} percent={dolar.variation}/>
                 <Divider orientation="vertical" h="60%" borderColor="gray.600"/>
