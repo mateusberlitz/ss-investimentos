@@ -32,19 +32,51 @@ import { ServicesMobile } from '@/components/Services/ServicesMobile';
 import { Contact } from '@/pageParts/Contact';
 import { callWhatsapp } from '@/functions/callWhatsapp';
 import { StepsSectionClean } from '@/components/StepsSectionClean';
-import { useSimulador } from '@/contexts/SimuladorContext';
+import { SimulationLead, useSimulador } from '@/contexts/SimuladorContext';
 import { HeaderAlt } from '@/components/Header/HeaderAlt';
 
 import BACEN from '../../public/abac_white_full.svg';
 import ABAC from '../../public/bacen_white_full.svg';
+import { CheckCircle, Plus } from 'react-feather';
 
+import { useForm } from "react-hook-form";
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ControlledInput } from '@/components/Forms/Inputs/ControlledInput';
 
-export default function Home() {
+export interface CalculateLead{
+    name: string;
+    city: string;
+    value: number;
+    email: string;
+    phone: string;
+}
+
+const CalculateFormSchema = yup.object().shape({
+    name: yup.string().required('Qual o seu nome?'),
+    email: yup.string().email("Informe um e-mail válido").required('Preencha o e-mail'),
+    phone: yup.string().required('Informe seu telefone'),
+    city: yup.string().required('Informe a sua cidade'),
+    value: yup.number().required('Diga quanto quer investir.'),
+});
+
+export default function Estrategia() {
 
     const [activeSlide, setActiveSlide] = useState(0);
 
     const isWideVersion = useBreakpointValue({base: false, lg: true,});
     const isMobile = useBreakpointValue({base: true, sm: false,});
+
+    const leadForm = useForm<CalculateLead>({
+        resolver: yupResolver(CalculateFormSchema),
+        defaultValues:{
+          name: '',
+          email: '',
+          city: '',
+          value: 0,
+          phone: '',
+        }
+    });
 
     const settings = {
         dots: true,
@@ -98,7 +130,7 @@ export default function Home() {
                     <HeaderAlt/>
                 </Flex>
                 
-                <Stack px="6" w="100%" maxW="1200px" m="0 auto" py={["5","20","20","20"]} pb="20">
+                {/* <Stack px="6" w="100%" maxW="1200px" m="0 auto" py={["5","20","20","20"]} pb="20">
                     <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
                         <Stack textAlign={"left"} alignItems={"left"}  spacing={["8","12","16","16"]} w={["100%", "100%", "50%", "50%"]}>
                             <Stack spacing="6">
@@ -124,8 +156,6 @@ export default function Home() {
                         </Stack>
 
                         <VStack w={["100%", "100%", "50%", "50%"]} alignContent={"left"} spacing={"4"}>
-                            
-                            {/* <Img maxWidth={"450px"} src='./images/video.png'/> */}
 
                             <AspectRatio maxW={"100%"} w="100%" ratio={4/5} mt="-30px">
                                 <iframe width="900" src="https://www.youtube.com/embed/KhZwcW0DtLk?si=GCh9h7sAYcXhgjAL" title="Métodos de Ganhar Dinheiro com Consórcio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
@@ -137,6 +167,81 @@ export default function Home() {
                                 <Text fontWeight={"semibold"} color="#D59665">Diversas premiações de nível nacional</Text>
                             </VStack>
                         </VStack>
+                    </Stack>
+                </Stack> */}
+
+                <Stack px="6" w="100%" maxW="900px" m="0 auto" pt="5" pb="20">
+                    <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
+
+                        <Stack textAlign={"center"} alignItems={"center"}  spacing={["8","12","12","24"]} w={["100%", "100%", "100%", "100%"]}>
+                            <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading>
+
+                            <Stack spacing="0" w={"100%"}>
+                                <AspectRatio maxW={"100%"} w="100%" ratio={16/9} mt="-30px">
+                                    <iframe width="900" src="https://www.youtube.com/embed/KhZwcW0DtLk?si=GCh9h7sAYcXhgjAL" title="Métodos de Ganhar Dinheiro com Consórcio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                </AspectRatio>
+
+                                <Stack w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
+                                    <Heading>Simule seu investimento Aqui</Heading>
+
+                                    <HStack justifyContent={"space-between"}>
+                                        <Stack>
+                                            <Text textTransform={"uppercase"}>Voce vai visualizar:</Text>
+                                            <HStack>
+                                                <Plus/>
+                                                <Text>Rendimento na comercialização de ativos</Text>
+                                            </HStack>
+                                            <HStack>
+                                                <Plus/>
+                                                <Text>Renda mensal com imóveis</Text>
+                                            </HStack>
+                                            <HStack>
+                                                <Plus/>
+                                                <Text>Juros sobre capital</Text>
+                                            </HStack>
+                                        </Stack>
+
+                                        <Stack>
+                                            <Text textTransform={"uppercase"}>Indicado para pessoas que:</Text>
+                                            <HStack>
+                                                <CheckCircle/>
+                                                <Text>Buscam uma maneira certeira de investir;</Text>
+                                            </HStack>
+                                            <HStack>
+                                                <CheckCircle/>
+                                                <Text>Pretendem alavancar patrimônio;</Text>
+                                            </HStack>
+                                            <HStack>
+                                                <CheckCircle/>
+                                                <Text>Querem diversificar seus investimentos;</Text>
+                                            </HStack>
+                                        </Stack>
+                                    </HStack>
+
+                                    <Stack>
+                                        <Stack direction={["column","column","row","row"]}>
+                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.name} name="name" placeholder="Nome completo" label="*Nome completo" type="text"/>
+                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.email} name="email" placeholder="Seu E-mail" label="*Seu E-mail" type="email"/>
+                                        </Stack>
+                                        <Stack direction={["column","column","row","row"]}>
+                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.name} name="phone" placeholder="Telefone" label="*Telefone" type="text"/>
+                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.city} name="city" placeholder="Cidade" label="*Cidade" type="email"/>
+                                        </Stack>
+                                        <ControlledInput control={leadForm.control} error={leadForm.formState.errors.value} name="value" placeholder="Quanto quer investir?" label="*Quanto quer investir?" type="email"/>
+                                    </Stack>
+
+                                    <Flex w="100%" alignItems={""}>
+                                        <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
+                                    </Flex>
+                                </Stack>
+                            </Stack>
+{/*                         
+                            <Stack direction={["column","column","row","row"]} spacing={"8"}>
+                                <Img maxW="200px" src='./images/custumers.png'/>
+                                <Img maxW="200px" src='./images/Stars.svg'/>
+                            </Stack> */}
+                        </Stack>
+
                     </Stack>
                 </Stack>
             </Box>
@@ -217,7 +322,6 @@ export default function Home() {
                 </Stack>
 
             </Stack>
-
         </Flex>
         
         <Flex m="0 auto" w="100%" pos="relative" bg="linear-gradient(285.92deg, #2D3250 17.26%, #181818 92.19%);">
@@ -233,7 +337,9 @@ export default function Home() {
 
                 <Stack spacing="16" justifyContent={[ "left", "space-between" ]} direction={["column", "column", "row"]}>
 
-                    <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                    <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"6"} textAlign={"left"}>
+                        <Text fontSize={"25px"} color={"white"}>Porto Alegre-RS</Text>
+
                         <Img w="100%" src='images/extrato3.png' />
 
                         <Text color={"white"} fontSize={"20px"}>Contemplado no 1º mês, lucro líquido de</Text>
@@ -243,6 +349,8 @@ export default function Home() {
                     </Stack>
 
                     <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Text fontSize={"25px"} color={"white"}>Ivoti-RS</Text>
+
                         <Img w="100%" src='images/extrato4.png' />
 
                         <Text color={"white"} fontSize={"20px"}>Contemplado no 2º mês, lucro líquido de</Text>
@@ -252,6 +360,8 @@ export default function Home() {
                     </Stack>
 
                     <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Text fontSize={"25px"} color={"white"}>Tramandaí-RS</Text>
+
                         <Img w="100%" src='images/extrato1.png' />
 
                         <Heading color="#D59665" fontSize={"25px"}>Juros compostos</Heading>
@@ -260,6 +370,8 @@ export default function Home() {
                     </Stack>
 
                     <Stack w={["100%", "100%", "25%", "25%"]} padding={"10px"} spacing={"8"} textAlign={"left"}>
+                        <Text fontSize={"25px"} color={"white"}>Caxias do Sul-RS</Text>
+
                         <Img w="100%" src='images/extrato2.png' />
 
                         <Heading color="#D59665" fontSize={"25px"}>Aquisição</Heading>
@@ -274,7 +386,7 @@ export default function Home() {
 
 
         
-        <Flex m="0 auto" w="100%" pos="relative" bg="#ffffff" backgroundSize="cover" backgroundPosition="0 0px">
+        {/* <Flex m="0 auto" w="100%" pos="relative" bg="#ffffff" backgroundSize="cover" backgroundPosition="0 0px">
            
             <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="center">
                 
@@ -303,7 +415,7 @@ export default function Home() {
 
             </Stack>
 
-        </Flex>
+        </Flex> */}
 
         
 
