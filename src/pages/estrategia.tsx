@@ -43,11 +43,16 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ControlledInput } from '@/components/Forms/Inputs/ControlledInput';
+import moneyToBackend from '@/utils/moneyToBackend';
+import Link from 'next/link';
+import { SolidButton } from '@/components/Buttons/SolidButton';
+import axios from 'axios';
+import { useSearchParams } from 'next/navigation'
 
 export interface CalculateLead{
     name: string;
     city: string;
-    value: number;
+    value: string;
     email: string;
     phone: string;
 }
@@ -57,10 +62,86 @@ const CalculateFormSchema = yup.object().shape({
     email: yup.string().email("Informe um e-mail válido").required('Preencha o e-mail'),
     phone: yup.string().required('Informe seu telefone'),
     city: yup.string().required('Informe a sua cidade'),
-    value: yup.number().required('Diga quanto quer investir.'),
+    value: yup.string().required('Diga quanto quer investir.'),
 });
 
+interface Credit{
+    value: number;
+    parcel: number;
+}
+
+const credits: Credit[] = [
+    {
+        parcel: 341,
+        value: 100000
+    },
+    {
+        parcel: 512.25,
+        value: 150000
+    },
+    {
+        parcel: 615,
+        value: 180000
+    },
+    {
+        parcel: 922.50,
+        value: 300000
+    },
+    {
+        parcel: 1230,
+        value: 400000
+    },
+    {
+        parcel: 1677,
+        value: 600000
+    },
+    {
+        parcel: 1956,
+        value: 700000
+    },
+    {
+        parcel: 2236,
+        value: 800000
+    },
+    {
+        parcel: 2515,
+        value: 900000
+    },
+    {
+        parcel: 2795,
+        value: 1000000
+    },
+    {
+        parcel: 3354,
+        value: 1200000
+    },
+    {
+        parcel: 3354,
+        value: 1200000
+    },
+    {
+        parcel: 3633,
+        value: 1300000
+    },
+    {
+        parcel: 4192.50,
+        value: 1500000
+    },
+]
+
+export interface ResultCalculate{
+    potentialIncome: number;
+    monthlyIncome: number;
+    feesIncome: number;
+    parcel: number;
+}
+
 export default function Estrategia() {
+    const searchParams = useSearchParams()
+    const [utmSource, setUtmSource] = useState<null|string>();
+    const [utmCampaign, setUtmCampaign] = useState<null|string>();
+    const [utmMedium, setUtmMedium] = useState<null|string>();
+    const [utmContent, setUtmContent] = useState<null|string>();
 
     const [activeSlide, setActiveSlide] = useState(0);
 
@@ -73,7 +154,7 @@ export default function Estrategia() {
           name: '',
           email: '',
           city: '',
-          value: 0,
+          value: '',
           phone: '',
         }
     });
@@ -112,7 +193,55 @@ export default function Estrategia() {
         window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
     }
 
+    const [result, setResult] = useState<ResultCalculate>();
+    const [loading, setLoading] = useState<boolean>();
+
+    const calculateInvestiment = (data: CalculateLead) => {
+        setLoading(true);
+
+        const investiment = parseFloat(moneyToBackend(data.value));
+
+        const credit = credits.reduce((previous, credit) => {
+            return (Math.abs(credit.parcel - investiment) < Math.abs(previous.parcel - investiment) ? credit : previous);
+        });
+
+        if(credit){
+            const selic = 10.15*0.90;
+
+            console.log(credit?.value);
+
+            const newResult:ResultCalculate = {
+                potentialIncome: credit?.value * 0.20,
+                monthlyIncome: credit?.value*(0.7/100),
+                feesIncome: credit?.value*(selic/100),
+                parcel: investiment,
+            }
+
+            setResult(newResult);
+
+            axios.post("https://hook.us1.make.com/1kt3b6h3i8k65dw3qphq3pag2vgt7b6n", {
+                Nome: data.name,
+                Email: data.email,
+                Telefone: `+55${data.phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")}`,
+                Investimento: data.value,
+                utm_source: utmSource,
+                utm_campaign: utmCampaign,
+                utm_medium: utmMedium,
+                utm_content: utmContent,
+            });
+
+            setLoading(false);
+        }
+    }
+
     const simulador = useSimulador();
+
+    useEffect(() => {
+        setUtmSource(searchParams.get("utm_source"));
+        setUtmCampaign(searchParams.get("utm_campaign"));
+        setUtmMedium(searchParams.get("utm_medium"));
+        setUtmContent(searchParams.get("utm_content"));
+    }, [searchParams])
 
     return (
     <>
@@ -181,58 +310,87 @@ export default function Estrategia() {
                                     <iframe width="900" src="https://www.youtube.com/embed/KhZwcW0DtLk?si=GCh9h7sAYcXhgjAL" title="Métodos de Ganhar Dinheiro com Consórcio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                 </AspectRatio>
 
-                                <Stack w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
-                                    <Heading>Simule seu investimento Aqui</Heading>
+                                <Stack as="form" onSubmit={leadForm.handleSubmit(calculateInvestiment)} w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
+                                    {
+                                        result ? (
+                                            <>
+                                                <Heading fontSize={"4xl"}>Aqui está a capacidade de retorno investindo {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.parcel)} por mês</Heading>
 
-                                    <HStack justifyContent={"space-between"}>
-                                        <Stack>
-                                            <Text textTransform={"uppercase"}>Voce vai visualizar:</Text>
-                                            <HStack>
-                                                <Plus/>
-                                                <Text>Rendimento na comercialização de ativos</Text>
-                                            </HStack>
-                                            <HStack>
-                                                <Plus/>
-                                                <Text>Renda mensal com imóveis</Text>
-                                            </HStack>
-                                            <HStack>
-                                                <Plus/>
-                                                <Text>Juros sobre capital</Text>
-                                            </HStack>
-                                        </Stack>
+                                                <Stack fontSize={"2xl"}>
+                                                    <HStack>
+                                                        <Text>Ganho potencial: Até <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.potentialIncome)} de lucro</b> </Text>
+                                                    </HStack>
+                                                    <HStack>
+                                                        <Text>Incremento de Renda Passiva: <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.monthlyIncome)}/mês</b> </Text>
+                                                    </HStack>
+                                                    <HStack>
+                                                        <Text>Juros Sobre capital: Até <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.feesIncome)}/ano</b></Text>
+                                                    </HStack>
+                                                </Stack>
 
-                                        <Stack>
-                                            <Text textTransform={"uppercase"}>Indicado para pessoas que:</Text>
-                                            <HStack>
-                                                <CheckCircle/>
-                                                <Text>Buscam uma maneira certeira de investir;</Text>
-                                            </HStack>
-                                            <HStack>
-                                                <CheckCircle/>
-                                                <Text>Pretendem alavancar patrimônio;</Text>
-                                            </HStack>
-                                            <HStack>
-                                                <CheckCircle/>
-                                                <Text>Querem diversificar seus investimentos;</Text>
-                                            </HStack>
-                                        </Stack>
-                                    </HStack>
+                                                <Stack spacing="5">
+                                                    <Text>Entenda a estratégia de forma completa:</Text>
+                                                    <Link target={"_blank"} href="https://wa.me/+5551999148599?text=Olá!Gostaria de saber mais sobre o método de investimento da SS Investimentos, o Capital Max!">
+                                                        <SolidButton bg="green.400">Conversar no Whatsapp</SolidButton>
+                                                    </Link>
+                                                </Stack>
+                                            </>
+                                        ):(
+                                            <>
+                                                <Heading>Simule seu investimento Aqui</Heading>
 
-                                    <Stack>
-                                        <Stack direction={["column","column","row","row"]}>
-                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.name} name="name" placeholder="Nome completo" label="*Nome completo" type="text"/>
-                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.email} name="email" placeholder="Seu E-mail" label="*Seu E-mail" type="email"/>
-                                        </Stack>
-                                        <Stack direction={["column","column","row","row"]}>
-                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.name} name="phone" placeholder="Telefone" label="*Telefone" type="text"/>
-                                            <ControlledInput control={leadForm.control} error={leadForm.formState.errors.city} name="city" placeholder="Cidade" label="*Cidade" type="email"/>
-                                        </Stack>
-                                        <ControlledInput control={leadForm.control} error={leadForm.formState.errors.value} name="value" placeholder="Quanto quer investir?" label="*Quanto quer investir?" type="email"/>
-                                    </Stack>
+                                                <HStack justifyContent={"space-between"}>
+                                                    <Stack>
+                                                        <Text textTransform={"uppercase"}>Voce vai visualizar:</Text>
+                                                        <HStack>
+                                                            <Plus/>
+                                                            <Text>Rendimento na comercialização de ativos</Text>
+                                                        </HStack>
+                                                        <HStack>
+                                                            <Plus/>
+                                                            <Text>Renda mensal com imóveis</Text>
+                                                        </HStack>
+                                                        <HStack>
+                                                            <Plus/>
+                                                            <Text>Juros sobre capital</Text>
+                                                        </HStack>
+                                                    </Stack>
 
-                                    <Flex w="100%" alignItems={""}>
-                                        <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
-                                    </Flex>
+                                                    <Stack>
+                                                        <Text textTransform={"uppercase"}>Indicado para pessoas que:</Text>
+                                                        <HStack>
+                                                            <CheckCircle/>
+                                                            <Text>Buscam uma maneira certeira de investir;</Text>
+                                                        </HStack>
+                                                        <HStack>
+                                                            <CheckCircle/>
+                                                            <Text>Pretendem alavancar patrimônio;</Text>
+                                                        </HStack>
+                                                        <HStack>
+                                                            <CheckCircle/>
+                                                            <Text>Querem diversificar seus investimentos;</Text>
+                                                        </HStack>
+                                                    </Stack>
+                                                </HStack>
+
+                                                <Stack>
+                                                    <Stack direction={["column","column","row","row"]}>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} name="name" placeholder="Nome completo" label="*Nome completo" type="text"/>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.email} name="email" placeholder="Seu E-mail" label="*Seu E-mail" type="email"/>
+                                                    </Stack>
+                                                    <Stack direction={["column","column","row","row"]}>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} mask="phone" name="phone" placeholder="Telefone" label="*Telefone" type="text"/>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.city} name="city" placeholder="Cidade" label="*Cidade" type="text"/>
+                                                    </Stack>
+                                                    <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.value} mask="money" name="value" placeholder="Quanto quer investir mensalmente?" label="*Quanto quer investir mensalmente?" type="text"/>
+                                                </Stack>
+
+                                                <Flex w="100%" alignItems={"center"} justifyContent="space-between">
+                                                    <MainButton type="submit">Simule Seu Investimento</MainButton>
+                                                </Flex>
+                                            </>
+                                        )
+                                    }
                                 </Stack>
                             </Stack>
 {/*                         
