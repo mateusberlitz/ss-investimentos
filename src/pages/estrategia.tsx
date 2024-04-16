@@ -48,6 +48,8 @@ import Link from 'next/link';
 import { SolidButton } from '@/components/Buttons/SolidButton';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation'
+import * as gtag from '../services/gtag';
+import { useFacebookPixel } from '@/components/Facebook';
 
 export interface CalculateLead{
     name: string;
@@ -143,6 +145,8 @@ export default function Estrategia() {
     const [utmMedium, setUtmMedium] = useState<null|string>();
     const [utmContent, setUtmContent] = useState<null|string>();
 
+    const {reactPixel} = useFacebookPixel();
+
     const [activeSlide, setActiveSlide] = useState(0);
 
     const isWideVersion = useBreakpointValue({base: false, lg: true,});
@@ -230,6 +234,12 @@ export default function Estrategia() {
                 utm_content: utmContent,
             });
 
+            if(reactPixel){
+                const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL"});
+            }
+
+            gtag.track('conversion', { sendTo: 'AW-11140098875/953YCPK2tZYYELvWgcAp', value: 0, currency: 'BRL'});
+
             setLoading(false);
         }
     }
@@ -302,13 +312,17 @@ export default function Estrategia() {
                 <Stack px="6" w="100%" maxW="900px" m="0 auto" pt="5" pb="20">
                     <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
 
-                        <Stack textAlign={"center"} alignItems={"center"}  spacing={["8","12","12","24"]} w={["100%", "100%", "100%", "100%"]}>
-                            <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading>
+                        <Stack textAlign={"center"} alignItems={"center"}  spacing={["8","12","12","12"]} w={["100%", "100%", "100%", "100%"]}>
+                        <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Método que ajudou centenas de pessoas a guardar dinheiro de maneira eficiente, garantindo multiplicação, renda mensal e aposentadoria financeira.</Heading>
+                            {/* <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading> */}
+
+                            {/* <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método criado para você de fato começar a guardar direcionando para fazer seu dinheiro multiplicar a longo prazo pensando no seu futuro. <u>Veja os resultados de acordo com o quanto quer investir</u></Text> */}
+                            <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método comprovado que reúne as melhores estratégias do mercado imobiliário e financeiro para qualquer pessoa que queira fazer investimentos de forma segura e rentável através de cartas de crédito.</Text>
 
                             <Stack spacing="0" w={"100%"}>
-                                <AspectRatio maxW={"100%"} w="100%" ratio={16/9} mt="-30px">
+                                {/* <AspectRatio maxW={"100%"} w="100%" ratio={16/9} mt="-30px">
                                     <iframe width="900" src="https://www.youtube.com/embed/KhZwcW0DtLk?si=GCh9h7sAYcXhgjAL" title="Métodos de Ganhar Dinheiro com Consórcio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                </AspectRatio>
+                                </AspectRatio> */}
 
                                 <Stack as="form" onSubmit={leadForm.handleSubmit(calculateInvestiment)} w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
                                     {
@@ -337,7 +351,10 @@ export default function Estrategia() {
                                             </>
                                         ):(
                                             <>
-                                                <Heading>Simule seu investimento Aqui</Heading>
+                                                {/* <Heading>Simule seu investimento Aqui</Heading> */}
+                                                {/* <Heading>Receba seus resultados de investimento pelo CAPITAL MAX</Heading> */}
+                                                <TextTag>Calculadora Exclusiva</TextTag>
+                                                <Heading>Veja quanto o CAPITAL MAX gera para você de retorno</Heading>
 
                                                 <HStack justifyContent={"space-between"}>
                                                     <Stack>
@@ -385,9 +402,13 @@ export default function Estrategia() {
                                                     <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.value} mask="money" name="value" placeholder="Quanto quer investir mensalmente?" label="*Quanto quer investir mensalmente?" type="text"/>
                                                 </Stack>
 
-                                                <Flex w="100%" alignItems={"center"} justifyContent="space-between">
-                                                    <MainButton type="submit">Simule Seu Investimento</MainButton>
-                                                </Flex>
+                                                <Stack spacing="8" w="100%" alignItems={"center"} justifyContent="center">
+                                                    <MainButton type="submit">Ver potencial de lucro</MainButton>
+                                                    <HStack spacing={5} w="100%" maxW="260px">
+                                                        <BACEN/>
+                                                        <ABAC/>
+                                                    </HStack>  
+                                                </Stack>
                                             </>
                                         )
                                     }

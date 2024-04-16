@@ -136,6 +136,7 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
 
                 {/* </Stack> */}
             </Stack>
+            <Quotation/>
         </Stack>
     )
 }
