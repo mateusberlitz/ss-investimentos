@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { AspectRatio, Avatar, Box, Flex, Heading, HStack, Icon, Img, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react'
+import { AspectRatio, Avatar, Box, Flex, Heading, HStack, Icon, Img, Spinner, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react'
 import Slider from "react-slick";
 import { Header } from '../components/Header'
 import { MainButton } from '@/components/Buttons/MainButton'
@@ -198,7 +198,7 @@ export default function Estrategia() {
     }
 
     const [result, setResult] = useState<ResultCalculate>();
-    const [loading, setLoading] = useState<boolean>();
+    const [loading, setLoading] = useState<boolean>(false);
 
     const calculateInvestiment = (data: CalculateLead) => {
         setLoading(true);
@@ -212,8 +212,6 @@ export default function Estrategia() {
         if(credit){
             const selic = 10.15*0.90;
 
-            console.log(credit?.value);
-
             const newResult:ResultCalculate = {
                 potentialIncome: credit?.value * 0.20,
                 monthlyIncome: credit?.value*(0.7/100),
@@ -223,16 +221,16 @@ export default function Estrategia() {
 
             setResult(newResult);
 
-            axios.post("https://hook.us1.make.com/1kt3b6h3i8k65dw3qphq3pag2vgt7b6n", {
-                Nome: data.name,
-                Email: data.email,
-                Telefone: `+55${data.phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")}`,
-                Investimento: data.value,
-                utm_source: utmSource,
-                utm_campaign: utmCampaign,
-                utm_medium: utmMedium,
-                utm_content: utmContent,
-            });
+            // axios.post("https://hook.us1.make.com/1kt3b6h3i8k65dw3qphq3pag2vgt7b6n", {
+            //     Nome: data.name,
+            //     Email: data.email,
+            //     Telefone: `+55${data.phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")}`,
+            //     Investimento: data.value,
+            //     utm_source: utmSource,
+            //     utm_campaign: utmCampaign,
+            //     utm_medium: utmMedium,
+            //     utm_content: utmContent,
+            // });
 
             if(reactPixel){
                 const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL"});
@@ -240,7 +238,8 @@ export default function Estrategia() {
 
             gtag.track('conversion', { sendTo: 'AW-11140098875/953YCPK2tZYYELvWgcAp', value: 0, currency: 'BRL'});
 
-            setLoading(false);
+            
+            setTimeout(function() { setLoading(false); }, 5000);
         }
     }
 
@@ -252,6 +251,8 @@ export default function Estrategia() {
         setUtmMedium(searchParams.get("utm_medium"));
         setUtmContent(searchParams.get("utm_content"));
     }, [searchParams])
+
+    console.log(leadForm.formState);
 
     return (
     <>
@@ -313,32 +314,43 @@ export default function Estrategia() {
                     <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
 
                         <Stack textAlign={"center"} alignItems={"center"}  spacing={["8","12","12","12"]} w={["100%", "100%", "100%", "100%"]}>
-                        <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Método que ajudou centenas de pessoas a guardar dinheiro de maneira eficiente, garantindo multiplicação, renda mensal e aposentadoria financeira.</Heading>
+                        <Heading color="#D59665" fontSize={["32px","42px","42px"]} fontWeight="regular">Método que ajudou centenas de pessoas a aplicar dinheiro de maneira eficiente.</Heading>
                             {/* <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading> */}
 
                             {/* <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método criado para você de fato começar a guardar direcionando para fazer seu dinheiro multiplicar a longo prazo pensando no seu futuro. <u>Veja os resultados de acordo com o quanto quer investir</u></Text> */}
-                            <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método comprovado que reúne as melhores estratégias do mercado imobiliário e financeiro para qualquer pessoa que queira fazer investimentos de forma segura e rentável através de cartas de crédito.</Text>
+                            <Text color="white" fontSize={["24px","32px","32px"]} fontWeight="regular"> <u>Os segredos reunidos em uma estratégia única!</u></Text>
+                            <Text color="white" fontSize={["16px","25px","25px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método comprovado que reúne as melhores estratégias do mercado imobiliário e financeiro para qualquer pessoa que queira fazer investimentos de forma segura e rentável através de cartas de crédito.</Text>
 
                             <Stack spacing="0" w={"100%"}>
                                 {/* <AspectRatio maxW={"100%"} w="100%" ratio={16/9} mt="-30px">
                                     <iframe width="900" src="https://www.youtube.com/embed/KhZwcW0DtLk?si=GCh9h7sAYcXhgjAL" title="Métodos de Ganhar Dinheiro com Consórcio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                 </AspectRatio> */}
 
-                                <Stack as="form" onSubmit={leadForm.handleSubmit(calculateInvestiment)} w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
+                                <Stack as="form" pos="relative" onSubmit={leadForm.handleSubmit(calculateInvestiment)} w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
+                                    {
+                                        loading && (
+                                            <Flex zIndex={5} pos="absolute" bg="blue.primary" left="0" bottom={0} right="0" top="0" alignItems={"center"} justifyContent="center">
+                                                <HStack>
+                                                    <Spinner />
+                                                    <Text>Calculando seu investimento</Text>
+                                                </HStack>
+                                            </Flex>
+                                        )
+                                    }
                                     {
                                         result ? (
                                             <>
-                                                <Heading fontSize={"4xl"}>Aqui está a capacidade de retorno investindo {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.parcel)} por mês</Heading>
+                                                <Heading fontSize={["2xl","2xl","4xl"]}>Aqui está a capacidade de retorno investindo {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.parcel)} por mês</Heading>
 
                                                 <Stack fontSize={"2xl"}>
                                                     <HStack>
                                                         <Text>Ganho potencial: Até <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.potentialIncome)} de lucro</b> </Text>
                                                     </HStack>
                                                     <HStack>
-                                                        <Text>Incremento de Renda Passiva: <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.monthlyIncome)}/mês</b> </Text>
+                                                        <Text>Renda mensal estimada: <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.monthlyIncome)}/mês</b> </Text>
                                                     </HStack>
                                                     <HStack>
-                                                        <Text>Juros Sobre capital: Até <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.feesIncome)}/ano</b></Text>
+                                                        <Text>Juros sobre sua aplicação: Até <b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.feesIncome)}/ano</b></Text>
                                                     </HStack>
                                                 </Stack>
 
@@ -354,56 +366,59 @@ export default function Estrategia() {
                                                 {/* <Heading>Simule seu investimento Aqui</Heading> */}
                                                 {/* <Heading>Receba seus resultados de investimento pelo CAPITAL MAX</Heading> */}
                                                 <TextTag>Calculadora Exclusiva</TextTag>
-                                                <Heading>Veja quanto o CAPITAL MAX gera para você de retorno</Heading>
+                                                <Heading fontSize={["2xl","2xl","4xl"]}>Veja quanto o <Text as="span" color="#D59665">CAPITAL MAX</Text> gera para você de retorno</Heading>
 
-                                                <HStack justifyContent={"space-between"}>
+                                                <Stack direction={["column","column","row","row"]} justifyContent={"space-between"} spacing={["12","8","4"]}>
                                                     <Stack>
                                                         <Text textTransform={"uppercase"}>Voce vai visualizar:</Text>
                                                         <HStack>
-                                                            <Plus/>
+                                                            <Icon as={Plus} stroke={"#D59665"} fontSize="22px"/>
                                                             <Text>Rendimento na comercialização de ativos</Text>
                                                         </HStack>
                                                         <HStack>
-                                                            <Plus/>
-                                                            <Text>Renda mensal com imóveis</Text>
+                                                            <Icon as={Plus} stroke={"#D59665"} fontSize="22px"/>
+                                                            <Text>Renda mensal estimada</Text>
                                                         </HStack>
                                                         <HStack>
-                                                            <Plus/>
-                                                            <Text>Juros sobre capital</Text>
+                                                            <Icon as={Plus} stroke={"#D59665"} fontSize="22px"/>
+                                                            <Text>Juros sobre sua aplicação</Text>
                                                         </HStack>
                                                     </Stack>
 
                                                     <Stack>
                                                         <Text textTransform={"uppercase"}>Indicado para pessoas que:</Text>
                                                         <HStack>
-                                                            <CheckCircle/>
+                                                            <Icon as={CheckCircle} stroke={"green.400"} fontSize="26px"/>
                                                             <Text>Buscam uma maneira certeira de investir;</Text>
                                                         </HStack>
                                                         <HStack>
-                                                            <CheckCircle/>
+                                                            <Icon as={CheckCircle} stroke={"green.400"} fontSize="26px"/>
                                                             <Text>Pretendem alavancar patrimônio;</Text>
                                                         </HStack>
                                                         <HStack>
-                                                            <CheckCircle/>
+                                                            <Icon as={CheckCircle} stroke={"green.400"} fontSize="26px"/>
                                                             <Text>Querem diversificar seus investimentos;</Text>
                                                         </HStack>
                                                     </Stack>
-                                                </HStack>
+                                                </Stack>
 
                                                 <Stack>
-                                                    <Stack direction={["column","column","row","row"]}>
-                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} name="name" placeholder="Nome completo" label="*Nome completo" type="text"/>
-                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.email} name="email" placeholder="Seu E-mail" label="*Seu E-mail" type="email"/>
+                                                    <Stack direction={["column","column","row","row"]} justifyContent="center">
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} name="name" placeholder="Nome completo" type="text"/>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.email} name="email" placeholder="Seu E-mail" type="email"/>
+                                                        {/* <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} mask="phone" name="phone" placeholder="Telefone" label="*Telefone" type="text"/> */}
                                                     </Stack>
                                                     <Stack direction={["column","column","row","row"]}>
-                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} mask="phone" name="phone" placeholder="Telefone" label="*Telefone" type="text"/>
-                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.city} name="city" placeholder="Cidade" label="*Cidade" type="text"/>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.name} mask="phone" name="phone" placeholder="Telefone" type="text"/>
+                                                        <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.city} name="city" placeholder="Cidade" type="text"/>
                                                     </Stack>
-                                                    <ControlledInput color="blue.primary" control={leadForm.control} error={leadForm.formState.errors.value} mask="money" name="value" placeholder="Quanto quer investir mensalmente?" label="*Quanto quer investir mensalmente?" type="text"/>
+                                                    <Flex  justifyContent="center">
+                                                        <ControlledInput maxW="400px" color="blue.primary" fontSize={"2xl"} control={leadForm.control} error={leadForm.formState.errors.value} mask="money" name="value" placeholder="Quanto quer investir mensalmente?" label="*Quanto quer investir mensalmente?" type="text"/>
+                                                    </Flex>
                                                 </Stack>
 
                                                 <Stack spacing="8" w="100%" alignItems={"center"} justifyContent="center">
-                                                    <MainButton type="submit">Ver potencial de lucro</MainButton>
+                                                    <MainButton type="submit">VER POTENCIAL DE LUCRO</MainButton>
                                                     <HStack spacing={5} w="100%" maxW="260px">
                                                         <BACEN/>
                                                         <ABAC/>
