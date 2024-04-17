@@ -53,51 +53,51 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
         //     backdropFilter: "blur(30px)",
         // });
 
-        const ctx = gsap.context(() => {
+        // const ctx = gsap.context(() => {
 
-            const headerTimeline = gsap.timeline({
-                //paused: true,
-                immediateRender: true,
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "120px 100px",
-                    end: "top 0",
-                    scrub: true
-                }
-            });
+        //     const headerTimeline = gsap.timeline({
+        //         //paused: true,
+        //         immediateRender: true,
+        //         scrollTrigger: {
+        //             trigger: "body",
+        //             start: "120px 100px",
+        //             end: "top 0",
+        //             scrub: true
+        //         }
+        //     });
 
-            headerTimeline
-            .fromTo(navRef.current, { 
-                    backgroundColor: "transparent" ,
-                    position: "relative",
-                    duration: 1,
-                    top: "0"
-                },{ 
-                    position: "fixed",
-                    top: "0px",
-                    duration: 1,
-                    background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
-                    backdropFilter: "blur(30px)",
-            }).to("#logo", { 
-                width: "300px" ,
-                duration: 1,
-            }).to("#quotation", { 
-                //autoAlpha: 0,
-                fontSize: "10px !important" ,
-                height: "30px" ,
-                duration: 1,
-            });
+        //     headerTimeline
+        //     .fromTo(navRef.current, { 
+        //             backgroundColor: "transparent" ,
+        //             position: "relative",
+        //             duration: 1,
+        //             top: "0"
+        //         },{ 
+        //             position: "fixed",
+        //             top: "0px",
+        //             duration: 1,
+        //             background: whiteVersion ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)",
+        //             backdropFilter: "blur(30px)",
+        //     }).to("#logo", { 
+        //         width: "300px" ,
+        //         duration: 1,
+        //     }).to("#quotation", { 
+        //         //autoAlpha: 0,
+        //         fontSize: "10px !important" ,
+        //         height: "30px" ,
+        //         duration: 1,
+        //     });
 
-            // ScrollTrigger.create({
-            //     trigger: "body",
-            //     start: "120px 100px",
-            //     end: "top 0",
-            //     scrub: true,
-            //     animation: attach
-            // });
-        });
+        //     // ScrollTrigger.create({
+        //     //     trigger: "body",
+        //     //     start: "120px 100px",
+        //     //     end: "top 0",
+        //     //     scrub: true,
+        //     //     animation: attach
+        //     // });
+        // });
           
-        return () => ctx.revert();
+        //return () => ctx.revert();
     }, [])
     
     const simulador = useSimulador();

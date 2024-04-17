@@ -428,6 +428,11 @@ export default function Estrategia() {
                                         )
                                     }
                                 </Stack>
+                                {
+                                    result && (
+                                        <Img src="./images/banner_robson.png" />
+                                    )
+                                }
                             </Stack>
 {/*                         
                             <Stack direction={["column","column","row","row"]} spacing={"8"}>
