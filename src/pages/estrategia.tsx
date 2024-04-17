@@ -221,16 +221,16 @@ export default function Estrategia() {
 
             setResult(newResult);
 
-            // axios.post("https://hook.us1.make.com/1kt3b6h3i8k65dw3qphq3pag2vgt7b6n", {
-            //     Nome: data.name,
-            //     Email: data.email,
-            //     Telefone: `+55${data.phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")}`,
-            //     Investimento: data.value,
-            //     utm_source: utmSource,
-            //     utm_campaign: utmCampaign,
-            //     utm_medium: utmMedium,
-            //     utm_content: utmContent,
-            // });
+            axios.post("https://hook.us1.make.com/1kt3b6h3i8k65dw3qphq3pag2vgt7b6n", {
+                Nome: data.name,
+                Email: data.email,
+                Telefone: `+55${data.phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")}`,
+                Investimento: data.value,
+                utm_source: utmSource,
+                utm_campaign: utmCampaign,
+                utm_medium: utmMedium,
+                utm_content: utmContent,
+            });
 
             if(reactPixel){
                 const tracked = reactPixel.track('Lead', {content_name: 'Consórcio', currency: "BRL"});
