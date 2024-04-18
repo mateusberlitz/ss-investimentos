@@ -379,18 +379,18 @@ export default function Estrategia() {
 
                                                 <Stack direction={["column","column","row","row"]} justifyContent={"space-between"} spacing={["12","8","4"]}>
                                                     <Stack>
-                                                        <Text textTransform={"uppercase"}>Voce vai visualizar:</Text>
+                                                        <Text textTransform={"uppercase"}>Você vai visualizar:</Text>
                                                         <HStack>
                                                             <Icon as={Plus} stroke={"#D59665"} fontSize="22px"/>
-                                                            <Text>Rendimento na comercialização de ativos</Text>
+                                                            <Text>Rendimento na comercialização de ativos;</Text>
                                                         </HStack>
                                                         <HStack>
                                                             <Icon as={Plus} stroke={"#D59665"} fontSize="22px"/>
-                                                            <Text>Renda mensal estimada</Text>
+                                                            <Text>Renda mensal estimada;</Text>
                                                         </HStack>
                                                         <HStack>
                                                             <Icon as={Plus} stroke={"#D59665"} fontSize="22px"/>
-                                                            <Text>Juros sobre sua aplicação</Text>
+                                                            <Text>Juros sobre sua aplicação;</Text>
                                                         </HStack>
                                                     </Stack>
 
@@ -618,7 +618,7 @@ export default function Estrategia() {
 
                 <Stack w="100%" paddingY="6">
                     <Link href="#calculadora">
-                        <MainButton>Simule Seu Investimento</MainButton>
+                        <MainButton>QUERO COMEÇAR A LUCRAR</MainButton>
                     </Link>
                 </Stack>
 
