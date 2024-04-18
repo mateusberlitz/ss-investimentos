@@ -103,6 +103,9 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
     const simulador = useSimulador();
 
     return(
+
+
+
         <Stack as="nav" alignItems="center" pos="relative" top="0" w="100%" left="0" h="140px" m="0" transition="0.4s" justifyContent={"flex-start"}>
              {/* bg="rgb(8,5,16,0.7)" backdropFilter="blur(40px)" */}
             <Stack ref={navRef} zIndex={99999} w="100%" m="0 auto" py="0" justifyContent={"center"} alignItems="center" spacing="0"> 
@@ -110,6 +113,7 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
 
                 {/* <Stack w="100%"> */}
                     <HStack justify="space-between" px="4" maxW="1200px" w="100%">
+
                         <Flex w={["250px", "320px", "380px"]} id="logo" p={"2"}>
                             <Link href="/">
                                 {
@@ -136,7 +140,7 @@ export function HeaderAlt({whiteVersion}: HeaderProps){
 
                 {/* </Stack> */}
             </Stack>
-            <Quotation/>
+            {/*<Quotation/>*/}
         </Stack>
     )
 }

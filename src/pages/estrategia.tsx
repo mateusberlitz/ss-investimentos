@@ -37,7 +37,7 @@ import { HeaderAlt } from '@/components/Header/HeaderAlt';
 
 import BACEN from '../../public/abac_white_full.svg';
 import ABAC from '../../public/bacen_white_full.svg';
-import { CheckCircle, Plus } from 'react-feather';
+import { CheckCircle, Plus, Star } from 'react-feather';
 
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
@@ -50,6 +50,8 @@ import axios from 'axios';
 import { useSearchParams } from 'next/navigation'
 import * as gtag from '../services/gtag';
 import { useFacebookPixel } from '@/components/Facebook';
+import { FooterLP } from '@/components/Footer/FooterLP';
+import { Quotation } from '@/components/Quotation';
 
 export interface CalculateLead{
     name: string;
@@ -194,7 +196,7 @@ export default function Estrategia() {
 
     //console.log(activeSlide);
     const callConsultant = () => {
-        window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada.`, '_blank');
+        window.open(`https://api.whatsapp.com/send?phone=5551985994869&text=Olá Robson!\nGostaria de obter uma consultoria personalizada para meus investimentos`, '_blank');
     }
 
     const [result, setResult] = useState<ResultCalculate>();
@@ -262,11 +264,13 @@ export default function Estrategia() {
             <meta name="description" content="Fornecemos o meio financeiro para você adquirir imóveis, veículos, investimentos e alavancar seu patrimônio."></meta>
         </Head>
 
-        <Loading/>
 
         <Flex flexDir="column" w="100%" bg="url(./images/real.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
             <Box bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" _before={{}}>
                 <Flex flexDir="column">
+                        <Stack w={"100%"} bg="#fa0c0c" textAlign={"center"} paddingY="4">
+                            <Text fontSize={"18px"} color={"#ffffff"}>Consultoria Limitada, Simule e Garanta a Sua</Text>
+                        </Stack>
                     <HeaderAlt/>
                 </Flex>
                 
@@ -314,12 +318,22 @@ export default function Estrategia() {
                     <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
 
                         <Stack textAlign={"center"} alignItems={"center"}  spacing={["8","12","12","12"]} w={["100%", "100%", "100%", "100%"]}>
-                        <Heading color="#D59665" fontSize={["32px","42px","42px"]} fontWeight="regular">Método que ajudou centenas de pessoas a aplicar dinheiro de maneira eficiente.</Heading>
+                            <Text color={"#ffffff"} fontSize={"48px"} fontWeight={"semibold"} letterSpacing={"3px"}>CapitalMAX</Text>
+                        <Heading color="#D59665" fontSize={["24px","28px","28px"]} fontWeight="regular">A Ferramenta financeira ideal para você prosperar financeiramente.</Heading>
                             {/* <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading> */}
-
+                            <Img src="./images/BannerCapitalMAX.png"/>
                             {/* <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método criado para você de fato começar a guardar direcionando para fazer seu dinheiro multiplicar a longo prazo pensando no seu futuro. <u>Veja os resultados de acordo com o quanto quer investir</u></Text> */}
-                            <Text color="white" fontSize={["24px","32px","32px"]} fontWeight="regular"> <u>Os segredos reunidos em uma estratégia única!</u></Text>
-                            <Text color="white" fontSize={["16px","25px","25px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método comprovado que reúne as melhores estratégias do mercado imobiliário e financeiro para qualquer pessoa que queira fazer investimentos de forma segura e rentável através de cartas de crédito.</Text>
+                            <Text color="white" fontSize={["24px","32px","32px"]} fontWeight="regular"> <u>Método que ajudou centenas de pessoas a aplicar dinheiro de maneira eficiente.</u></Text>
+                           
+                            <HStack>
+                                <Star color="#ffbb00" />
+                                <Star color="#ffbb00" />
+                                <Star color="#ffbb00" />
+                                <Star color="#ffbb00" />
+                                <Star color="#ffbb00" />
+                            </HStack>
+
+                            <Text color="white" fontSize={["14px","18px","18px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método comprovado que reúne as melhores estratégias do mercado imobiliário e financeiro para qualquer pessoa que queira fazer investimentos de forma segura e rentável através de cartas de crédito.</Text>
 
                             <Stack spacing="0" w={"100%"}>
                                 {/* <AspectRatio maxW={"100%"} w="100%" ratio={16/9} mt="-30px">
@@ -445,6 +459,33 @@ export default function Estrategia() {
                 </Stack>
             </Box>
         </Flex>   
+
+        <Flex m="0 auto" w="100%" bg="linear-gradient(285.92deg, #2D3250 17.26%, #181818 92.19%);">
+           
+           <Stack w="100%" maxW="1200px" m="0 auto" p={["0", "auto" ]} py="24" px="6" flexDirection="column" alignItems="center">
+
+                <Stack w={"100%"} spacing={"16"} textAlign={"center"}>
+
+                    <Heading color={"#ffffff"} fontSize={"36px"} fontWeight={"bold"}>Rentabilidade Campeã</Heading>
+
+                    <Quotation />
+                    
+                        <Stack direction={["column", "column", "row"]} spacing={"16"} w={"100%"} justifyContent={"center"}>
+                            <HStack spacing={"8"}>
+                                <Img w={["200px"]} h={"200px"} src="./images/supIbov.png"/>
+                                <Img w={["200px"]} h={"200px"} src="./images/supSelic.png"/>
+                            </HStack>
+                           
+                            <HStack spacing={"8"}>
+                                <Img w={["200px"]} h={"200px"} src="./images/supPoup.png"/>
+                                <Img w={["200px"]} h={"200px"} src="./images/supCdb.png"/>
+                            </HStack>
+                        </Stack>
+
+                </Stack>
+
+            </Stack>
+        </Flex>
 
         <Flex m="0 auto" w="100%" pos="relative" bg="#ffffff" backgroundSize="cover" backgroundPosition="0 0px">
            
@@ -749,21 +790,6 @@ export default function Estrategia() {
                         <Stack alignItems={"center"} color="white">
                             <Stack zIndex={2} bg={activeSlide === 4 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
-                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Robson me atende pela HS consórcio aonde com a ajuda dele consegui contemplar 5 cartas de crédito em 3 meses seguindo o que ele me indicava. Começou como meu corretor hoje é um grande amigo. Vários amigos meus fizeram consócio pela qualidade no atendimento! Te dá todo o suporte...</Text>
-                            </Stack>
-
-                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="60px !important" src='./images/cliente4.jpg'/>
-                                <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Ronaldo Peruchini</Text>
-                                    <Text color="gray.300">Proprietário Armazém da Venâncio</Text>
-                                </Stack>
-                            </Stack>
-                        </Stack>
-
-                        <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 5 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
-                                <Quote/>
                                 <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Conheço o Robson e o Cristiano a mais de 20 anos, são pessoas sérias, sempre comprometidas em ajudar seus clientes e amigos da melhor forma, indicando formas de investimento. Recomendo muito o atendimento e os serviços deles.</Text>
                             </Stack>
 
@@ -778,22 +804,7 @@ export default function Estrategia() {
                         </Stack>
 
                         <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 6 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
-                                <Quote/>
-                                <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Depois que fomos contemplados e percebemos que nosso maior sonho estava na ponta do lápis para se concretizar nunca mais ficamos sem. O consórcio serve para você conquistar o que deseja de maneira bem planejada e sem pagar juros, e assim, conquistamos nosso lar e um carro na época e assim, fomos realizando os nossos sonhos.</Text>
-                            </Stack>
-
-                            <Stack zIndex={2} alignItems={"center"} mt="-35px !important" spacing="4">
-                                <Avatar size="lg" w="60px !important" src='./images/cliente7.jpg'/>
-                                <Stack spacing="0">
-                                    <Text bg="linear-gradient(92.33deg, #F8B179 -25.51%, #7C5333 26.45%, #F8B179 116.76%);" backgroundClip={"text"} fontSize="lg" fontWeight={"semibold"}>Patrícia e Antônio Klauck</Text>
-                                    <Text color="gray.300">Professora e Chefe de Setor</Text>
-                                </Stack>
-                            </Stack>
-                        </Stack>
-
-                        <Stack alignItems={"center"} color="white">
-                            <Stack zIndex={2} bg={activeSlide === 7 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
+                            <Stack zIndex={2} bg={activeSlide === 5 ? "blue.primary" : "rgba(255,255,255,0.2)"} maxW={400} alignItems={"center"} px="5" py="7" h="300px" borderRadius={"10px"} w="100%">
                                 <Quote/>
                                 <Text fontSize={["sm", "sm", "sm", "sm", "md"]}>Quando o assunto é consórcio a gente sabe onde encontrar um parceiro honesto e confiável. Robson é um agente fantástico de vendas da HS Consórcios! Com ele planejamos nosso futuro familiar sem medo. Além de confiabilidade, que é um fator indispensável, quando tratamos de investimento, Robson, também buscar para seus clientes o melhor caminho para que tudo ocorra conforme o planejamento.</Text>
                             </Stack>
@@ -854,8 +865,8 @@ export default function Estrategia() {
                                         <Text fontSize={"24px"} color={"white"}>Investimentos regulamentados</Text>
                                     </HStack>
                                 </VStack>
-
-                                <MainButton onClick={simulador.handleOpenSimulador}>Simule Seu Investimento</MainButton>
+                                
+                                <MainButton>Simule Seu Investimento</MainButton>
 
                             </Stack>
 
@@ -865,7 +876,7 @@ export default function Estrategia() {
             </Flex>
         </Flex>
 
-        <Footer/>
+        <FooterLP/>
     </>
   )
 }
