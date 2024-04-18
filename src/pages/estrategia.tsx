@@ -316,7 +316,7 @@ export default function Estrategia() {
                                 <Heading color="#D59665" fontSize={["24px","28px","28px"]} fontWeight="regular">A Ferramenta financeira ideal para você prosperar financeiramente.</Heading>
                             </Stack>
                             {/* <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading> */}
-                            <Img src="./images/BannerCapitalMAX.png"/>
+                            <Img src="./images/BannerCapitalMax.png"/>
                             {/* <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método criado para você de fato começar a guardar direcionando para fazer seu dinheiro multiplicar a longo prazo pensando no seu futuro. <u>Veja os resultados de acordo com o quanto quer investir</u></Text> */}
                             <Text color="white" fontSize={["24px","32px","32px"]} fontWeight="regular"> <u>Método que ajudou centenas de pessoas a aplicar dinheiro de maneira eficiente.</u></Text>
                            
