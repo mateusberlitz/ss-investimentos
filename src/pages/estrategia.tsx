@@ -8,14 +8,6 @@ import { MainButton } from '@/components/Buttons/MainButton'
 import HS from '../../public/hs_white.svg';
 import { StepsSection } from '@/components/StepsSection'
 
-import Shield from '../../public/shield.svg';
-import Conversation from '../../public/conversation.svg';
-import Smile from '../../public/smile.svg';
-import Page from '../../public/page.svg';
-import Persons from '../../public/persons.svg';
-import LogoTipo from '../../public/logotipo.svg';
-import HSGold from '../../public/hs_gold.svg';
-import SS_HS from '../../public/ss_hs.svg';
 import Check from '../../public/check.svg';
 import Logo from '../../public/logo.svg';
 import { Input } from '@/components/Forms/Inputs/Input'
@@ -268,8 +260,9 @@ export default function Estrategia() {
         <Flex flexDir="column" w="100%" bg="url(./images/real.jpg)" backgroundSize="cover" backgroundPosition="0 0px">
             <Box bg="linear-gradient(3.06deg, rgba(45, 50, 80, 0.43) -20.72%, #181818 93.12%)" _before={{}}>
                 <Flex flexDir="column">
-                        <Stack w={"100%"} bg="#fa0c0c" textAlign={"center"} paddingY="4">
-                            <Text fontSize={"18px"} color={"#ffffff"}>Consultoria Limitada, Simule e Garanta a Sua</Text>
+                        <Stack w={"100%"} bg="#fa0c0c" textAlign={"center"} paddingY="4" spacing="3">
+                            <Text fontSize={"18px"} color={"#ffffff"} fontWeight={"bold"} textTransform={"uppercase"}>3 vagas restantes</Text>
+                            <Text fontSize={"18px"} color={"#ffffff"}>Simule e garanta a sua Consultoria</Text>
                         </Stack>
                     <HeaderAlt/>
                 </Flex>
@@ -318,19 +311,21 @@ export default function Estrategia() {
                     <Stack alignItems={"flex-start"} direction={["column","column","row","row"]} spacing={["24"]}>
 
                         <Stack textAlign={"center"} alignItems={"center"}  spacing={["8","12","12","12"]} w={["100%", "100%", "100%", "100%"]}>
-                            <Text color={"#ffffff"} fontSize={"48px"} fontWeight={"semibold"} letterSpacing={"3px"}>CapitalMAX</Text>
-                        <Heading color="#D59665" fontSize={["24px","28px","28px"]} fontWeight="regular">A Ferramenta financeira ideal para você prosperar financeiramente.</Heading>
+                            <Stack spacing={"4"}>
+                                <Text color={"#ffffff"} fontSize={"48px"} fontWeight={"semibold"} letterSpacing={"3px"}>CapitalMAX</Text>
+                                <Heading color="#D59665" fontSize={["24px","28px","28px"]} fontWeight="regular">A Ferramenta financeira ideal para você prosperar financeiramente.</Heading>
+                            </Stack>
                             {/* <Heading color="#D59665" fontSize={["42px"]} fontWeight="regular">Invista seu dinheiro de maneira eficiente para multiplicação, aposentadoria financeira e futuros ganhos mensais.</Heading> */}
                             <Img src="./images/BannerCapitalMAX.png"/>
                             {/* <Text color="white" fontSize={["28px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método criado para você de fato começar a guardar direcionando para fazer seu dinheiro multiplicar a longo prazo pensando no seu futuro. <u>Veja os resultados de acordo com o quanto quer investir</u></Text> */}
                             <Text color="white" fontSize={["24px","32px","32px"]} fontWeight="regular"> <u>Método que ajudou centenas de pessoas a aplicar dinheiro de maneira eficiente.</u></Text>
                            
                             <HStack>
-                                <Star color="#ffbb00" />
-                                <Star color="#ffbb00" />
-                                <Star color="#ffbb00" />
-                                <Star color="#ffbb00" />
-                                <Star color="#ffbb00" />
+                                <Img maxW={"50px"} src="./images/StarCPM.svg" />
+                                <Img maxW={"50px"} src="./images/StarCPM.svg" />
+                                <Img maxW={"50px"} src="./images/StarCPM.svg" />
+                                <Img maxW={"50px"} src="./images/StarCPM.svg" />
+                                <Img maxW={"50px"} src="./images/StarCPM.svg" />                            
                             </HStack>
 
                             <Text color="white" fontSize={["14px","18px","18px"]} fontWeight="regular">O <b>CAPITAL MAX</b> é um método comprovado que reúne as melhores estratégias do mercado imobiliário e financeiro para qualquer pessoa que queira fazer investimentos de forma segura e rentável através de cartas de crédito.</Text>
@@ -340,7 +335,7 @@ export default function Estrategia() {
                                     <iframe width="900" src="https://www.youtube.com/embed/KhZwcW0DtLk?si=GCh9h7sAYcXhgjAL" title="Métodos de Ganhar Dinheiro com Consórcio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                 </AspectRatio> */}
 
-                                <Stack as="form" pos="relative" onSubmit={leadForm.handleSubmit(calculateInvestiment)} w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
+                                <Stack id="calculadora" as="form" pos="relative" onSubmit={leadForm.handleSubmit(calculateInvestiment)} w="100%" textAlign={"left"} bg="blue.primary" borderRadius={"6"} p="6" color="white" spacing="10">
                                     {
                                         loading && (
                                             <Flex zIndex={5} pos="absolute" bg="blue.primary" left="0" bottom={0} right="0" top="0" alignItems={"center"} justifyContent="center">
@@ -472,13 +467,13 @@ export default function Estrategia() {
                     
                         <Stack direction={["column", "column", "row"]} spacing={"16"} w={"100%"} justifyContent={"center"}>
                             <HStack spacing={"8"}>
-                                <Img w={["200px"]} h={"200px"} src="./images/supIbov.png"/>
-                                <Img w={["200px"]} h={"200px"} src="./images/supSelic.png"/>
+                                <Img w={["150px"]} h={"150px"} src="./images/supIbov.png"/>
+                                <Img w={["150px"]} h={"150px"} src="./images/supSelic.png"/>
                             </HStack>
                            
                             <HStack spacing={"8"}>
-                                <Img w={["200px"]} h={"200px"} src="./images/supPoup.png"/>
-                                <Img w={["200px"]} h={"200px"} src="./images/supCdb.png"/>
+                                <Img w={["150px"]} h={"150px"} src="./images/supPoup.png"/>
+                                <Img w={["150px"]} h={"150px"} src="./images/supCdb.png"/>
                             </HStack>
                         </Stack>
 
@@ -620,6 +615,13 @@ export default function Estrategia() {
                     </Stack>
 
                 </Stack>
+
+                <Stack w="100%" paddingY="6">
+                    <Link href="#calculadora">
+                        <MainButton>Simule Seu Investimento</MainButton>
+                    </Link>
+                </Stack>
+
             </Stack>
         </Flex>
 
@@ -866,8 +868,9 @@ export default function Estrategia() {
                                     </HStack>
                                 </VStack>
                                 
-                                <MainButton>Simule Seu Investimento</MainButton>
-
+                                <Link href="#calculadora">
+                                    <MainButton>Simule Seu Investimento</MainButton>
+                                </Link>
                             </Stack>
 
                         </Stack>
