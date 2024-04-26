@@ -24,6 +24,8 @@ import { Simulador } from '../components/Simulador'
 import { Container } from '../components/Container'
 import { useSimulador } from '@/contexts/SimuladorContext'
 import { WeHelpYou } from '@/pageParts/WeHelpYou'
+import { SimuladorInline } from '@/components/SimuladorInline'
+import { Board } from '@/components/Board'
 
 export default function Imoveis(){
   const router = useRouter();
@@ -58,6 +60,12 @@ export default function Imoveis(){
             <MainButton size="lg" borderColor="#444" _hover={{borderColor: '#fff'}} onClick={simulador.handleOpenSimulador}>
               Simular consórcio
             </MainButton>
+          </Stack>
+
+          <Stack maxW={["100%", "70%","50%"]}>
+            <Board w="100%" p="0" maxW={"480px"}>
+                <SimuladorInline/>
+            </Board>
           </Stack>
         </Container>
       </Flex>
