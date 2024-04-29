@@ -59,6 +59,7 @@ export default function Imoveis(){
               Simular consórcio
             </MainButton>
           </Stack>
+          
         </Container>
       </Flex>
 
@@ -149,7 +150,7 @@ export default function Imoveis(){
 
         </Container>
 
-        <Container>
+        {/* <Container>
           <Stack w={["100%", "100%","40%"]}>
             <Table borderRadius="4px" overflow="hidden">
               <Thead>
@@ -197,7 +198,7 @@ export default function Imoveis(){
 
             <Text fontSize="lg">Com um <b>investimento planejado</b> você aproveita de uma forma muito mais consciente os seus recursos para <b>conquistar o seu sonho</b> e fica longe do perigo das dívidas e juros abusivos.</Text>
           </Stack>
-        </Container>
+        </Container> */}
 
         <Container direction="column" spacing="12" py="20">
           <TextTag>CARACTERÍSTICAS</TextTag>
