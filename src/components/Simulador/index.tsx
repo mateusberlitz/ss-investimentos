@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, HStack, Icon, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, HStack, Icon, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Board } from "../Board";
 import { MainButton } from "../Buttons/MainButton";
 import { OutlineButton } from "../Buttons/OutlineButton";
@@ -408,43 +408,20 @@ export function Simulador(){
 
         {
           (asPath !== "/contempladas" && asPath !== "/cartas" && asPath !== "/chat" && asPath !== "/estrategia") && (
-            <Box position="fixed" right="20px" bottom="20px" zIndex="999999">
-                {/* <Text>Simule um plano</Text> */}
+            <Box></Box>
+            // <Box position="fixed" right="20px" bottom="20px" zIndex="999999">
 
-                {/* <SolidButton bg="linear-gradient(225deg, #DB2C2C 0%, #FC5453 100%);" color="white" fontSize="md" size="lg" onClick={simulador.handleOpenSimulador}>
-                  Simular consórcio
-                </SolidButton> */}
-                <Stack bg="blue.primary" p="4" px="6" borderRadius="4" spacing={"4"}>
-                    <Text color="white" w="100%" textAlign={"center"}>Soluções & Investimentos</Text>
-                    <HStack spacing="5">
-                        <MainButton onClick={simulador.handleOpenSimulador} h={["38px","45px","57px","57px"]}>
-                            Simular
-                        </MainButton>
+            //     <Stack bg="blue.primary" p="4" px="6" borderRadius="4" spacing={"4"}>
+            //         <Text color="white" w="100%" textAlign={"center"}>Soluções & Investimentos</Text>
+            //         <HStack spacing="5">
+            //             <MainButton onClick={simulador.handleOpenSimulador} h={["38px","45px","57px","57px"]}>
+            //                 Simular
+            //             </MainButton>
 
-                        {/* <Stack>
-                            <HStack>
-                                <SolidButton>
-                                    Simular consórcio
-                                </SolidButton>
-                                <IconButton aria-label="Acessar whatsapp" w="55px" onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} h="55px" bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
-                            </HStack>
-
-                            {
-                                isOpenSimulationWindow && (
-                                    <Stack h="600px" w="340px" bg="gray.200">
-
-                                    </Stack>
-                                )
-                            }
-                        </Stack> */}
-
-                        <IconButton aria-label="Acessar whatsapp" w={["37px","44px","55px","55px"]} h={["37px","44px","55px","55px"]} onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
-                        {/* <MainButton onClick={simulador.handleOpenSimulador}>
-                            <Text maxW="40px"><WhatsappWhite/></Text>
-                        </MainButton> */}
-                    </HStack>
-                </Stack>
-            </Box>
+            //             <IconButton aria-label="Acessar whatsapp" w={["37px","44px","55px","55px"]} h={["37px","44px","55px","55px"]} onClick={() => callWhatsapp()} icon={<Icon as={WhatsappWhite} fontSize="22"/>} bg="green.400" borderRadius={"full"} _hover={{bg: "green.400", boxShadow: `0 8px 20px -8px #222222`}}/>
+            //         </HStack>
+            //     </Stack>
+            // </Box>
           )
         }
       </>
