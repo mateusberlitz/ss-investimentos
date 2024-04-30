@@ -77,14 +77,14 @@ export function SimuladorInline(){
     }
 
     return(
-        <Stack w="100%" maxW="360px" m="0 auto" py="10" spacing="14">
+        <Stack w="100%" maxW="360px" m="0 auto" py="3" spacing="14">
             {
                 (!simulador.step || (simulador.step === 0)) ? (
-                <Stack w="100%" spacing="12" color="black">
+                <Stack w="100%" spacing="12" color="black" padding="10">
                     <Stack spacing="5">
                     <TextTag>SIMULADOR</TextTag>
-                    <Heading fontSize="3xl" color="black">Calcule gratuitamente seu investimento!</Heading>
-                    <Text color="black">Veja seus potenciais ganhos de lucro na venda, em juros ou a definição do seu objetivo</Text>
+                    <Heading fontSize="3xl" color="black">Em até quanto tempo você adquire o seu novo imóvel?</Heading>
+                    <Text color="black">A HS é a maior administradora do Brasil e por isso temos o crédito mais barato do mercado.</Text>
                     </Stack>
 
                     {/* <Text>Veja quantos pontos smiles você acumula</Text> */}
@@ -111,30 +111,10 @@ export function SimuladorInline(){
                                 description: "Moto / Carro / Caminhão / Caminhonete"
                             },
                             {
-                                value: "Agronegócio",
-                                label: "Agronegócio",
-                                description: "Área Rural/ Máquinas / Implementos Agrícola"
-                            },
-                            {
                                 value: "Investimento",
                                 label: "Investimento",
                                 description: "Aumento patrimonial / Renda complementar / Aplicação Financeira"
                             },
-                            {
-                                value: "Capital de Giro",
-                                label: "Capital de Giro",
-                                description: "Para a sua empresa"
-                            },
-                            {
-                                value: "Náutico",
-                                label: "Náutico",
-                                description: "Jet Ski / Lancha / Barco"
-                            },
-                            {
-                                value: "Energia Solar",
-                                label: "Energia Solar",
-                                description: "Residencial / Empresarial"
-                            }
                         ]}/>
 
                         {/* <RadioGroup onChange={setValue} value={value}>

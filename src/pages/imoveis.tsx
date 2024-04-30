@@ -15,6 +15,7 @@ import { Footer } from '../components/Footer'
 
 import Dollar from '../../public/icons/dollar-sign.svg';
 import Percent from '../../public/icons/percent.svg';
+import Hs from '../../public/hs_white.svg';
 import RoadSign from '../../public/icons/road-sign.svg';
 import Wallet from '../../public/icons/wallet.svg';
 import { Input } from '../components/Forms/Inputs/Input'
@@ -26,6 +27,7 @@ import { useSimulador } from '@/contexts/SimuladorContext'
 import { WeHelpYou } from '@/pageParts/WeHelpYou'
 import { SimuladorInline } from '@/components/SimuladorInline'
 import { Board } from '@/components/Board'
+import { FooterLP } from '@/components/Footer/FooterLP'
 
 export default function Imoveis(){
   const router = useRouter();
@@ -43,23 +45,26 @@ export default function Imoveis(){
 
       <Flex px="6" flexDir="column" w="100%" bg="url(./images/capa_imoveis.png)" backgroundSize="cover" backgroundPosition="0 0px">
 
-        <Flex flexDir="column" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(30px)"}>
+        {/* <Flex flexDir="column" bg="rgba(0,0,0,0.4)" backdropFilter={"blur(30px)"}>
             <Header fixed={true}/>
-        </Flex>
+        </Flex> */}
 
-        <Container as="main" pt="36" pb="36" color="white">
+        <Container as="main" pt="12" pb="12" color="white">
           <Stack spacing="10" w="100%" maxW={["100%", "70%","50%"]}>
+            
+            <Hs />
+
             <Text>CONSÓRCIO DE IMÓVEIS</Text>
 
-            <Heading fontSize={["5xl","5xl","6xl"]}>Seu plano para adquirir imóveis</Heading>
+            <Heading fontSize={["5xl","5xl","6xl"]} color={"#D59665"}>A forma mais prática para adquirir imóveis</Heading>
 
             <Text>
               Construa ou reforme sua casa, compre seu apartamento ou terreno com as melhores condições.
             </Text>
 
-            <MainButton size="lg" borderColor="#444" _hover={{borderColor: '#fff'}} onClick={simulador.handleOpenSimulador}>
+            {/* <MainButton size="lg" borderColor="#444" _hover={{borderColor: '#fff'}} onClick={simulador.handleOpenSimulador}>
               Simular consórcio
-            </MainButton>
+            </MainButton> */}
           </Stack>
           
 
@@ -98,25 +103,26 @@ export default function Imoveis(){
         <Container>
           <Stack spacing="6" w={["100%", "100%","50%"]}>
             <HStack justifyContent="space-between">
-              <TextTag>CONDIÇÕES</TextTag>
+              <TextTag>CONDIÇÃO EXCLUSIVA</TextTag>
 
-              <Link href="/consorcio">
+              {/* <Link href="/consorcio">
                     <Text fontSize="sm">O que é consórcio?</Text>
-              </Link>
+              </Link> */}
             </HStack>
 
-            <Heading fontSize={["5xl","5xl","6xl"]}>Meia parcela mensal que traz conforto para pagar.</Heading>
+            <Heading fontSize={["5xl","5xl","6xl"]}>Pague apenas metade da parcela</Heading>
+            <Text fontSize={"22px"} fontWeight={"bold"}>e sem juros.</Text>
 
-            <Text>O consórcio de imóvel é um mecanismo para você alocar dinheiro todo mês para ter a chance de adquirir ou reformar um imóvel mais cedo sendo contemplado.</Text>
+            <Text>A Meia parcela é uma exclusividade da HS Consórcios que te permite pagar apenas metade do valor mensal até a contemplação e retirada do seu bem.</Text>
           </Stack>
 
           <Stack w={["100%", "100%","40%"]}>
-            <Img src="./images/dinheiro_imoveis.png" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
+            <Img src="./images/dinheiro_imoveis.png" alt="" borderRadius="7"/>
           </Stack>
 
         </Container>
 
-        <Container>
+        {/* <Container>
           <Stack w={["100%", "100%","40%"]}>
             <Img src="./images/house_imoveis.png" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
@@ -128,13 +134,13 @@ export default function Imoveis(){
 
             <Text>O consórcio é um excelente mecanismo para ampliar seu patrimônio e garantir que seu dinheiro traga retornos como na locação, ou juros com o crédito aplicado.</Text>
           
-            {/* <MainButton size="lg">
+            <MainButton size="lg">
               Simular
-            </MainButton> */}
+            </MainButton>
           </Stack>
-        </Container>
+        </Container> */}
 
-        <Container>
+        {/* <Container>
           <Stack spacing="8" w={["100%", "100%","50%"]}>
             <TextTag>NA PRÁTICA</TextTag>
 
@@ -156,7 +162,7 @@ export default function Imoveis(){
             <Img src="./images/handshake_imoveis.png" alt="Lance Consórcio - Planejamento financeiro e aquisição de bens" borderRadius="7"/>
           </Stack>
 
-        </Container>
+        </Container> */}
 
         {/* <Container>
           <Stack w={["100%", "100%","40%"]}>
@@ -208,34 +214,31 @@ export default function Imoveis(){
           </Stack>
         </Container> */}
 
-        <Container direction="column" spacing="12" py="20">
+        <Container direction="column" spacing="12" py="10">
           <TextTag>CARACTERÍSTICAS</TextTag>
 
-          <SimpleGrid columns={3} spacing={6}>
-            <IconTitleItem title="Poder de negociação"
-              divider={false}
-                icon={<Dollar width="43px" stroke="#000" fill="none"/>}
-                description="Além do consórcio ser mais barato que outras opções financeiras, este garante seu poder de negociação no momento da compra do bem junto ao vendedor, pois o valor do bem é creditado à vista."
-            />
+          <Stack spacing={12}>
+            <Stack title="Poder de negociação">
+                <Dollar width="43px" stroke="#000" fill="none"/>
+                <Text fontSize={"22px"}>Você garante um poder de negociação, pois o valor do bem é creditado à vista.</Text>
+            </Stack>
 
-            <IconTitleItem title="Reajuste"
-              divider={false}
-                icon={<Percent width="46px" stroke="#000" fill="none"/>}
-                description="As parcelas são reajustadas anualmente pelo INCC. Isso acontece pois os imóveis valorizam e você não perde o poder de compra."
-            />
+            <Stack title="Reajuste">
+                <Percent width="46px" stroke="#000" fill="none"/>
+                <Text fontSize={"22px"}>O seu crédito é anualmente reajustado, assim você não perde o seu poder de compra.</Text>
+            </Stack>
 
-            <IconTitleItem title="FGTS"
-              divider={false}
-                icon={<Wallet width="46px" fill="none"/>}
-                description="Você pode efetuar lances nas assembléias para contemplar rapidamente e utilizar o seu FGTS guardado."
-            />
-          </SimpleGrid>
+            <Stack title="FGTS">
+                <Wallet width="46px" stroke="white" fill="none"/>
+                <Text fontSize={"22px"}>Você pode efetuar lances com o seu FGTS para contemplar rapidamente.</Text>
+            </Stack>
+          </Stack>
         </Container>
 
         <WeHelpYou/>
       </Flex>
 
-      <Footer/>
+      <FooterLP/>
     </Box>
   )
 }
