@@ -77,12 +77,12 @@ export function SimuladorInline(){
     }
 
     return(
-        <Stack w="100%" maxW="360px" m="0 auto" py="3" spacing="14">
+        <Stack w="100%" maxW="360px" m="0 auto" padding={"1"} spacing="14">
             {
                 (!simulador.step || (simulador.step === 0)) ? (
-                <Stack w="100%" spacing="12" color="black" padding="10">
+                <Stack w="100%" spacing="12" color="black" padding="5">
                     <Stack spacing="5">
-                    <TextTag>SIMULADOR</TextTag>
+                    <TextTag>SIMULADOR HS CONSÓRCIOS</TextTag>
                     <Heading fontSize="3xl" color="black">Em até quanto tempo você adquire o seu novo imóvel?</Heading>
                     <Text color="black">A HS é a maior administradora do Brasil e por isso temos o crédito mais barato do mercado.</Text>
                     </Stack>

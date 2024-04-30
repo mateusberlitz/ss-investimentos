@@ -68,7 +68,7 @@ export default function Imoveis(){
           </Stack>
           
 
-          <Stack maxW={["100%", "70%","50%"]}>
+          <Stack maxW={["100%", "100%","50%"]}>
             <Board w="100%" p="0" maxW={"480px"}>
                 <SimuladorInline/>
             </Board>
