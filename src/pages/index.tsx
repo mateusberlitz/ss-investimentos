@@ -260,7 +260,7 @@ export default function Home() {
                 
                     <Stack spacing="16"  direction={["column", "column", "row"]}>
                         {/* <Img w={["100%", "100%", "40%"]} src="./images/corretores.webp" right="0" bottom="0" alt="Placas Solares - Tecnologia sofisticada"/> */}
-                        <Image width={420} height={650} src="/images/corretoresOff.png" alt="Equipe qualificada"/>
+                        <Image width={420} height={650} src="/images/hsfront.png" alt="Equipe qualificada"/>
                         <Stack spacing="20">
                             <SS_HS width="100%"/>
                             <Stack spacing="12">
