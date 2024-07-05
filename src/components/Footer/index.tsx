@@ -27,7 +27,7 @@ export function Footer(){
 
                         <HStack>
                             <MapPin/>
-                            <Text color="gray.300">Avenida Presidente Lucena 3315, sala 506, centro ivoti</Text>
+                            <Text color="gray.300">Rua do Moinho, 107 - Centro, Ivoti</Text>
                         </HStack>
                     </Stack>
 

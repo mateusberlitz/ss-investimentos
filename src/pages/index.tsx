@@ -132,7 +132,7 @@ export default function Home() {
 
                         <Stack zIndex={2} alignItems={["left","left","center","center",]} textAlign={isMobile ? "center" : "left"}>
                             <Text fontWeight={"light"}>Experiência no ramo</Text>
-                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ 13 anos</Text>
+                            <Text fontWeight={"normal"} fontSize={["3xl","2xl","2xl","2xl","4xl"]}>+ 15 anos</Text>
                         </Stack>
                     </Stack>
                 </Stack>
