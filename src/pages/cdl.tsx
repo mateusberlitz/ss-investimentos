@@ -38,7 +38,7 @@ export default function Cartas(){
     return (
         <Box position="relative">
             <Head>
-                <title>Contempladas - S&S Investimentos</title>
+                <title>Mês da Mulher - S&S Investimentos</title>
 
                 <meta name="description" content="Ofertas de crédito contemplado pronto para a utilização que é mais barato que financiamento e não contabiliza no banco."></meta>
             </Head>
@@ -55,13 +55,26 @@ export default function Cartas(){
                         <Text textAlign={"center"} fontSize={"24px"}>Em homenagem ao mês da mulher, nós da S&S queremos disponibilizar um material gratuito para você.</Text>
 
                         <Img src="./images/EbookSS.png" />
-                        <Img src="./images/EbookSS2.png" />
 
-                        <Text textAlign={"center"} fontSize={"24px"}>Solicite pelo link abaixo, sem formulários!</Text>
+                        <Text fontSize={"24px"}>
+                        É inspirador ver empreendedoras como vocês quebrando barreiras, contribuindo para a economia e criando um impacto positivo em suas comunidades. Acredite em sua visão e em sua capacidade de impactar o mundo ao seu redor. Sua resiliência e determinação são suas maiores aliadas. Não tenha medo de sonhar grande e de se destacar! 
+                        </Text>
 
-                        <Link href="https://wa.me/5551999148599?text=Ol%C3%A1%2C%20quero%20uma%20c%C3%B3pia%20do%20meu%20guia%20completo%20sobre%20investimentos!">
+                        <Text fontSize={"24px"}>
+                        Para celebrar e apoiar o empreendedorismo feminino a S&S Soluções e Investimentos está disponibilizando um E-book gratuito sobre Alavancagem Patrimonial para as empreendedoras do CDL Ivoti/Estância Velha! Este é um presente nosso para você.
+                        </Text>
+
+                        <Text textAlign={"center"} fontSize={"28px"} fontWeight={"800"}>Solicite pelo link abaixo, sem formulários!</Text>
+
+                        <Link href="https://wa.me/5551985994869?text=Ol%C3%A1%2C%20quero%20uma%20c%C3%B3pia%20do%20meu%20guia%20completo%20sobre%20investimentos!">
                             <Flex justify="center" align="center">
                                 <SolidButton color="#ffffff" bg="#4EB959">Obter o Guia Completo</SolidButton>
+                            </Flex>
+                        </Link>
+
+                        <Link href="https://wa.me/5551985994869?text=Ol%C3%A1%2C%20quero%20uma%20c%C3%B3pia%20do%20meu%20guia%20completo%20sobre%20investimentos!">
+                            <Flex justify="center" align="center">
+                                <Img src="./images/EbookSS2.png" />
                             </Flex>
                         </Link>
                     </Stack>
