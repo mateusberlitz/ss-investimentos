@@ -66,13 +66,13 @@ export default function Cartas(){
 
                         <Text textAlign={"center"} fontSize={"28px"} fontWeight={"800"}>Solicite pelo link abaixo, sem formulários!</Text>
 
-                        <Link href="https://wa.me/5551985994869?text=Ol%C3%A1%2C%20quero%20uma%20c%C3%B3pia%20do%20meu%20guia%20completo%20sobre%20investimentos!">
+                        <Link href="https://bit.ly/4iXWiTC">
                             <Flex justify="center" align="center">
                                 <SolidButton color="#ffffff" bg="#4EB959">Obter o Guia Completo</SolidButton>
                             </Flex>
                         </Link>
 
-                        <Link href="https://wa.me/5551985994869?text=Ol%C3%A1%2C%20quero%20uma%20c%C3%B3pia%20do%20meu%20guia%20completo%20sobre%20investimentos!">
+                        <Link href="https://bit.ly/4iXWiTC">
                             <Flex justify="center" align="center">
                                 <Img src="./images/EbookSS2.png" />
                             </Flex>
